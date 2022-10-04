@@ -1,4 +1,3 @@
-
 """PackTravel URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -20,10 +19,14 @@ from django.contrib import admin
 from django.urls import path
 from search import views as search_views
 from publish import views as publish_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', search_views.search_index, name = 'search_index'),
     path('publish/', publish_views.publish_index, name = 'publish_index'),
     path('', userView.index, name ='index'),
+    path('register/', userView.register, name='register'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
 ]

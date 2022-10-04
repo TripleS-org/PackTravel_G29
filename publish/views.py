@@ -4,4 +4,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def publish_index(req):
-    return HttpResponse('Hello from publish index')
+    return render(req, 'publish/publish.html')

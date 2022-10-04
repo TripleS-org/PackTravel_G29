@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField()
+    unityid = forms.CharField(required=True)
     email = forms.EmailField(required=True, max_length=60)
     phone_number = forms.CharField(required=True, max_length=11)
 
@@ -20,3 +21,4 @@ class RegisterForm(UserCreationForm):
             'password2',
             'phone_number',
         )
+

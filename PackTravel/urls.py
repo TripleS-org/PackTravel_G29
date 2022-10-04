@@ -22,11 +22,8 @@ from publish import views as publish_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-=======
     path('search/', search_views.search_index, name = 'search_index'),
     path('publish/', publish_views.publish_index, name = 'publish_index'),
->>>>>>> 74ace42be15e5f7191c411f87dabff071062c0d9
     path('', userView.index, name ='index'),
     path('register/', userView.register, name='register'),
 ]

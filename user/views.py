@@ -1,3 +1,7 @@
 from django.shortcuts import render
+import requests
+import json
 
-# Create your views here.
+# Home page for PackTravel
+def index(request):
+    return render(request, 'home/home.html')

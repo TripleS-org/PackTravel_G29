@@ -1,4 +1,3 @@
-
 """PackTravel URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -21,6 +20,6 @@ from search import views as search_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('search/', search_views.search_index, name = 'search_index'),
     path('', userView.index, name ='index'),
+    path('register/', userView.register, name='register'),
 ]

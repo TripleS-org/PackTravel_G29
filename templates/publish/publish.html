@@ -3251,6 +3251,223 @@ button:disabled {
 .progress-form__tabs-item[data-complete="true"] > .step {
   color: hsl(var(--light-blue-500));
 }
+
+@import url('https://fonts.googleapis.com/css?family=Alatsi|Poppins&display=swap');
+
+$color-primary: #A099FB;
+$color-primary-dark: #6C5CEA;
+$color-light: #fff;
+$color-dark: #444;
+$color-secondary-light:#FEB6D3;
+$color-secondary: #FE79AB;
+$color-success: #01CECB;
+$color-success-light: #96E6E6;
+$color-danger: #f32c52;
+$color-danger-light: #ff6c88;
+
+
+body{
+	height: 100vh;
+	width: 100%;
+	margin: 0;
+	background: #f8f8f8;
+	justify-content: center;
+	align-items:center;
+	display: flex;
+}
+
+.date{
+		background-color: #ffffff;
+    border: 0 solid transparent;
+    border-radius: 0.25rem;
+    -webkit-box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
+    box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
+    color: #222b45;
+    font-family: Open Sans, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    margin-bottom: 1.875rem;
+    scrollbar-face-color: #e4e9f2;
+    scrollbar-track-color: #f7f9fc;
+		width: 19.25rem;
+		border: none;
+    margin: 0;
+	
+	& .result{
+		padding: 1rem 1.25rem;
+    border-bottom: 1px solid #edf1f7;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    color: #222b45;
+    font-family: Open Sans, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+		
+		& .date-title{
+			display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+		}
+		
+		& .label{
+			font-size: 1.125rem;
+    	font-weight: 400;
+    	line-height: 1.125rem;
+		}
+	}
+	
+	& .selector{
+		display: flex;
+		padding: 1rem 1.25rem;
+		justify-content:space-between;
+		align-items: center;
+		& .left , .right{
+			cursor: pointer;
+   		font-family: Open Sans, sans-serif;
+    	font-weight: 700;
+			background-color: transparent;
+    	border-color: transparent;
+    	border-style: solid;
+			border: none;
+    	text-transform: uppercase;
+			border-radius: 0.25rem;
+			font-size: 0.75rem;
+    	line-height: 1rem;
+			transition-property: background-color,border-color,box-shadow,color,-webkit-box-shadow;
+    -webkit-transition-timing-function: ease-in;
+    	transition-timing-function: ease-in;
+			
+			&:focus{
+				box-shadow: 0 0 0 0.375rem rgba(143, 155, 179, 0.16), inset 0 0 0 100vmax rgba(143, 155, 179, 0.16);
+				outline: none;
+			}
+		}
+		
+		& .month{
+			background-color: $color-primary-dark;
+    	border-color: $color-primary-dark;
+    	color: #ffffff;
+			padding: 0.6875rem 1.125rem;
+			border-style: solid;
+    	border-width: 0.0625rem;
+    	text-transform: uppercase;
+			border-radius: 0.25rem;
+			font-size: 0.875rem;
+    	line-height: 1rem;
+			cursor: pointer;
+    	font-family: Open Sans, sans-serif;
+    	font-weight: 700;
+		}
+	}
+	
+	& .picker{
+		width: 100%;
+		
+		& .days{
+			background: #f7f9fc;
+   	 	border-top: 1px solid #edf1f7;
+    	border-bottom: 1px solid #edf1f7;
+			display: flex;
+			justify-content:center;
+			align-items:center;
+			padding: 1rem 0;
+			& span{
+				color: #8f9bb3;
+				width: 2.625rem;
+    		color: #8f9bb3;
+    		font-size: 0.75rem;
+    		font-weight: 700;
+    		line-height: 1rem;
+				text-align:center;
+			}
+		}
+		
+		& .dates{
+			padding: 1rem 0;
+			
+			&-row{
+				display: flex;
+			}
+			& span{
+				cursor: pointer;
+				width: 2.625rem;
+    		height: 2.625rem;
+				font-family: Open Sans, sans-serif;
+    		font-size: 0.9375rem;
+    		font-weight: 400;
+    		line-height: 1.25rem;
+    		border-radius: 0.25rem;
+		    color: #222b45;
+				justify-content: center;
+    		margin: 1px;
+				align-items: center;
+    -webkit-box-pack: center;
+				display: flex;
+    -webkit-box-align: center;
+				
+				&.active{
+					background: $color-primary-dark;
+					color: $color-light;
+				}
+			}
+		}
+		
+		& .months{
+			padding: 1rem 0;
+			display: none;
+				&-row{
+				display: flex;
+				justify-content: space-between;
+				align-items:center;
+			}
+			& span{
+				cursor: pointer;
+				width: 2.625rem;
+    		height: 2.625rem;
+				color: #8f9bb3;
+				width: 2.625rem;
+    		color: #8f9bb3;
+    		font-size: 0.75rem;
+    		font-weight: 700;
+    		line-height: 1rem;
+				text-align:center;
+    		border-radius: 0.25rem;
+		    color: #222b45;
+				justify-content: center;
+    		margin: 1px;
+				align-items: center;
+    -webkit-box-pack: center;
+				display: flex;
+    -webkit-box-align: center;
+				
+				&.active{
+					background: $color-primary-dark;
+					color: $color-light;
+				}
+			}
+		}
+	}
+}
+
+input[type="time"] {
+  padding-left: 1.5em;
+  background-repeat: no-repeat;
+  background-position: 0.25em center;
+  background-size: 1em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><g fill='%23222' stroke='%23222' stroke-width='2'><circle cx='20' cy='20' r='2' /><path d='M20,24 20,5' style='transform:rotate(120deg); transform-origin: 50% 50%;' /><path d='M20,24 20,8' style='transform:rotate(20deg); transform-origin: 50% 50%;' /></g></svg>");
+  /* this style to complete the styling*/
+  border: 0.125em solid #369;
+  border-radius: 0.25em;
+  font-size: 3rem;
+}
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -3266,18 +3483,22 @@ button:disabled {
           <!-- Step Navigation -->
           <div class="d-flex align-items-start mb-3 sm:mb-5 progress-form__tabs" role="tablist">
             <button id="progress-form__tab-1" class="flex-1 px-0 pt-2 progress-form__tabs-item" type="button" role="tab" aria-controls="progress-form__panel-1" aria-selected="true">
-              <span class="d-block step" aria-hidden="true">Step 1 <span class="sm:d-none">of 3</span></span>
+              <span class="d-block step" aria-hidden="true">Step 1 <span class="sm:d-none">of 5</span></span>
             </button>
             <button id="progress-form__tab-2" class="flex-1 px-0 pt-2 progress-form__tabs-item" type="button" role="tab" aria-controls="progress-form__panel-2" aria-selected="false" tabindex="-1" aria-disabled="true">
-              <span class="d-block step" aria-hidden="true">Step 2 <span class="sm:d-none">of 3</span></span>
+              <span class="d-block step" aria-hidden="true">Step 2 <span class="sm:d-none">of 5</span></span>
 
             </button>
             <button id="progress-form__tab-3" class="flex-1 px-0 pt-2 progress-form__tabs-item" type="button" role="tab" aria-controls="progress-form__panel-3" aria-selected="false" tabindex="-1" aria-disabled="true">
-              <span class="d-block step" aria-hidden="true">Step 3 <span class="sm:d-none">of 3</span></span>
+              <span class="d-block step" aria-hidden="true">Step 3 <span class="sm:d-none">of 5</span></span>
               
             </button>
             <button id="progress-form__tab-4" class="flex-1 px-0 pt-2 progress-form__tabs-item" type="button" role="tab" aria-controls="progress-form__panel-4" aria-selected="false" tabindex="-1" aria-disabled="true">
-              <span class="d-block step" aria-hidden="true">Step 4 <span class="sm:d-none">of 4</span></span>
+              <span class="d-block step" aria-hidden="true">Step 4 <span class="sm:d-none">of 5</span></span>
+              
+            </button>
+            <button id="progress-form__tab-5" class="flex-1 px-0 pt-2 progress-form__tabs-item" type="button" role="tab" aria-controls="progress-form__panel-5" aria-selected="false" tabindex="-1" aria-disabled="true">
+              <span class="d-block step" aria-hidden="true">Step 5 <span class="sm:d-none">of 5</span></span>
               
             </button>
           </div>
@@ -3323,15 +3544,13 @@ button:disabled {
             </div>
           </section>
           <!-- / End Step 2 -->
-      
-          <!-- Step 3 -->
+
           <section id="progress-form__panel-3" role="tabpanel" aria-labelledby="progress-form__tab-3" tabindex="0" hidden>
             <div class="mt-3 form__field">
-      
-            <fieldset id="product-purchase" class="mt-3 form__field">
-              <legend>
+              <label for="route">
                 What is your route?
-              </legend>
+                <span data-required="true" aria-hidden="true"></span>
+              </label>
               <label class="form__choice-wrapper">
                 <input type="radio" name="product-purchase" required value="A">
                 <span>Route 40</span>
@@ -3344,25 +3563,55 @@ button:disabled {
                 <input type="radio" name="product-purchase" required value="C">
                 <span>Route 52</span>
               </label>
-            </fieldset>
+            </div>
       
-            
             <div class="d-flex flex-column-reverse sm:flex-row align-items-center justify-center sm:justify-end mt-4 sm:mt-5">
               <button type="button" class="mt-1 sm:mt-0 button--simple" data-action="prev">
                 Back
               </button>
-              <button type="submit">
-                Submit
+              <button type="button" data-action="next">
+                Continue
               </button>
             </div>
           </section>
-          <!-- / End Step 3 -->
 
-          <!-- Step 4 -->
           <section id="progress-form__panel-4" role="tabpanel" aria-labelledby="progress-form__tab-4" tabindex="0" hidden>
             <div class="mt-3 form__field">
+              <label for="from">Date of travel</label>
+              <input type="date" name="from">
+            </div>
       
-            <fieldset id="product-purchase" class="mt-3 form__field">
+            <div class="d-flex flex-column-reverse sm:flex-row align-items-center justify-center sm:justify-end mt-4 sm:mt-5">
+              <button type="button" class="mt-1 sm:mt-0 button--simple" data-action="prev">
+                Back
+              </button>
+              <button type="submit">
+                Submit
+              </button>
+            </div>
+          </section>
+
+          <section id="progress-form__panel-5" role="tabpanel" aria-labelledby="progress-form__tab-5" tabindex="0" hidden>
+            <div class="mt-3 form__field">
+              <label for="from">Time of travel</label>
+              <input type="time" id="timedepart">
+            </div>
+      
+            <div class="d-flex flex-column-reverse sm:flex-row align-items-center justify-center sm:justify-end mt-4 sm:mt-5">
+              <button type="button" class="mt-1 sm:mt-0 button--simple" data-action="prev">
+                Back
+              </button>
+              <button type="submit">
+                Submit
+              </button>
+            </div>
+          </section>
+
+          
+          <!-- Step 3 
+          <section id="progress-form__panel-3" role="tabpanel" aria-labelledby="progress-form__tab-3" tabindex="0" hidden>
+      
+            
               <legend>
                 What is your route?
               </legend>
@@ -3378,9 +3627,23 @@ button:disabled {
                 <input type="radio" name="product-purchase" required value="C">
                 <span>Route 52</span>
               </label>
-            </fieldset>
-      
+           
             
+            <div class="d-flex flex-column-reverse sm:flex-row align-items-center justify-center sm:justify-end mt-4 sm:mt-5">
+              <button type="button" class="mt-1 sm:mt-0 button--simple" data-action="prev">
+                Back
+              </button>
+              <button type="button" data-action="next">
+                Continue
+              </button>
+            </div>
+          </section>
+          
+          <section id="progress-form__panel-4" role="tabpanel" aria-labelledby="progress-form__tab-4" tabindex="0" hidden>
+            <div class="mt-3 form__field">
+              <label for="from">Date of travel</label>
+              <input type="date" name="from">
+            </div>
             <div class="d-flex flex-column-reverse sm:flex-row align-items-center justify-center sm:justify-end mt-4 sm:mt-5">
               <button type="button" class="mt-1 sm:mt-0 button--simple" data-action="prev">
                 Back
@@ -3390,8 +3653,22 @@ button:disabled {
               </button>
             </div>
           </section>
-          <!-- / End Step 4 -->
-      
+         
+          <section id="progress-form__panel-5" role="tabpanel" aria-labelledby="progress-form__tab-5" tabindex="0" hidden>
+            <div class="mt-3 form__field">
+              <label for="from">Time of travel</label>
+              <input type="time">
+            </div>
+            <div class="d-flex flex-column-reverse sm:flex-row align-items-center justify-center sm:justify-end mt-4 sm:mt-5">
+              <button type="button" class="mt-1 sm:mt-0 button--simple" data-action="prev">
+                Back
+              </button>
+              <button type="submit">
+                Submit
+              </button>
+            </div>
+          </section>-->
+          <!-- / End Step 5 -->
           <!-- Thank You -->
           <section id="progress-form__thank-you" hidden>
             <p>Thank you for your submission!</p>
@@ -4133,6 +4410,15 @@ ready(function() {
 
     });
   });
+});
+
+document.querySelector("input[type='time']").addEventListener("input", function() {
+  const reTime = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
+  if (reTime.exec(this.value)) {
+    const minute = Number(this.value.substring(3,5));
+    const hour = Number(this.value.substring(0,2)) % 12 + (minute / 60);
+    this.style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='20' cy='20' r='18.5' fill='none' stroke='%23222' stroke-width='3' /><path d='M20,4 20,8 M4,20 8,20 M36,20 32,20 M20,36 20,32' stroke='%23bbb' stroke-width='1' /><g fill='%23222' stroke='%23222' stroke-width='2'><circle cx='20' cy='20' r='2' /><path d='M20,24 20,5' style='transform:rotate(${360 * minute / 60}deg); transform-origin: 50% 50%;' /><path d='M20,24 20,8' style='transform:rotate(${360 * hour / 12}deg); transform-origin: 50% 50%;' /></g></svg>")`;
+  }
 });
       </script>
 </body>

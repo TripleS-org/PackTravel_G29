@@ -12,22 +12,25 @@
         background-color: #5b3be9 !important;
         color: white;
         border-radius: 50px;
-        border-color: white;
     }
     .jumbo-pic{
-        background-image: url( "{% static 'travel.jpeg' %}");
+        background-image: url("/static/travel.jpeg");
     }
+    img {
+  filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+}
   </style>
   <body>
     {% include 'nav.html' %}
-    <div class="container-fluid">
-        <div class="jumbotron jumbotron-fluid jumbo-pic text-center" style="margin:150px;">
+    <div class="container-fluid jumbo-pic">
+        <div class="jumbotron jumbotron-fluid  text-center" style="padding:150px;">
             <div class="container">
-              <h1 class="display-4">PackTravel</h1>
-              <p class="lead">Travel safely with a pack. Find rides or book a new ride.</p>
+              <h1 class="display-4" style="color: white;">PackTravel</h1>
+              <p class="lead" style="color: white;">Travel safely with a pack. Find rides or book a new ride.</p>
+              <br>
               <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
                 <a type="button" class="btn btn-blue" href="/search/">Search for Rides</a>
-                <a type="button" class="btn btn-blue" href="/publish/">Publish a New Ride</a>
+                <a type="button" class="btn btn-blue" style="margin-left: 5px;" href="/publish/">Publish a New Ride</a>
               </div>
             </div>
           </div>

@@ -42,7 +42,7 @@ def get_link(source,destination,date_tr,time_tr,f):
 
     if(f==2):
 	    browser.find_element("xpath",'//*[@id="omnibox-directions"]/div/div[2]/div/div/div/div[3]/button').click()
-        time.sleep(2)
+            time.sleep(2)
 
     browser.find_element("xpath",'//*[@id="section-directions-trip-title-0"]').click()
     time.sleep(2)

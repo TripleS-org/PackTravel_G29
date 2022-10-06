@@ -50,35 +50,3 @@ def register(request):
         form = RegisterForm()
     return render(request, 'user/register.html', {"form": form})
 
-def logout(request):
-   try:
-      request.session.clear()
-   except:
-      pass
-   return redirect(index)
-
-
-# @describe: Existing user login
-def login(request):
-    if request.session.has_key('username'):
-        return redirect(index, {"username": request.session['username']})
-    else:
-        if request.method=="POST":
-            form = LoginForm(request.POST)
-            if form.is_valid():
-                username = form.cleaned_data["username"]
-                user = userDB.find_one({"username": username})
-                if user["password"] == form.cleaned_data["password"]:
-                    request.session["username"] = username
-                    request.session['unityid'] = user["unityid"]
-                    request.session['fname'] = user["fname"]
-                    request.session['lname'] = user["lname"]
-                    request.session['email'] = user["email"]
-                    request.session["phone"] = user["phone"]
-                    return redirect(index, request.session['username'])
-            else:
-                print(form.errors.as_data()) 
-        else:
-            form = LoginForm()
-        return render(request, 'user/login.html', {"form": form})
-

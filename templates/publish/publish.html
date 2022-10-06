@@ -4,143 +4,7 @@
 <head>
 
   <style>
-    .section {
-	position: relative;
-	height: 100vh;
-}
-
-.section .section-center {
-	position: absolute;
-	top: 50%;
-	left: 0;
-	right: 0;
-	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-
-#booking {
-	font-family: 'Montserrat', sans-serif;
-	background-image: url('../img/background.jpg');
-	background-size: cover;
-	background-position: center;
-}
-
-#booking::before {
-	content: '';
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	background: rgba(0, 0, 0, 0.6);
-}
-
-.booking-form {
-	max-width: 642px;
-	width: 100%;
-	margin: auto;
-}
-
-.booking-form .form-header {
-	text-align: center;
-	margin-bottom: 25px;
-}
-
-.booking-form .form-header h1 {
-	font-size: 58px;
-	text-transform: uppercase;
-	font-weight: 700;
-	color: #CC0000;
-	margin: 0px;
-}
-
-.booking-form>form {
-	background-color: #101113;
-	padding: 30px 20px;
-	border-radius: 3px;
-}
-
-.booking-form .form-group {
-	position: relative;
-	margin-bottom: 15px;
-}
-
-.booking-form .form-control {
-	background-color: #f5f5f5;
-	border: none;
-	height: 45px;
-	border-radius: 3px;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	font-weight: 400;
-	color: #101113;
-}
-
-.booking-form .form-control::-webkit-input-placeholder {
-	color: rgba(16, 17, 19, 0.3);
-}
-
-.booking-form .form-control:-ms-input-placeholder {
-	color: rgba(16, 17, 19, 0.3);
-}
-
-.booking-form .form-control::placeholder {
-	color: rgba(16, 17, 19, 0.3);
-}
-
-.booking-form input[type="date"].form-control:invalid {
-	color: rgba(16, 17, 19, 0.3);
-}
-
-.booking-form select.form-control {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-}
-
-.booking-form select.form-control+.select-arrow {
-	position: absolute;
-	right: 0px;
-	bottom: 6px;
-	width: 32px;
-	line-height: 32px;
-	height: 32px;
-	text-align: center;
-	pointer-events: none;
-	color: #101113;
-	font-size: 14px;
-}
-
-.booking-form select.form-control+.select-arrow:after {
-	content: '\279C';
-	display: block;
-	-webkit-transform: rotate(90deg);
-	transform: rotate(90deg);
-}
-
-.booking-form .form-label {
-	color: #fff;
-	font-size: 12px;
-	font-weight: 400;
-	margin-bottom: 5px;
-	display: block;
-	text-transform: uppercase;
-}
-
-.booking-form .submit-btn {
-	color: #101113;
-	background-color: #CC0000;
-	font-weight: 700;
-	height: 50px;
-	border: none;
-	width: 100%;
-	display: block;
-	border-radius: 3px;
-	text-transform: uppercase;
-}
-
-
-    html {
+ html {
     font-family: sans-serif;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -322,7 +186,7 @@ table {
 td,
 th {
     padding: 0;
-} /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+} 
 @media print {
     *,
     :after,
@@ -6974,42 +6838,167 @@ button.close {
         display: none !important;
     }
 }
+
+
+.section {
+	position: relative;
+	height: 100vh;
+}
+
+.section .section-center {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+    
+}
+
+#booking {
+	font-family: 'Montserrat', sans-serif;
+	background-image: url("");
+	background-size: cover;
+	background-position: center;
+}
+
+#booking::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.booking-form {
+	max-width: 642px;
+	width: 100%;
+	margin: auto;
+}
+
+.booking-form .form-header {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.booking-form .form-header h1 {
+	font-size: 58px;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #CC0000;
+	margin: 0px;
+}
+
+.booking-form>form {
+	background-color: #101113;
+	padding: 30px 20px;
+	border-radius: 3px;
+}
+
+.booking-form .form-group {
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.booking-form .form-control {
+	background-color: #f5f5f5;
+	border: none;
+	height: 45px;
+	border-radius: 3px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	font-weight: 400;
+	color: #101113;
+}
+
+.booking-form .form-control::-webkit-input-placeholder {
+	color: rgba(16, 17, 19, 0.3);
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+	color: rgba(16, 17, 19, 0.3);
+}
+
+.booking-form .form-control::placeholder {
+	color: rgba(16, 17, 19, 0.3);
+}
+
+.booking-form input[type="date"].form-control:invalid {
+	color: rgba(16, 17, 19, 0.3);
+}
+
+.booking-form select.form-control {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.booking-form select.form-control+.select-arrow {
+	position: absolute;
+	right: 0px;
+	bottom: 6px;
+	width: 32px;
+	line-height: 32px;
+	height: 32px;
+	text-align: center;
+	pointer-events: none;
+	color: #101113;
+	font-size: 14px;
+}
+
+.booking-form select.form-control+.select-arrow:after {
+	content: '\279C';
+	display: block;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.booking-form .form-label {
+	color: #fff;
+	font-size: 12px;
+	font-weight: 400;
+	margin-bottom: 5px;
+	display: block;
+	text-transform: uppercase;
+}
+
+.booking-form .submit-btn {
+	color: #101113;
+	background-color: #CC0000;
+	font-weight: 700;
+	height: 50px;
+	border: none;
+	width: 100%;
+	display: block;
+	border-radius: 3px;
+	text-transform: uppercase;
+}
   </style>
 
 {% include 'nav.html' %}
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 	<title>New PackTravel</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
-	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-
-	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
 </head>
 
 <body>
+    
 	<div id="booking" class="section">
-		<div class="section-center">
+        {% include 'nav.html' %}
+		<div class="section-center" style="padding: 30px">
 			<div class="container">
 				<div class="row">
 					<div class="booking-form">
 						<div class="form-header">
-							<h1>New PackTravel</h1>
+							<h1 style="color:white; text-shadow: 2px 2px black;">New PackTravel</h1>
 						</div>
 						<form>
 							<div class="row">
@@ -7031,11 +7020,11 @@ button.close {
 								<input class="form-control" type="tel" placeholder="Enter your phone number">
 							</div>
 							<div class="form-group">
-								<span class="form-label">Pickup Passenger Location</span>
+								<span class="form-label">Passenger Pickup Location</span>
 								<input class="form-control" type="text" placeholder="Enter ZIP/Location">
 							</div>
 							<div class="form-group">
-								<span class="form-label">Destination</span>
+								<span class="form-label">Passenger Dropoff Location</span>
 								<input class="form-control" type="text" placeholder="Enter ZIP/Location">
 							</div>
 							<div class="row">
@@ -7071,6 +7060,7 @@ button.close {
 											<div class="form-group">
 												<span class="form-label">Min</span>
 												<select class="form-control">
+                                                    <option>00</option>
 													<option>05</option>
 													<option>10</option>
 													<option>15</option>

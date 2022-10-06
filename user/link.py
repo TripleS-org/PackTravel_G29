@@ -49,7 +49,7 @@ def get_link(source,destination,date_tr,time_tr,f):
 
     if(f==2):
 	    route=browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[2]/div[2]/div/div[2]').text
-        info=browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[2]/div[2]/div/div[3]/div').text
+            info=browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[2]/div[2]/div/div[3]/div').text
 	    route=route+" , "+info
     else:
 	    route="Cab"

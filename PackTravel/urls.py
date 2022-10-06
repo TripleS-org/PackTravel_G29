@@ -17,14 +17,17 @@ import imp
 from user import views as userView
 from django.contrib import admin
 from django.urls import path
-from search import views as search_views
-from publish import views as publish_views
+from search import views as searchViews
+from publish import views as publishViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('search/', search_views.search_index, name = 'search'),
-    path('publish/', publish_views.publish_index, name = 'publish'),
+    path('search/', searchViews.search_index, name = 'search'),
+    path('publish/', publishViews.publish_index, name = 'publish'),
     path('index/', userView.index, name ='index'),
     path('index/<username>',userView.index, name='index'),
-    path('register/', userView.register, name='register')
+    path('register/', userView.register, name='register'),
+    path('logout/', userView.logout, name='logout'),
+    path('login/', userView.login, name='login'),
+    path('route/', publishViews.route, name='route')
 ]

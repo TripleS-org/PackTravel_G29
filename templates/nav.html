@@ -80,6 +80,23 @@
         <li class="nav-item">
           <a class="nav-link" href="/user">Login/SignUp</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/register/">SignUp</a>
+        </li>
+        {% if  username  %}
+						<li class="nav-item">
+
+							<a class="nav-link" href="/logout/">
+								<span class="nav-text">Logout</span>
+							</a>
+						</li>
+                        <li class="nav-item">
+
+							<a class="nav-link" href="#">
+								<span class="nav-text">Hi, {{ username }}</span>
+							</a>
+						</li>
+						{% endif %}
       </ul>
     </div>
   </nav>

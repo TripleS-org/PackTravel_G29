@@ -19,14 +19,12 @@ from django.contrib import admin
 from django.urls import path
 from search import views as search_views
 from publish import views as publish_views
-from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', search_views.search_index, name = 'search'),
     path('publish/', publish_views.publish_index, name = 'publish'),
-    path('home/', userView.index, name ='home'),
-    path('register/', userView.register, name='register'),
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    path('index/', userView.index, name ='index'),
+    path('index/<username>',userView.index, name='index'),
+    path('register/', userView.register, name='register')
 ]

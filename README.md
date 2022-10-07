@@ -1,7 +1,7 @@
 # PackTravel
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
-
+![pylint Score](https://mperlet.github.io/pybadge/badges/7.svg)
 
 
 **Goal:**

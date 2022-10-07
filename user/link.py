@@ -32,8 +32,8 @@ def get_link(source,destination,date_tr,month_tr,time_tr,f):
 
 	browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/span/div/div/div/div[2]').click()
 	browser.find_element("xpath",'//*[@id=":9"]/div').click()
+	date=browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[1]/span[2]/span[1]').text
 	date_today=browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[1]/span[2]/span[1]').text
-	
 	month=dict_month[date_today[-5:-2]]
 	date=int(date_today[-1])
 	if(date_tr!=date):
@@ -50,7 +50,6 @@ def get_link(source,destination,date_tr,month_tr,time_tr,f):
 		for i in range(diff):
 			browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[1]/span[2]/span[2]/button[2]').click()
 			time.sleep(2)
-			
 	time_n=browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[1]/span[1]/input')
 	time_n.send_keys(Keys.CONTROL + "a")
 	time_n.send_keys(Keys.DELETE)

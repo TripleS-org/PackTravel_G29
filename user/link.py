@@ -34,8 +34,9 @@ def get_link(source,destination,date_tr,month_tr,time_tr,f):
 	browser.find_element("xpath",'//*[@id=":9"]/div').click()
 	date=browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[1]/span[2]/span[1]').text
 	date_today=browser.find_element("xpath",'//*[@id="QA0Szd"]/div/div/div[1]/div[2]/div/div[1]/div/div/div[2]/div[1]/span[2]/span[1]').text
-	month=dict_month[date_today[-5:-2]]
-	date=int(date_today[-1])
+	date_today=date_today[5:]
+	month=dict_month[date_today[:3]]
+	date=int(date_today[3:])
 	if(date_tr!=date):
 		if(month == month_tr):
 			diff=date_tr-date

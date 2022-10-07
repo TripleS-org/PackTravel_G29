@@ -15,6 +15,7 @@ Including another URLconf
 """
 import imp
 from user import views as userView
+
 from django.contrib import admin
 from django.urls import path
 from search import views as searchViews
@@ -29,5 +30,7 @@ urlpatterns = [
     path('register/', userView.register, name='register'),
     path('logout/', userView.logout, name='logout'),
     path('login/', userView.login, name='login'),
-    path('route/', publishViews.route, name='route')
+    path('create_ride/', publishViews.create_ride, name='create_ride'),
+    path('add_route/', publishViews.add_route, name='add_route'),
+    path('display_ride/', publishViews.display_ride, name='display_ride')
 ]

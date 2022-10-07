@@ -77,7 +77,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/publish/">Create a Ride</a>
         </li>
-        {% if  not username  %}
+        {% if  not request.session.username  %}
         <li class="nav-item">
           <a class="nav-link" href="/login/">Login</a>
         </li>
@@ -88,7 +88,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/route/">Route</a>
       </li>
-        {% if  username  %}
+        {% if  request.session.username  %}
 						<li class="nav-item">
 
 							<a class="nav-link" href="/logout/">

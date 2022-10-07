@@ -4,7 +4,7 @@ from django import forms
 # from django.contrib.auth.models import User
 from .models import Ride
 
-class CreateNewRide(forms.ModelForm):
+class RideForm(forms.ModelForm):
     destination = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter your start destination', 'class': 'form-control'}))
     rideDate = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter ride date', 'class': 'form-control'}))
 

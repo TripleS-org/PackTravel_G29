@@ -1,6 +1,7 @@
 # PackTravel
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178601.svg)](https://doi.org/10.5281/zenodo.7178601)
 ![pylint Score](https://mperlet.github.io/pybadge/badges/7.svg)
 [![contributors](https://img.shields.io/github/contributors/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/graphs/contributors)
 [![](https://tokei.rs/b1/github/XAMPPRocky/tokei)](https://github.com/amisha-w/PackTravel)

@@ -12,6 +12,7 @@ jobs:
 
     - name: Test the features
       run: |
-         "python ../../manage.py user"
+          cd user
+          python forms.py
         
 

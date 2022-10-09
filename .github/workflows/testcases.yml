@@ -17,7 +17,11 @@ jobs:
     - name: Test the features
       run: |
         pwd
-        cd /home
+        cd ..
+        cd ..
+        cd ..
+        cd ..
+        pwd
         python manage.py test user
         
 

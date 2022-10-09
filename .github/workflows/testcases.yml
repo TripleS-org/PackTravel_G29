@@ -2,9 +2,9 @@ name: Testcases check
 
 on: [push]
 
-defaults:
-  run:
-    working-directory: PackTravel
+# defaults:
+#   run:
+#     working-directory: user
 
 jobs:
   build:
@@ -16,6 +16,6 @@ jobs:
 
     - name: Test the features
       run: |
-        python manage.py test
+        python manage.py test user
         
 

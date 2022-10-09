@@ -12,6 +12,6 @@ jobs:
 
     - name: Test the features
       run: |
-         python /user/forms.py
+         python ../../manage.py user
         
 

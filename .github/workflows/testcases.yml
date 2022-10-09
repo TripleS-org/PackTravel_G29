@@ -11,7 +11,7 @@ jobs:
     steps:
 
     - name: Test the features
-      run: 
-        python manage.py test user
-        python manage.py test publish
+      run: |
+        python manage.py test 
+        
 

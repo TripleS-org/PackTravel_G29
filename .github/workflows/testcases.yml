@@ -16,6 +16,7 @@ jobs:
 
     - name: Test the features
       run: |
+        pwd
         python manage.py test user
         
 

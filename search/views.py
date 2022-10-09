@@ -10,12 +10,22 @@ from django.contrib.auth.forms import UserCreationForm
 from publish.forms import RideForm
 from utils import get_client
 
-client = get_client()
-db = client.SEProject
-ridesDB  = db.rides
-routesDB  = db.routes
+client = None
+db = None
+userDB = None
+ridesDB  = None
+routesDB  = None
+
+def intializeDB():
+    global client, db, userDB, ridesDB, routesDB
+    client = get_client()
+    db = client.SEProject
+    userDB = db.userData
+    ridesDB  = db.rides
+    routesDB  = db.routes
 
 def search_index(request):
+    intializeDB()
     all_rides = list(ridesDB.find())
     processed = list()
     for ride in all_rides:

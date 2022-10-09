@@ -10,9 +10,19 @@ from utils import get_client
 from django.http import HttpResponse
 
 
-client = get_client()
-db = client.SEProject
-userDB  = db.userData
+client = None
+db = None
+userDB = None
+ridesDB  = None
+routesDB  = None
+
+def intializeDB():
+    global client, db, userDB, ridesDB, routesDB
+    client = get_client()
+    db = client.SEProject
+    userDB = db.userData
+    ridesDB  = db.rides
+    routesDB  = db.routes
 
 # Home page for PackTravel
 def index(request, username=None):
@@ -22,6 +32,7 @@ def index(request, username=None):
 
 
 def register(request):
+    intializeDB()
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -61,6 +72,7 @@ def logout(request):
 
 # @describe: Existing user login
 def login(request):
+    intializeDB()
     if request.session.has_key('username'):
         return redirect(index, {"username": request.session['username']})
     else:

@@ -12,19 +12,29 @@ from utils import get_client
 # from django.http import HttpResponse
 
 # Create your views here.
-client = get_client()
-db = client.SEProject
-userDB = db.userData
-ridesDB  = db.rides
-routesDB  = db.routes
+client = None
+db = None
+userDB = None
+ridesDB  = None
+routesDB  = None
+
+def intializeDB():
+    global client, db, userDB, ridesDB, routesDB
+    client = get_client()
+    db = client.SEProject
+    userDB = db.userData
+    ridesDB  = db.rides
+    routesDB  = db.routes
 
 def publish_index(request):
+    intializeDB()
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to create a ride."
         return redirect('index')
     return render(request, 'publish/publish.html', {"username": request.session['username'], "alert":True})
 
 def display_ride(request, ride_id):
+    intializeDB()
     ride = ridesDB.find_one({'_id': ride_id})
     routes = get_routes(ride)
     selected = routeSelect(request.session['username'], routes)
@@ -37,7 +47,7 @@ def display_ride(request, ride_id):
     return render(request, 'publish/route.html', context)
 
 def routeSelect(username, routes):
-
+    intializeDB()
     user = userDB.find_one({"username": username})
     if user == None or routes == None:
         print("returning NONE")
@@ -66,6 +76,7 @@ def get_routes(ride):
     return routes
 
 def create_ride(request):
+    intializeDB()
     if request.method == 'POST':
         ride = {
             "_id": 
@@ -91,6 +102,7 @@ def create_ride(request):
     return render(request, 'publish/publish.html', {"username": request.session['username']})
 
 def add_route(request):
+    intializeDB()
     if request.method == 'POST':
         
         ride = request.POST.get('ride')
@@ -133,6 +145,7 @@ def add_route(request):
     return render(request, 'publish/publish.html', {"username": request.session['username']})
 
 def attachUserToRoute(username, route_id, ride_id):
+    intializeDB()
     user = userDB.find_one({"username": username})
     if user == None:
         pass

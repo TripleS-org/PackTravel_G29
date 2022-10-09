@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178601.svg)](https://doi.org/10.5281/zenodo.7178601)
+[![codecov](https://codecov.io/gh/amisha-w/PackTravel/branch/main/graph/badge.svg?token=HRFN97UEB7)](https://codecov.io/gh/amisha-w/PackTravel)
 ![pylint Score](https://mperlet.github.io/pybadge/badges/7.svg)
 [![contributors](https://img.shields.io/github/contributors/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/graphs/contributors)
 [![Total Lines](https://tokei.rs/b1/github/XAMPPRocky/tokei)](https://github.com/amisha-w/PackTravel)
@@ -9,6 +10,7 @@
 [![Pull Requests](https://img.shields.io/github/issues-pr/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/pulls)
 [![Commit Acitivity](https://img.shields.io/github/commit-activity/w/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/graphs/commit-activity)
 [![Repo Size](https://img.shields.io/github/repo-size/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel)
+
 
 
 **Goal:**

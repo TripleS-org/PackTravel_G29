@@ -11,7 +11,7 @@ jobs:
     steps:
 
     - name: Test the features
-      run: 
+      run: |
         cd PackTravel
         python manage.py test 
         

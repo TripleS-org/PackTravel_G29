@@ -1,6 +1,5 @@
 # PackTravel
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178601.svg)](https://doi.org/10.5281/zenodo.7178601)
 [![codecov](https://codecov.io/gh/amisha-w/PackTravel/branch/main/graph/badge.svg?token=HRFN97UEB7)](https://codecov.io/gh/amisha-w/PackTravel)
@@ -14,7 +13,7 @@
 
 
 
-**Goal:**
+# **🏆 Goal:**
 
 _Travelling alone?_ **Try PackTravel**
 
@@ -29,7 +28,7 @@ Most of the international students do not have a car to travel off-campus and re
 **So, let's PackTravel 😎**
 
 
-## Watch PackTravel in action 
+## 🚀 Watch PackTravel in action 
 https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3-af35-732ebd34e76c.mp4
 
 **Built Using:**
@@ -45,7 +44,13 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 
 
 
-## Getting started:
+## 📖 Getting started:
+
+### 👤 Who can use our app</h1>
+
+  1. If you are a user who is visiting our app, you can sign up as a user with view access to rides. You can edit or create your own ride.
+  2. If you are an admin user, you can create, view, update and delete rides and schedule rides.
+  3. To request for admin privileges, please email on help@packtravel.io with the purpose of use. 
 
   - ### Prerequisite:
       - Download [Python3.x](https://www.python.org/downloads/).
@@ -131,7 +136,7 @@ Start the server
 <code><a href="https://app.slack.com/client/T03UZM4975G/C03UT3QFHP0" target="_blank"><img height="50" width="100" src="https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png"></a></code>
 
 
-### Phase 1:
+### 🎯 Phase 1:
 
 - [x] Create database ER diagram
 - [x] Create Mongo Database
@@ -139,35 +144,37 @@ Start the server
 - [x] Create Login Page
 - [x] Create Signup Page
 - [x] Setup Django
-- [ ] Add Unit testing
+- [x] Add Unit testing
 - [x] Add Error Handling mechanisms
 
-### Future Enhancements:
+### 🎯 Future Enhancements:
 
-- [ ] Integrating Components to create a complete workflow
-- [ ] Embedding calendar and highligting important dates
-- [ ] Send remainder mails for deadlines
-- [ ] Upload and Maintain resume versions
-- [ ] Display the location of the application on the map
-- [ ] Create APIs for relevant functionalities
-- [ ] Share your profile with others
-- [ ] Reading mails from your inbox and automatically adding/updating the status of the application
-- [ ] Enabling Desktop Notifications
+- [] Add machine learning algorithms for predicting lowest priced rides, best pickup and drop-off locations.
+- [] Improve UI by migrating to ReactJS
+- [] Add more dynamic pages
+- [] Show later departures in search if currently searched rides is not available
+- [] Increase the geographical area coverage for the application
+- [] Extend the userbase to students other than that of the North Carolina State University
+- [] Integrate in-app cab booking services
+- [] Introduce a two way ride confirmation feature
 
 ## Contributions to the Project
 
-## Contributors 👨‍🏭
+## 👨‍🏭 Contributors 
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/amisha-w"><img src="" width="100px;" alt=""/><br /><sub><b>Amisha Waghela</b></sub></a></td>
-    <td align="center"><a href="https://github.com/Aoishi28"><img src="" width="100px;" alt=""/><br /><sub><b>Aoishi Das</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/ameyachavan26"><img src="" width="100px;" alt=""/><br /><sub><b>Ameya Chavan</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/kunalshah03"><img src="" width="100px;" alt=""/><br /><sub><b>Kunal Shah</b></sub></a><br /></td>
-    <td align="center"><a href=""><img src="" width="100px;" alt=""/><br /><sub><b>Swarnamalya M</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/amisha-w"><img src="https://avatars.githubusercontent.com/u/40361766?v=4" width="100px;" alt=""/><br /><sub><b>Amisha Waghela</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Aoishi28"><img src="https://avatars.githubusercontent.com/u/60925790?v=4" width="100px;" alt=""/><br /><sub><b>Aoishi Das</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/ameyachavan26"><img src="https://avatars.githubusercontent.com/u/111834635?v=4" width="100px;" alt=""/><br /><sub><b>Ameya Chavan</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/kunalshah03"><img src="https://avatars.githubusercontent.com/u/48029057?v=4" width="100px;" alt=""/><br /><sub><b>Kunal Shah</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/swarnamalyamohan"><img src="https://avatars.githubusercontent.com/u/45752623?v=4" width="100px;" alt=""/><br /><sub><b>Swarnamalya M</b></sub></a><br /></td>
   </tr>
 </table>
 
 
-## Contact 
-In case of any issues, please mail your queries to packtravel@gmail.com 
+<h1>❗ TroubleShooting and Help Guide</h1>
+
+ 1. For any issues faced while using the application, please email the detailed description and steps to reproduce the error at help@packtravel.io .
+ 2. If you are a developer, please raise an issue on github with steps to reproduce and possible source of error.
+ 3. Our email is monitored 24x7 and we usually respond within 1 hour. Happy Emailing :).

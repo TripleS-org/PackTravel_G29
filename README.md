@@ -53,9 +53,13 @@ Create a virtual environment:
 ```
 
 Activate the virtual environment:
-
+Linux/MacOS:
 ```bash
   source test_env/bin/activate
+```
+Windows:
+```bash
+  ./test_env/Scripts/activate
 ```
 
 Clone the project

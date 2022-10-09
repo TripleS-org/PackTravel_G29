@@ -12,6 +12,6 @@ jobs:
 
     - name: Test the features
       run: |
-        python ./PackTravel/manage.py test 
+        python PackTravel/manage.py test 
         
 

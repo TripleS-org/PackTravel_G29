@@ -4,7 +4,7 @@
 ![pylint Score](https://mperlet.github.io/pybadge/badges/7.svg)
 [![contributors](https://img.shields.io/github/contributors/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/graphs/contributors)
 [![](https://tokei.rs/b1/github/XAMPPRocky/tokei)](https://github.com/amisha-w/PackTravel)
-https://img.shields.io/github/issues/amisha-w/PackTravel
+[![](https://img.shields.io/github/issues/amisha-w/PackTravel)]
 
 **Goal:**
 

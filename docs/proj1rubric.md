@@ -1,4 +1,4 @@
-|Notes|Assessment (Total : )|Evidence|
+|Notes|Assessment (Total : 217)|Evidence|
 |-----|---------|----------|
 |Video1| 0| This project is not based on any old projects hence no old functionality is to be included |
 |Video2| 3| A vidoe showing the functionality is included|

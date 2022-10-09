@@ -1,0 +1,15 @@
+name: Testcases check
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+    steps:
+
+    - name: Test the features
+      run: |
+        python manage.py test user

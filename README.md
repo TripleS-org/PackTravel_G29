@@ -104,12 +104,12 @@ Start the server
      - Site will be hosted at:
        `http://127.0.0.1:5000/`
        
-## Tools
+## 🛠️ Tools
 - [Preetier Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [JS-HTML-CSS Formatter](https://marketplace.visualstudio.com/items?itemName=lonefy.vscode-JS-CSS-HTML-formatter)
 - [PyLint](https://pylint.org/)
 
-## Preview
+## 👀 Preview
 
 - **Sign Up Page**
   - User Interface to signup to the app
@@ -131,7 +131,7 @@ Start the server
 
 
 
-## Chat Channel
+## 💬 Chat Channel
 
 <code><a href="https://app.slack.com/client/T03UZM4975G/C03UT3QFHP0" target="_blank"><img height="50" width="100" src="https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png"></a></code>
 
@@ -149,14 +149,14 @@ Start the server
 
 ### 🎯 Future Enhancements:
 
-- [] Add machine learning algorithms for predicting lowest priced rides, best pickup and drop-off locations.
-- [] Improve UI by migrating to ReactJS
-- [] Add more dynamic pages
-- [] Show later departures in search if currently searched rides is not available
-- [] Increase the geographical area coverage for the application
-- [] Extend the userbase to students other than that of the North Carolina State University
-- [] Integrate in-app cab booking services
-- [] Introduce a two way ride confirmation feature
+- [ ] Add machine learning algorithms for predicting lowest priced rides, best pickup and drop-off locations.
+- [ ] Improve UI by migrating to ReactJS
+- [ ] Add more dynamic pages
+- [ ] Show later departures in search if currently searched rides is not available
+- [ ] Increase the geographical area coverage for the application
+- [ ] Extend the userbase to students other than that of the North Carolina State University
+- [ ] Integrate in-app cab booking services
+- [ ] Introduce a two way ride confirmation feature
 
 ## Contributions to the Project
 

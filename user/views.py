@@ -16,12 +16,9 @@ userDB  = db.userData
 
 # Home page for PackTravel
 def index(request, username=None):
-    alertmsg=None
-    if request.session.has_key('alert'):
-        alertmsg = request.session["alert"]
     if request.session.has_key('username'):
-         return render(request, 'home/home.html', {"username":request.session["username"], "alertmsg":alertmsg})
-    return render(request, 'home/home.html', {"username":None, "alertmsg":alertmsg})
+         return render(request, 'home/home.html', {"username":request.session["username"]})
+    return render(request, 'home/home.html', {"username":None})
 
 
 def register(request):

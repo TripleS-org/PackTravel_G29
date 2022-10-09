@@ -42,6 +42,10 @@
                 <td>Time</td>
                 <td>{{ride.hour}}:{{ride.minute}} {{ride.ampm}}</td>
               </tr>
+              <tr>
+                <td>Details</td>
+                <td>{{ride.details}}</td>
+              </tr>
             </tbody>
           </table>
           <br>
@@ -178,7 +182,7 @@
             </div>
             <br>
                <div class="form-group">
-               <span class="form-label">Ride Details</span>
+               <span class="form-label">Route Details</span>
                <textarea rows="2" name="details" required class="form-control" type="text" placeholder="Enter ride details"></textarea>
            </div>
            <input type="hidden"  name="ride" value="{{ ride }}">

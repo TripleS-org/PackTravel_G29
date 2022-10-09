@@ -12,7 +12,7 @@
 
 </head>
 
-<body style="background-color: #3A3B3C;">
+    <body  style="background-color: #3A3B3C;">
 
     {% include 'nav.html' %}
 
@@ -106,6 +106,11 @@
                     </div>
 
                 </div>
+                <br>
+               <div class="form-group">
+               <span class="form-label">Ride Details</span>
+               <textarea rows="2" name="details" required class="form-control" type="text" placeholder="Enter ride details"></textarea>
+           </div>
                 <br><br>
                 <div class="form-btn">
                     <button style="float: right;" class="btn btn-info btn-lg submit-btn">Next: Add a route</button>
@@ -116,20 +121,6 @@
             </div>
             <br><br>
         </form>
-        <!-- <form method="POST" class="form-group">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="id_username">Username</label>
-                {{form.username}}
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="id_password">Password</label>
-                {{form.password}}
-            </div>
-            <br>
-            <button type="submit" class="btn btn-dark" >Login</button>
-          </form> -->
 </div>
 
     

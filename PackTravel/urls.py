@@ -30,5 +30,5 @@ urlpatterns = [
     path('login/', userView.login, name='login'),
     path('create_ride/', publishViews.create_ride, name='create_ride'),
     path('add_route/', publishViews.add_route, name='add_route'),
-    path('display_ride/', publishViews.display_ride, name='display_ride')
+    path('display_ride/<ride_id>', publishViews.display_ride, name='display_ride')
 ]

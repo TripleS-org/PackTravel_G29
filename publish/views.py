@@ -1,6 +1,6 @@
 from http.client import HTTPResponse
 from django.shortcuts import render,redirect
-from numpy import dtype
+from numpy import True_, dtype
 import requests
 import json
 from django.contrib.auth import login, authenticate
@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 
 from publish.forms import RideForm
-from user.views import userDB, index
 from utils import get_client
 # from django.http import HttpResponse
 
@@ -22,13 +21,12 @@ def publish_index(request):
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to create a ride."
         return redirect('index')
-    return render(request, 'publish/publish.html', {"username": request.session['username']})
+    return render(request, 'publish/publish.html', {"username": request.session['username'], "alert":True})
 
-def display_ride(request):
-    ride = request.session['ride']
-    ride_id = ride['_id']
+def display_ride(request, ride_id):
+    ride = ridesDB.find_one({'_id': ride_id})
     routes = get_routes(ride)
-    ride = ridesDB.find_one({'_id': ride['_id']})
+    
     context = {
             "username": request.session['username'],
             "ride": ride,
@@ -62,12 +60,13 @@ def create_ride(request):
                 "date": request.POST.get("date"),
                 "hour": request.POST.get("hour"),
                 "minute":  request.POST.get("minute"),
-                "ampm": request.POST.get("ampm")
+                "ampm": request.POST.get("ampm"),
+                "details": request.POST.get("details")
             }
         request.session['ride'] = ride
         if ridesDB.find_one({'_id': ride['_id']})== None:
             ridesDB.insert_one(ride)
-        return redirect(display_ride)
+        return redirect(display_ride, ride_id=request.session['ride']['_id'] )
 
     return render(request, 'publish/publish.html', {"username": request.session['username']})
 
@@ -108,7 +107,7 @@ def add_route(request):
             else:
                 ride['routes'].append(route['_id'])
                 ridesDB.update_one({"_id": ride_id}, {"$set": {"routes": ride['routes']}})
-        return redirect(display_ride)
+        return redirect(display_ride, ride_id=request.session['ride']['_id'] )
 
     return render(request, 'publish/publish.html', {"username": request.session['username']})
 

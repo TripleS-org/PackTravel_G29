@@ -13,6 +13,7 @@ jobs:
     - name: Test the features
       run: |
         cd ..
+        cd ..
         python manage.py test 
         
 

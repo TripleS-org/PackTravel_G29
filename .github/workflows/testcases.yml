@@ -12,6 +12,6 @@ jobs:
 
     - name: Test the features
       run: |
-         python ../../manage.py user
+         "python ../../manage.py user"
         
 

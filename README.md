@@ -1,8 +1,15 @@
 # PackTravel
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178601.svg)](https://doi.org/10.5281/zenodo.7178601)
 ![pylint Score](https://mperlet.github.io/pybadge/badges/7.svg)
 [![contributors](https://img.shields.io/github/contributors/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/graphs/contributors)
+[![Total Lines](https://tokei.rs/b1/github/XAMPPRocky/tokei)](https://github.com/amisha-w/PackTravel)
+[![Issues](https://img.shields.io/github/issues/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/pulls)
+[![Commit Acitivity](https://img.shields.io/github/commit-activity/w/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/graphs/commit-activity)
+[![Repo Size](https://img.shields.io/github/repo-size/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel)
+
 
 **Goal:**
 
@@ -50,9 +57,13 @@ Create a virtual environment:
 ```
 
 Activate the virtual environment:
-
+Linux/MacOS:
 ```bash
   source test_env/bin/activate
+```
+Windows:
+```bash
+  ./test_env/Scripts/activate
 ```
 
 Clone the project
@@ -94,18 +105,21 @@ Start the server
 
 - **Sign Up Page**
   - User Interface to signup to the app
+ ![Sign Up](https://user-images.githubusercontent.com/111834635/194778553-99da6656-8eaf-4e6a-9a8d-a1d3ff1a40cf.jpeg)
 
 - **Login Page**
   - User Interface to login to the PackTravel app. After successful login, user will be redirected to the Dashboard page
+![Login Page](https://user-images.githubusercontent.com/111834635/194778542-2b1c810c-3a14-44a1-b7e6-2db6aa83ee3b.jpeg)
 
 
-- **Dashboard** 
+- **Home Page** 
+![Home Page](https://user-images.githubusercontent.com/111834635/194778535-43e49377-76ab-4ad3-9579-39f41c483a76.jpeg)
 
+- **Add New Ride** 
+![Create new ride](https://user-images.githubusercontent.com/111834635/194778576-4f2a4f79-c56e-48ef-ba3b-7c56d529addc.jpeg)
 
-- **Add New Route** 
-
-
-- **View List of PackTravel**
+- **View and Search List of PackTravel**
+![Search Page](https://user-images.githubusercontent.com/111834635/194778702-efec2c3b-41d4-40fb-8acc-8e00c4d39d90.jpeg)
 
 
 

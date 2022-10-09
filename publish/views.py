@@ -14,6 +14,7 @@ from utils import get_client
 # Create your views here.
 client = get_client()
 db = client.SEProject
+userDB = db.userData
 ridesDB  = db.rides
 routesDB  = db.routes
 
@@ -26,13 +27,30 @@ def publish_index(request):
 def display_ride(request, ride_id):
     ride = ridesDB.find_one({'_id': ride_id})
     routes = get_routes(ride)
-    
+    selected = routeSelect(request.session['username'], routes)
     context = {
             "username": request.session['username'],
             "ride": ride,
-            "routes": routes
+            "routes": routes,
+            "selectedRoute": selected
         }
     return render(request, 'publish/route.html', context)
+
+def routeSelect(username, routes):
+
+    user = userDB.find_one({"username": username})
+    if user == None or routes == None:
+        print("returning NONE")
+        return None
+
+
+    user_routes = user['rides']
+    print("User routes: ",user_routes)
+    for route in routes:
+        if route['id'] in user_routes:
+            print("FOUND")
+            return route['id']
+    return None
 
 def get_routes(ride):
     routes = []
@@ -41,6 +59,8 @@ def get_routes(ride):
     route_ids = ride['routes']
     for route_id in route_ids:
         route = routesDB.find_one({'_id': route_id})
+        if not route:
+            pass
         route['id'] = route.pop('_id')
         routes.append(route)
     return routes
@@ -99,6 +119,7 @@ def add_route(request):
             }
         request.session["route"] = route
         request.session["ride"] = ride
+        attachUserToRoute(request.session['username'], route["_id"], ride_id)
         #check if route is unique
         if routesDB.find_one({'_id': route["_id"]})== None:
             routesDB.insert_one(route)
@@ -111,6 +132,30 @@ def add_route(request):
 
     return render(request, 'publish/publish.html', {"username": request.session['username']})
 
+def attachUserToRoute(username, route_id, ride_id):
+    user = userDB.find_one({"username": username})
+    if user == None:
+        pass
 
+    rides = user['rides']
+    #remove other routes for this user and ride
+    for route in rides.copy():
+        if ride_id in route:
+            rides.remove(route)
+            #remove user from other routes for this ride
+            print("foudn ride id in route")
+            route_instance = routesDB.find_one({'_id': route})
+            print("route inst",route_instance)
+            if route_instance:
+                print("found, removing user: ",username)
+                users = route_instance['users']
+                print("prev users: ",users)
+                users.remove(username)
+                print("now: ",users)
+                routesDB.update_one({"_id": route}, {"$set": {"users": users}})
+            
+    rides.append(route_id)
+    userDB.update_one({"username": username}, {"$set": {"rides": rides}})
+    print(rides)
 
 

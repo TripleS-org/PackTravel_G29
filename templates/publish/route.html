@@ -17,7 +17,16 @@
     /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
     /* background: #D3D3D3; */
 }
+
 </style>
+<script>
+  window.onload = function(e){ 
+    document.getElementById("{{ selectedRoute }}").checked = true;
+}
+ function check() {
+  
+}
+</script>
 <body style="background-color: #3A3B3C;">
 
     {% include 'nav.html' %}
@@ -39,7 +48,7 @@
                 <td>{{ride.date}}</td>
               </tr>
               <tr>
-                <td>Time</td>
+                <td>Reach Time</td>
                 <td>{{ride.hour}}:{{ride.minute}} {{ride.ampm}}</td>
               </tr>
               <tr>
@@ -60,6 +69,7 @@
                 
                 <th scope="col">Start Time</th>
                 <th scope="col">Duration</th>
+                <th scope="col">Number of users</th>
                 <th scope="col">Details</th>
               </tr>
             </thead>
@@ -71,14 +81,24 @@
               <th scope="row"><div class="input-group">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
-                  <input type="radio" name="routeselect" aria-label="Radio button for following text input" value="{{ route.id }}">
-                  </div>
+                    {% if selectedRoute == route.id %}
+                    <input type="radio" name="routeselect" aria-label="Radio button for following text input" value="{{ route.id }}" id="{{ route.id }}" checked aria-checked="true">
+                    {% else %}
+                  <input type="radio" name="routeselect" aria-label="Radio button for following text input" value="{{ route.id }}" id="{{ route.id }}" >
+                  {% endif %} </div>
                 </div>
               </div></th>
-              <td>{{ route.type }}</td>
+              <td>
+                {% if ride.type == "Bus" %}
+                <img height="15px" width="15px" src="{% static 'bus.svg'%}">
+                {% elif ride.type == "Cab" %}
+                <img  height="15px" width="15px" src="{% static 'car.svg'%}">
+                {% endif %}
+                {{ route.type }}</td>
               <td>{{ route.spoint }}</td>
               <td>{{ route.hour }}:{{ route.minute }} {{ route.ampm }}</td>
               <td>{{ route.duration }} minutes</td>
+              <td>{{ route.users|length }}</td>
               <td>{{ route.details }}</td>
             </tr>
           
@@ -105,9 +125,9 @@
                 <div class="form-group">
                                 <span class="form-label">Select a type of route:</span>
                                 <select name="type" required class="form-control">
-                                    <option>Bus</option>
-                                    <option>Cab</option>
-                                    <option>Personal</option>
+                                    <option value="Bus">Bus</option>
+                                    <option value="Cab">Cab</option>
+                                    <option value="Personal">Personal</option>
                                 </select>
                                 <span class="select-arrow"></span>
                             </div>

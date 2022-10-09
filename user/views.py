@@ -32,7 +32,8 @@ def register(request):
                 "lname": form.cleaned_data["last_name"],
                 "email": form.cleaned_data["email"],
                 "password": form.cleaned_data["password1"],
-                "phone": form.cleaned_data["phone_number"]
+                "phone": form.cleaned_data["phone_number"],
+                "rides": []
             }
             userDB.insert_one(userObj)
             request.session['username'] = userObj["username"]
@@ -67,8 +68,10 @@ def login(request):
             form = LoginForm(request.POST)
             if form.is_valid():
                 username = form.cleaned_data["username"]
+                passw =  form.cleaned_data["password"]
                 user = userDB.find_one({"username": username})
-                if user["password"] == form.cleaned_data["password"]:
+
+                if user and user["password"] == form.cleaned_data["password"]:
                     request.session["username"] = username
                     request.session['unityid'] = user["unityid"]
                     request.session['fname'] = user["fname"]
@@ -76,9 +79,7 @@ def login(request):
                     request.session['email'] = user["email"]
                     request.session["phone"] = user["phone"]
                     return redirect(index, request.session['username'])
-            else:
-                print(form.errors.as_data()) 
-        else:
-            form = LoginForm()
+        
+        form = LoginForm()
         return render(request, 'user/login.html', {"form": form})
 

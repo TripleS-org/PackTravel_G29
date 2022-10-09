@@ -19,7 +19,7 @@ class Testdb(SimpleTestCase):
                   'details': "Ride to attend Monday CSC510 Lecture on 10/10/2022 at 10:15 AM."}
 
         id = ridesDB.insert_one(data).inserted_id
-        print("idd",id)
+        self.assertEqual(ridesDB.insert_one(data), True)
 
         result = ridesDB.find_one({'_id': id})
         print("res is", result)
@@ -27,8 +27,8 @@ class Testdb(SimpleTestCase):
 
         ridesDB.delete_one({'_id': id})
 
-        return id
-        self.assertEqual(userDB.insert_one(data),True)
+
+
 
     # def test_find_db(self):
     #     # id = self.test_insert_db()

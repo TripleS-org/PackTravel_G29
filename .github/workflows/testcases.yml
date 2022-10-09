@@ -12,7 +12,6 @@ jobs:
 
     - name: Test the features
       run: |
-          cd user
-          python forms.py
+        python manage.py test
         
 

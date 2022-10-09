@@ -19,16 +19,19 @@ class Testdb(SimpleTestCase):
                  "phone" : "987657890"}
 
         id = userDB.insert_one(data).inserted_id
-        return id
+        result = userDB.find_one({'_id': id})
+        print("res is", result)
+        self.assertEqual(result['_id'], id)
+        userDB.delete_one({'_id': id})
         # self.assertEqual(userDB.insert_one(data),True)
 
-    def test_find_db(self):
-        id = self.test_insert_db()
-        result= userDB.find_one({'_id':id})
-        print("res is",result)
-        self.assertEqual(result['_id'], id)
-
-    def test_delete_db(self):
-        id = self.test_insert_db()
-        userDB.delete_one({'_id':id})
+    # def test_find_db(self):
+    #     id = self.test_insert_db()
+    #     result= userDB.find_one({'_id':id})
+    #     print("res is",result)
+    #     self.assertEqual(result['_id'], id)
+    #
+    # def test_delete_db(self):
+    #     id = self.test_insert_db()
+    #     userDB.delete_one({'_id':id})
 

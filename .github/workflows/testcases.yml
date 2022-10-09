@@ -2,6 +2,10 @@ name: Testcases check
 
 on: [push]
 
+defaults:
+  run:
+    working-directory: PackTravel
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,8 +16,6 @@ jobs:
 
     - name: Test the features
       run: |
-        cd ..
-        cd ..
         python manage.py test
         
 

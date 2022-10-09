@@ -17,8 +17,10 @@ jobs:
     - name: Test the features
       run: |
         pwd
+        os.listdir()
         cd ..
         pwd
+        os.listdir()
         python manage.py test user
         
 

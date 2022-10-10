@@ -168,6 +168,7 @@ Start the server
 - [x] Create Login and Signup Page
 - [x] Create Search Page
 - [x] Added create Rides Page
+- [x] Added create routes Page
 - [x] Setup Django
 - [x] Add Unit testing
 - [x] Add Error Handling mechanisms

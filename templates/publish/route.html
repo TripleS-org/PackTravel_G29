@@ -23,8 +23,9 @@
   window.onload = function(e){ 
     document.getElementById("{{ selectedRoute }}").checked = true;
 }
- function check() {
-  
+
+function selectRoute(id) {
+  document.getElementById(id).submit();
 }
 </script>
 <body style="background-color: #3A3B3C;">
@@ -78,13 +79,20 @@
           
           
             <tr>
+              
               <th scope="row"><div class="input-group">
+                <form method="POST" action="/select_route/" id="myForm{{route.id}}">
+                  {% csrf_token %}
+                  <input value="{{ route.id }}" type="hidden" name="hiddenInput">
+                  <input type="hidden" value="{{ ride }}" name="hiddenRide">
+                  <input type="hidden" value="{{ request.session.username }}" name="hiddenUser">
+                </form>
                 <div class="input-group-prepend">
                   <div class="input-group-text">
                     {% if selectedRoute == route.id %}
-                    <input type="radio" name="routeselect" aria-label="Radio button for following text input" value="{{ route.id }}" id="{{ route.id }}" checked aria-checked="true">
+                    <input type="radio" onclick='selectRoute("myForm{{route.id}}")' name="routeselect" aria-label="Radio button for following text input" value="{{ route.id }}" id="{{ route.id }}" checked aria-checked="true">
                     {% else %}
-                  <input type="radio" name="routeselect" aria-label="Radio button for following text input" value="{{ route.id }}" id="{{ route.id }}" >
+                  <input type="radio" onclick='selectRoute("myForm{{route.id}}")' name="routeselect" aria-label="Radio button for following text input" value="{{ route.id }}" id="{{ route.id }}" >
                   {% endif %} </div>
                 </div>
               </div></th>

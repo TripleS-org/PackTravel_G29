@@ -46,6 +46,21 @@ def display_ride(request, ride_id):
         }
     return render(request, 'publish/route.html', context)
 
+def select_route(request):
+    intializeDB()
+    if request.method == 'POST':
+        route_id = request.POST.get("hiddenInput")
+        username = request.POST.get('hiddenUser')
+        ride = request.POST.get('hiddenRide')
+        print("route from form: ",route_id)
+        ride = ride.replace("\'", "\"")
+        ride = json.loads(ride)
+        ride_id = ride['_id']
+        attachUserToRoute(username, route_id, ride_id)
+        return redirect(display_ride, ride_id=ride['_id'] )
+    return render(request, 'publish/publish.html', {"username": username})
+
+
 def routeSelect(username, routes):
     intializeDB()
     user = userDB.find_one({"username": username})
@@ -169,6 +184,11 @@ def attachUserToRoute(username, route_id, ride_id):
             
     rides.append(route_id)
     userDB.update_one({"username": username}, {"$set": {"rides": rides}})
-    print(rides)
+    # print(rides)
+    route_instance = routesDB.find_one({'_id': route_id})
+    if route_instance:
+        users = route_instance['users']
+        users.append(username)
+        routesDB.update_one({"_id": route_id}, {"$set": {"users": users}})
 
 

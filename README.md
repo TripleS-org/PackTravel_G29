@@ -1,34 +1,53 @@
-# PackTravel
+<div align="center">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+<img style="width: 120px; height: 120px;" src="./images/wolf2.svg"></img>
+# `PackTravel`
+
+
+
+
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178601.svg)](https://doi.org/10.5281/zenodo.7178601)
 [![codecov](https://codecov.io/gh/amisha-w/PackTravel/branch/main/graph/badge.svg?token=HRFN97UEB7)](https://codecov.io/gh/amisha-w/PackTravel)
-![pylint Score](https://mperlet.github.io/pybadge/badges/7.svg)
-[![contributors](https://img.shields.io/github/contributors/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/graphs/contributors)
-[![Total Lines](https://tokei.rs/b1/github/XAMPPRocky/tokei)](https://github.com/amisha-w/PackTravel)
-[![Issues](https://img.shields.io/github/issues/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/pulls)
-[![Commit Acitivity](https://img.shields.io/github/commit-activity/w/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel/graphs/commit-activity)
-[![Repo Size](https://img.shields.io/github/repo-size/amisha-w/PackTravel)](https://github.com/amisha-w/PackTravel)
+[![Lint Python](https://github.com/amisha-w/PackTravel/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/amisha-w/PackTravel/actions/workflows/pylint.yml)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT) 
+[![contributors](https://img.shields.io/github/contributors/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/graphs/contributors)
+[![Total Lines](https://img.shields.io/tokei/lines/github/amisha-w/PackTravel?style=for-the-badge)](https://img.shields.io/tokei/lines/github/amisha-w/PackTravel)
+[![Issues](https://img.shields.io/github/issues/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/pulls)
+[![Commit Acitivity](https://img.shields.io/github/commit-activity/w/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/graphs/commit-activity)
+[![Repo Size](https://img.shields.io/github/repo-size/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel)
 
 
-
-# **🏆 Goal:**
+</div>
+<h1>🏆 Goal</h1>
 
 _Travelling alone?_ **Try PackTravel**
 
 
 **Project Description:**
 
-Most of the international students do not have a car to travel off-campus and rely mostly on the Wolfline. But what if someone wants to travel outside Wolfline's limit? Well... why not collaborate on PackTravel to travel off-campus by a cab, rental car, etc.
+Most of the university students do not have a car to travel off-campus and rely mostly on the Wolfline. But what if someone wants to travel outside Wolfline's limit? Well... why not collaborate on PackTravel to travel off-campus by a cab, rental car, etc.
 
 
-![we-should-travel](https://user-images.githubusercontent.com/111834635/194171695-02f5bda6-af44-4e9e-a1a5-4d734c7af5de.jpg)
+
+<img style="width: 320px; height: 200px;" src="https://user-images.githubusercontent.com/111834635/194171695-02f5bda6-af44-4e9e-a1a5-4d734c7af5de.jpg" alt=""/>
 
 **So, let's PackTravel 😎**
 
+<h1>Features</h1>
 
-## 🚀 Watch PackTravel in action 
+<ul>
+  <li>Create a PackTravel Ride</li>
+  <li>Create mmultiple routes to reach a ride's destination:  Bus, Cab or Personal</li>
+  <li>Search and view other's rides</li>
+  <li>Join a PackTravel Ride's route</li>
+  
+</ul>
+
+## 🚀 A bit abut PackTravel
+
 https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3-af35-732ebd34e76c.mp4
 
 **Built Using:**
@@ -109,30 +128,8 @@ Start the server
 - [JS-HTML-CSS Formatter](https://marketplace.visualstudio.com/items?itemName=lonefy.vscode-JS-CSS-HTML-formatter)
 - [PyLint](https://pylint.org/)
 
-## 👀 Preview
-
-- **Sign Up Page**
-  - User Interface to signup to the app
- ![Sign Up](https://user-images.githubusercontent.com/111834635/194778553-99da6656-8eaf-4e6a-9a8d-a1d3ff1a40cf.jpeg)
-
-- **Login Page**
-  - User Interface to login to the PackTravel app. After successful login, user will be redirected to the Dashboard page
-![Login Page](https://user-images.githubusercontent.com/111834635/194778542-2b1c810c-3a14-44a1-b7e6-2db6aa83ee3b.jpeg)
-
-
-- **Home Page** 
-![Home Page](https://user-images.githubusercontent.com/111834635/194778535-43e49377-76ab-4ad3-9579-39f41c483a76.jpeg)
-
-- **Add New Ride** 
-![Create new ride](https://user-images.githubusercontent.com/111834635/194778576-4f2a4f79-c56e-48ef-ba3b-7c56d529addc.jpeg)
-
-- **View and Search List of PackTravel**
-![Search Page](https://user-images.githubusercontent.com/111834635/194778702-efec2c3b-41d4-40fb-8acc-8e00c4d39d90.jpeg)
-
 ## 🧑‍💻 Functionalities in Action 
-- **Sign Up Page**
-![](https://github.com/amisha-w/PackTravel/blob/main/images/Register.gif)
-  
+
 - **Login Page**
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/Login%20(1).gif)
 
@@ -149,6 +146,11 @@ Start the server
 - **Adding New Route**
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/AddRoute11.gif)
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/AddRoute12.gif)
+
+- **Sign Up Page**
+![](https://github.com/amisha-w/PackTravel/blob/main/images/Register.gif)
+  
+
 
 
 ## 💬 Chat Channel

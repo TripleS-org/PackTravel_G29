@@ -1,6 +1,7 @@
-from pymongo import MongoClient
 import os
 import sys
+from pymongo import MongoClient
+
 
 def get_client():
     with open(os.path.join(sys.path[0], "config.ini"), "r") as f:

@@ -174,8 +174,7 @@ Start the server
 ### 🎯 Future Enhancements:
 
 - [ ] Add machine learning algorithms for predicting lowest priced rides, best pickup and drop-off locations.
-- [ ] Improve UI by migrating to ReactJS
-- [ ] Add more dynamic pages
+- [ ] Add functionality to merge routes
 - [ ] Show later departures in search if currently searched rides is not available
 - [ ] Increase the geographical area coverage for the application
 - [ ] Extend the userbase to students other than that of the North Carolina State University

@@ -48,9 +48,14 @@
               <h1 class="display-4 apply-font" style="color: white;">PackTravel</h1>
               <p class="lead" style="color: white;">Travel safely with a pack. Find rides or book a new ride.</p>
               <br>
-              <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+              <div class="btn-group btn-group-lg" role="group">
+                {% if  not request.session.username  %}
+                <a type="button" class="btn btn-dark apply-font" href="/login/">Login</a>
+                <a type="button" class="btn btn-dark apply-font" style="margin-left: 5px;" href="/register/">Sign Up</a>
+                {% else %}
                 <a type="button" class="btn btn-dark apply-font" href="/search/">Search for Rides</a>
                 <a type="button" class="btn btn-dark apply-font" style="margin-left: 5px;" href="/publish/">Publish a New Ride</a>
+                {% endif %}
               </div>
             </div>
           </div>

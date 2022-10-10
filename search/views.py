@@ -26,6 +26,9 @@ def intializeDB():
 
 def search_index(request):
     intializeDB()
+    if not request.session.has_key('username'):
+        request.session['alert'] = "Please login to create a ride."
+        return redirect('index')
     all_rides = list(ridesDB.find())
     processed = list()
     for ride in all_rides:

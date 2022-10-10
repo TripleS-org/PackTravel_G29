@@ -15,6 +15,7 @@
 [![contributors](https://img.shields.io/github/contributors/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/graphs/contributors)
 [![Total Lines](https://img.shields.io/tokei/lines/github/amisha-w/PackTravel?style=for-the-badge)](https://img.shields.io/tokei/lines/github/amisha-w/PackTravel)
 [![Issues](https://img.shields.io/github/issues/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/issues)
+[![Closed Issues](https://img.shields.io/github/issues-closed-raw/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/issues?q=is%3Aissue+is%3Aclosed)
 [![Pull Requests](https://img.shields.io/github/issues-pr/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/pulls)
 [![Commit Acitivity](https://img.shields.io/github/commit-activity/w/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/graphs/commit-activity)
 [![Repo Size](https://img.shields.io/github/repo-size/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel)

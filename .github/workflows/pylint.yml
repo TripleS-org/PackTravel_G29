@@ -20,4 +20,4 @@ jobs:
         pip install pylint
 
     - name: Analysing the code with pylint
-    - uses: cclauss/Find-Python-syntax-errors-action@master
+      uses: cclauss/Find-Python-syntax-errors-action@master

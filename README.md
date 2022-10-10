@@ -165,11 +165,13 @@ Start the server
 - [x] Create database ER diagram
 - [x] Create Mongo Database
 - [x] Create HomePage
-- [x] Create Login Page
-- [x] Create Signup Page
+- [x] Create Login and Signup Page
+- [x] Create Search Page
+- [x] Added create Rides Page
 - [x] Setup Django
 - [x] Add Unit testing
 - [x] Add Error Handling mechanisms
+- [x] Setup Workflows
 
 ### 🎯 Future Enhancements:
 

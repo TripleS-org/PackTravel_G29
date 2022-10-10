@@ -129,6 +129,10 @@ Start the server
 - **View and Search List of PackTravel**
 ![Search Page](https://user-images.githubusercontent.com/111834635/194778702-efec2c3b-41d4-40fb-8acc-8e00c4d39d90.jpeg)
 
+## 🧑‍💻 Functionalities in Action 
+- **Sign Up Page**
+  - User Interface to signup to the app
+  ![](https://github.com/amisha-w/PackTravel/blob/main/images/Register.gif)
 
 
 ## 💬 Chat Channel

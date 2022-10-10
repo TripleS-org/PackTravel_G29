@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from publish.views import publish_index, display_ride,create_ride,add_route
+from publish.views import publish_index, display_ride,create_ride,add_route,select_route
 
 
 class TestUrl(SimpleTestCase):
@@ -13,9 +13,9 @@ class TestUrl(SimpleTestCase):
         url = reverse('create_ride')
         self.assertEquals(resolve(url).func, create_ride)
 
-    # def test_login_resolved(self):
-    #     url = reverse('display_ride')
-    #     self.assertEquals(resolve(url).func, display_ride)
+    def test_login_resolved(self):
+        url = reverse('select_route')
+        self.assertEquals(resolve(url).func, select_route)
 
     def test_add_route_resolved(self):
         url = reverse('add_route')

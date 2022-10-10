@@ -131,8 +131,24 @@ Start the server
 
 ## 🧑‍💻 Functionalities in Action 
 - **Sign Up Page**
-  - User Interface to signup to the app
-  ![](https://github.com/amisha-w/PackTravel/blob/main/images/Register.gif)
+![](https://github.com/amisha-w/PackTravel/blob/main/images/Register.gif)
+  
+- **Login Page**
+![](https://github.com/amisha-w/PackTravel/blob/main/images/Login%20(1).gif)
+
+- **Creating a Ride**
+![](https://github.com/amisha-w/PackTravel/blob/main/images/Create1.gif)
+![](https://github.com/amisha-w/PackTravel/blob/main/images/Create2.gif)
+
+- **Search for a Ride**
+![](https://github.com/amisha-w/PackTravel/blob/main/images/Search.gif)
+
+- **Joining an existing Ride**
+![](https://github.com/amisha-w/PackTravel/blob/main/images/JoinRide.gif)
+
+- **Adding New Route**
+![](https://github.com/amisha-w/PackTravel/blob/main/images/AddRoute11.gif)
+![](https://github.com/amisha-w/PackTravel/blob/main/images/AddRoute12.gif)
 
 
 ## 💬 Chat Channel

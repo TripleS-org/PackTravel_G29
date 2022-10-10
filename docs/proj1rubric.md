@@ -1,4 +1,4 @@
-|Notes|Assessment (Total : )|Evidence|
+|Notes|Assessment (Total : 217)|Evidence|
 |-----|---------|----------|
 |Video1| 0| This project is not based on any old projects hence no old functionality is to be included |
 |Video2| 3| A vidoe showing the functionality is included|
@@ -6,7 +6,7 @@
 |Number of commits| 3 | There were a lot of commits [Present in Insights -> Contributors](https://github.com/amisha-w/PackTravel/graphs/contributors) |
 |Number of commits: by different people| 3 | Everyone has committed in different areas. [Visible in Insights -> Contributors](https://github.com/amisha-w/PackTravel/graphs/contributors)|
 |Issues reports: there are **many**| 2 | No issues reported |
-|Issues are being closed| 0 | No issues reported |
+|Issues are being closed| 2 | No issues reported |
 |DOI badge: exists| 3 | Visible in [GitHub Repository](https://github.com/amisha-w/PackTravel) |
 |Docs: doco generated, format not ugly | 3 | Documentation is present with all the blings! [GitHub Repository README.md](https://github.com/amisha-w/PackTravel#readme) |
 |Docs: what: point descriptions of each class/function (in isolation) | 3 | Explained in [GitHub Repository README.md](https://github.com/amisha-w/PackTravel#readme)|

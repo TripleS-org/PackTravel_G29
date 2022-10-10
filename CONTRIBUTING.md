@@ -52,7 +52,7 @@ Provide more context by answering these questions:
 
 This section guides you through submitting an enhancement suggestion, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.
 
-* **Drop an [email](help@packtravel.io) suggesting your change and start writing code.**
+* **Drop an [email](mailto:help@packtravel.io) suggesting your change and start writing code.**
 * **Do not open an issue on GitHub until you have collected positive feedback about the change. GitHub issues are primarily intended for bug reports and fixes.**
 
 

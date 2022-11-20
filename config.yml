@@ -1,0 +1,4 @@
+database:
+  endpoint: packtravel.cyumok3.mongodb.net/?retryWrites=true&w=majority
+  username: <user>
+  password: <password>

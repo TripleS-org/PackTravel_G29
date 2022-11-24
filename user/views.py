@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 import requests
 import json
 from django.http import HttpResponse
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from utils import get_client

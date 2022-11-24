@@ -13,6 +13,7 @@ The following is a set of guidelines for contributing to PackTravel.
 [How Can I Contribute?](#how-can-i-contribute)
   * [Reporting Bugs](#reporting-bugs)
   * [Suggesting Enhancements](#suggesting-enhancements)
+  * [Style Guides](#style-guides)
   * [Pull Requests](#pull-requests)
 
 
@@ -55,6 +56,8 @@ This section guides you through submitting an enhancement suggestion, including 
 * **Drop an [email](mailto:help@packtravel.io) suggesting your change and start writing code.**
 * **Do not open an issue on GitHub until you have collected positive feedback about the change. GitHub issues are primarily intended for bug reports and fixes.**
 
+### Style Guides
+This project uses Python linter to ensure the code style is uniform and conforms to a well known syntactical style: [Pylint analyser](https://pylint.pycqa.org/en/latest/).
 
 ### Pull Requests
 

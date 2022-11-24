@@ -1,4 +1,5 @@
 # 🐺 PackTravel
+[![Build](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml/badge.svg)](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml)
 [![Commit Acitivity](https://img.shields.io/github/commit-activity/w/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/pulse)
 [![Issues](https://img.shields.io/github/issues/VSangarya/PackTravel?color=red)](https://github.com/VSangarya/PackTravel/issues)
 [![Contributors](https://img.shields.io/github/contributors/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/graphs/contributors)

@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from utils import get_client
 from .forms import RegisterForm, LoginForm
+import hashlib
 
 
 
@@ -38,13 +39,15 @@ def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
+            password=form.cleaned_data["password1"]
+
             userObj = {
                 "username": form.cleaned_data["username"], 
                 "unityid": form.cleaned_data["unityid"], 
                 "fname": form.cleaned_data["first_name"],
                 "lname": form.cleaned_data["last_name"],
                 "email": form.cleaned_data["email"],
-                "password": form.cleaned_data["password1"],
+                "password": hashlib.sha256(password.encode()).hexdigest(),
                 "phone": form.cleaned_data["phone_number"],
                 "rides": []
             }
@@ -85,7 +88,7 @@ def login(request):
                 passw =  form.cleaned_data["password"]
                 user = userDB.find_one({"username": username})
 
-                if user and user["password"] == form.cleaned_data["password"]:
+                if user and user["password"] == hashlib.sha256(form.cleaned_data["password"].encode()).hexdigest():
                     request.session["username"] = username
                     request.session['unityid'] = user["unityid"]
                     request.session['fname'] = user["fname"]

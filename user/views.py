@@ -40,9 +40,13 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             password=form.cleaned_data["password1"]
-
+            username=form.cleaned_data["username"]
+            user = userDB.find_one({"username": username})
+            # print(user)
+            if user:
+                return render(request, 'user/register.html', {"form": form,"alert":'Username already exists'})
             userObj = {
-                "username": form.cleaned_data["username"], 
+                "username": username, 
                 "unityid": form.cleaned_data["unityid"], 
                 "fname": form.cleaned_data["first_name"],
                 "lname": form.cleaned_data["last_name"],
@@ -65,7 +69,7 @@ def register(request):
         if request.session.has_key('username'):
             return index(request,request.session['username'])
         form = RegisterForm()
-    return render(request, 'user/register.html', {"form": form})
+    return render(request, 'user/register.html', {"form": form,"alert":''})
 
 def logout(request):
    try:

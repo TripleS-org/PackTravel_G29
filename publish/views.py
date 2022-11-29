@@ -6,6 +6,7 @@ import json
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from datetime import datetime
 
 from publish.forms import RideForm
 from utils import get_client
@@ -191,4 +192,21 @@ def attachUserToRoute(username, route_id, ride_id):
         users.append(username)
         routesDB.update_one({"_id": route_id}, {"$set": {"users": users}})
 
+def show_route(request,route_id):
+    intializeDB()
+    if request.method=="POST":
+        username=request.session['username']
+        date=datetime.now()
+        content=request.POST['content']
+        post={"user":username,"date":date,"content":content}
+        routesDB.update_one({"_id": route_id}, {"$push": {"forum": post}})
 
+    route = routesDB.find_one({'_id': route_id})
+    if 'forum' not in route:
+        forum=[]
+    else:
+        forum=route['forum']
+    name=route['type']
+    spoint=route['spoint']
+    #Add the destination once we remove dependency between route and rides
+    return render(request,'publish/show_route.html',{'route_name':name,'forum':forum,'spoint':spoint})

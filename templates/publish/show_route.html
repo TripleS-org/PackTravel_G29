@@ -34,9 +34,10 @@
         <h3>{{ spoint }} {{ route_name}} </h3>
         <hr>
         <h5>Forum: </h5>
-        <form action="" method="POST">
+        <form action="/add_forum/" method="POST">
             {% csrf_token %}
             <input type="text" width="80%" height="30px" name="content" spaceholder="Discus...">
+            <input type="hidden" name="route" value="{{ route_id }}">
             <input type="submit" value="Post">
         </form>
         {% for post in forum %}

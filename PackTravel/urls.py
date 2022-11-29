@@ -32,5 +32,6 @@ urlpatterns = [
     path('add_route/', publishViews.add_route, name='add_route'),
     path('select_route/', publishViews.select_route, name='select_route'),
     path('display_ride/<ride_id>', publishViews.display_ride, name='display_ride'),
-    path('route_page/<route_id>',publishViews.show_route,name="showroutepage")
+    path('route_page/<route_id>',publishViews.show_route,name="showroutepage"),
+    path('add_forum/',publishViews.add_forum,name="addforum")
 ]

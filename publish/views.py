@@ -194,12 +194,12 @@ def attachUserToRoute(username, route_id, ride_id):
 
 def show_route(request,route_id):
     intializeDB()
-    if request.method=="POST":
-        username=request.session['username']
-        date=datetime.now()
-        content=request.POST['content']
-        post={"user":username,"date":date,"content":content}
-        routesDB.update_one({"_id": route_id}, {"$push": {"forum": post}})
+    # if request.method=="POST":
+    #     username=request.session['username']
+    #     date=datetime.now()
+    #     content=request.POST['content']
+    #     post={"user":username,"date":date,"content":content}
+    #     routesDB.update_one({"_id": route_id}, {"$push": {"forum": post}})
 
     route = routesDB.find_one({'_id': route_id})
     if 'forum' not in route:
@@ -209,4 +209,14 @@ def show_route(request,route_id):
     name=route['type']
     spoint=route['spoint']
     #Add the destination once we remove dependency between route and rides
-    return render(request,'publish/show_route.html',{'route_name':name,'forum':forum,'spoint':spoint})
+    return render(request,'publish/show_route.html',{'route_name':name,'forum':forum,'spoint':spoint,'route_id':route_id})
+def add_forum(request):
+    if request.method=='POST':
+        intializeDB()
+        username=request.session['username']
+        date=datetime.now()
+        content=request.POST['content']
+        route_id=request.POST['route']
+        post={"user":username,"date":date,"content":content}
+        routesDB.update_one({"_id": route_id}, {"$push": {"forum": post}})
+        return redirect(show_route,route_id=route_id)

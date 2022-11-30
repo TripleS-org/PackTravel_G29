@@ -57,7 +57,9 @@ def select_route(request):
         ride = json.loads(ride)
         ride_id = ride['_id']
         attachUserToRoute(username, route_id, ride_id)
+        #print("##################################################",username)
         return redirect(display_ride, ride_id=ride['_id'] )
+    #print("##################################################",username)
     return render(request, 'publish/publish.html', {"username": username})
 
 

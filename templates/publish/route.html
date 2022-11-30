@@ -13,6 +13,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBeY27HO3FB80oI60eThoWotLWQHXlHkTs"></script>
 
 </head>
 <style>
@@ -21,6 +23,9 @@
     /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
     /* background: #D3D3D3; */
 }
+.modal { z-index: 1001 !important;} 
+.modal-backdrop {z-index: 1000 !important;}
+.pac-container {z-index: 1055 !important;}
 
 </style>
 <script>
@@ -36,9 +41,6 @@ function selectRoute(id) {
 <body style="background-color: #3A3B3C;">
 
     {% include 'nav.html' %}
-
-
-    
     <div class="card mx-auto shadow-2-strong bg-white rounded" style="width: 60%; margin: 50px; padding: 50px;">
         <h3>{{ride.name}} </h3>
         <hr>
@@ -172,10 +174,26 @@ function selectRoute(id) {
                                 <span class="select-arrow"></span>
                             </div>
                             <br>
-                <div class="form-group">
-                    <span class="form-label">Start Point</span>
-                    <input name="spoint" required class="form-control" type="text" placeholder="Enter a starting location for the route">
-                </div>
+                            <div class="form-group">
+                              <span class="form-label">Destination</span>
+                              <input name="route" required class="form-control" type="text"  id="route" placeholder="Enter a starting location for the route">
+                              <script>
+                                  var searchInput = 'route';
+                                  $(document).ready(function () {
+                                   var autocomplete;
+                                   autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                                    types: ['geocode'],
+                                    /*componentRestrictions: {
+                                     country: "USA"
+                                    }*/
+                                   });
+                                    
+                                   google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                                    var near_place = autocomplete.getPlace();
+                                   });
+                                  });
+                                  </script>
+                          </div>
                 <br>
                 Enter satrting time for the route:
             <div class="row"

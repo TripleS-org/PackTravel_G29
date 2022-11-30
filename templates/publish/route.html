@@ -26,7 +26,6 @@
 .modal { z-index: 1001 !important;} 
 .modal-backdrop {z-index: 1000 !important;}
 .pac-container {z-index: 1055 !important;}
-
 </style>
 <script>
   window.onload = function(e){ 
@@ -41,6 +40,9 @@ function selectRoute(id) {
 <body style="background-color: #3A3B3C;">
 
     {% include 'nav.html' %}
+
+
+    
     <div class="card mx-auto shadow-2-strong bg-white rounded" style="width: 60%; margin: 50px; padding: 50px;">
         <h3>{{ride.name}} </h3>
         <hr>
@@ -174,26 +176,26 @@ function selectRoute(id) {
                                 <span class="select-arrow"></span>
                             </div>
                             <br>
-                            <div class="form-group">
-                              <span class="form-label">Destination</span>
-                              <input name="route" required class="form-control" type="text"  id="route" placeholder="Enter a starting location for the route">
-                              <script>
-                                  var searchInput = 'route';
-                                  $(document).ready(function () {
-                                   var autocomplete;
-                                   autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
-                                    types: ['geocode'],
-                                    /*componentRestrictions: {
-                                     country: "USA"
-                                    }*/
-                                   });
-                                    
-                                   google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                                    var near_place = autocomplete.getPlace();
-                                   });
-                                  });
-                                  </script>
-                          </div>
+                <div class="form-group">
+                    <span class="form-label">Start Point</span>
+                    <input name="spoint" required class="form-control" type="text" id="route" placeholder="Enter a starting location for the route:">
+                    <script>
+                      var searchInput = 'route';
+                      $(document).ready(function () {
+                       var autocomplete;
+                       autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                        types: ['geocode'],
+                        /*componentRestrictions: {
+                         country: "USA"
+                        }*/
+                       });
+                        
+                       google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                        var near_place = autocomplete.getPlace();
+                       });
+                      });
+                      </script>
+                </div>
                 <br>
                 Enter satrting time for the route:
             <div class="row"

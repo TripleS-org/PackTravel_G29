@@ -1,17 +1,7 @@
-from http.client import HTTPResponse
-from django.shortcuts import render,redirect
-import requests
-import json
-from django.http import HttpResponse
-from django.contrib.auth import authenticate
-from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from utils import get_client
 from .forms import RegisterForm, LoginForm
 import hashlib
-
-
-
 
 client = None
 db = None

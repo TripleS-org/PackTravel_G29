@@ -1,13 +1,4 @@
-from http.client import HTTPResponse
-from django.shortcuts import render,redirect
-from numpy import True_, dtype
-import requests
-import json
-from django.contrib.auth import login, authenticate
-from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
-
-from publish.forms import RideForm
+from django.shortcuts import render, redirect
 from utils import get_client
 
 client = None

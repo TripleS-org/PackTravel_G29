@@ -1,16 +1,7 @@
-from http.client import HTTPResponse
-from django.shortcuts import render,redirect
-from numpy import True_, dtype
-import requests
-import json
-from django.contrib.auth import login, authenticate
-from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from datetime import datetime
-
-from publish.forms import RideForm
 from utils import get_client
-# from django.http import HttpResponse
+import json
 
 # Create your views here.
 client = None

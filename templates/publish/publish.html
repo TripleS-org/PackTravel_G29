@@ -9,14 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBeY27HO3FB80oI60eThoWotLWQHXlHkTs"></script>
 </head>
 
     <body  style="background-color: #3A3B3C;">
 
     {% include 'nav.html' %}
-
-
     
     <div class="card mx-auto shadow-2-strong bg-white rounded" style="width: 60%; margin: 50px; padding: 50px;">
         <h3>New Ride</h3>
@@ -27,7 +26,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <span class="form-label">Ride Name</span>
-                        <input name="name" required class="form-control" type="text" placeholder="Enter a name for the ride">
+                        <input name="name" required class="form-control"  type="text" placeholder="Enter a name for the ride">
                     </div>
                 </div>
                 <br>
@@ -37,7 +36,23 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <span class="form-label">Destination</span>
-                        <input name="destination" required class="form-control" type="text" placeholder="Enter your start destination">
+                        <input name="destination" required class="form-control" type="text"  id="destination" placeholder="Enter your destination">
+                        <script>
+                            var searchInput = 'destination';
+                            $(document).ready(function () {
+                             var autocomplete;
+                             autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                              types: ['geocode'],
+                              /*componentRestrictions: {
+                               country: "USA"
+                              }*/
+                             });
+                              
+                             google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                              var near_place = autocomplete.getPlace();
+                             });
+                            });
+                            </script>
                     </div>
                 </div>
                 <br>

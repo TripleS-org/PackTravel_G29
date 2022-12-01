@@ -3,19 +3,18 @@ from utils import get_client
 from .forms import RegisterForm, LoginForm
 import hashlib
 
-client = None
-db = None
-userDB = None
-ridesDB  = None
-routesDB  = None
+# database connections
+db_client = None
+db_handle = None
+users_collection = None
+rides_collection  = None
 
-def intializeDB():
-    global client, db, userDB, ridesDB, routesDB
-    client = get_client()
-    db = client.SEProject
-    userDB = db.userData
-    ridesDB  = db.rides
-    routesDB  = db.routes
+def initialize_database():
+    global db_client, db_handle, users_collection, rides_collection
+    db_client = get_client()
+    db_handle = db_client.main
+    users_collection = db_handle.users
+    rides_collection  = db_handle.rides
 
 # Home page for PackTravel
 def index(request, username=None):
@@ -25,19 +24,18 @@ def index(request, username=None):
 
 
 def register(request):
-    intializeDB()
+    initialize_database()
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
             password=form.cleaned_data["password1"]
             username=form.cleaned_data["username"]
-            user = userDB.find_one({"username": username})
+            user = users_collection.find_one({"username": username})
             # print(user)
             if user:
                 return render(request, 'user/register.html', {"form": form,"alert":'Username already exists'})
             userObj = {
-                "username": username, 
-                "unityid": form.cleaned_data["unityid"], 
+                "username": username,
                 "fname": form.cleaned_data["first_name"],
                 "lname": form.cleaned_data["last_name"],
                 "email": form.cleaned_data["email"],
@@ -45,16 +43,15 @@ def register(request):
                 "phone": form.cleaned_data["phone_number"],
                 "rides": []
             }
-            userDB.insert_one(userObj)
+            users_collection.insert_one(userObj)
             request.session['username'] = userObj["username"]
-            request.session['unityid'] = userObj["unityid"]
             request.session['fname'] = userObj["fname"]
             request.session['lname'] = userObj["lname"]
             request.session['email'] = userObj["email"]
             request.session['phone'] = userObj["phone"]
             return redirect(index, username=request.session["username"])
         else:
-            print(form.errors.as_data()) 
+            print(form.errors.as_data())
     else:
         if request.session.has_key('username'):
             return index(request,request.session['username'])
@@ -71,7 +68,7 @@ def logout(request):
 
 # @describe: Existing user login
 def login(request):
-    intializeDB()
+    initialize_database()
     if request.session.has_key('username'):
         return redirect(index, {"username": request.session['username']})
     else:
@@ -79,12 +76,10 @@ def login(request):
             form = LoginForm(request.POST)
             if form.is_valid():
                 username = form.cleaned_data["username"]
-                passw =  form.cleaned_data["password"]
-                user = userDB.find_one({"username": username})
+                user = users_collection.find_one({"username": username})
 
                 if user and user["password"] == hashlib.sha256(form.cleaned_data["password"].encode()).hexdigest():
                     request.session["username"] = username
-                    request.session['unityid'] = user["unityid"]
                     request.session['fname'] = user["fname"]
                     request.session['lname'] = user["lname"]
                     request.session['email'] = user["email"]
@@ -93,4 +88,3 @@ def login(request):
         
         form = LoginForm()
         return render(request, 'user/login.html', {"form": form})
-

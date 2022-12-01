@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 class RegisterForm(forms.ModelForm):
     username = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter a username', 'class': 'form-control'}))
-    unityid = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Unity Id', 'class': 'form-control'}))
     first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}))
     last_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control'}))
     email = forms.EmailField(required=True, max_length=60, widget=forms.EmailInput(attrs={'placeholder': 'abc@mail.com', 'class': 'form-control'}))
@@ -14,7 +13,6 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = (
             'username',
-            'unityid',
             'first_name',
             'last_name',
             'email',

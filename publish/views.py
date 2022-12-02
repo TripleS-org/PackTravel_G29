@@ -20,6 +20,7 @@ def publish_index(request):
     initialize_database()
     if not request.session.has_key("username"):
         request.session["alert"] = "Please login to create a ride."
+        # return a meaningful message instead of simply redirecting.
         return redirect("index")
     return render(request, "publish/publish.html", {"username": request.session["username"], "alert": True})
 
@@ -36,10 +37,12 @@ def create_ride(request):
             "hour": request.POST.get("hour"),
             "minute":  request.POST.get("minute"),
             "ampm": request.POST.get("ampm"),
-            "availability": request.POST.get("capacity"),
-            "max_size": request.POST.get("capacity"),
+            "availability": int(request.POST.get("capacity")),
+            "max_size": int(request.POST.get("capacity")),
             "info": request.POST.get("info"),
-            "owner": request.session["username"]
+            "owner": request.session["username"],
+            "requested_users": [],
+            "confirmed_users": []
             }
 
         request.session["ride"] = ride

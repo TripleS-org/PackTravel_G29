@@ -243,14 +243,15 @@
         </li>
         {% endif %}
         {% if  request.session.username  %}
+                        <li class="nav-item">
+                            <a class="nav-link apply-font" href="/requests">Manage Ride</a>
+                        </li>
 						<li class="nav-item">
-
 							<a class="nav-link apply-font" href="/logout/">
 								<span class="nav-text">Logout</span>
 							</a>
 						</li>
                         <li class="nav-item">
-
 							<a class="nav-link apply-font" href="#">
 								<span class="nav-text">Hi, {{ username }}</span>
 							</a>

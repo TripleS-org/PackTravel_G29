@@ -1,0 +1,168 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+
+<head><meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Pack Travel - Manage your requests</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+    button:hover {
+    border: none;
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+    /* background: #D3D3D3; */
+}
+
+</style>
+
+<body style="background-color: #3A3B3C;">
+
+    {% include 'nav.html' %}
+    
+    <!--
+        Incoming Requests
+    -->
+    <div class="container-fluid justify-content-center" style="background-color: #27292a; color: white; margin-top: 10px;"><br>
+        <br>
+        <h3 class="text-center apply-font">Sent Requests</h3>
+        <hr>
+        <div class="row" id="rideDisplay">
+            {% for ride in sent_requests %}
+            <div class="col-sm-6" >
+                <div class="card" style="color: black; margin: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ride.source }} to {{ ride.destination }}</h5>
+                        <p class="card-text">{{ ride.ride_type }}</p>
+                        <table class="table table-hover">
+                            <tbody>                
+                                <tr>
+                                    <td>Date</td>
+                                    <td>{{ride.date}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Starting Time</td>
+                                    <td>{{ride.hour}}:{{ride.minute}} {{ride.ampm}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Availability</td>
+                                    <td>{{ride.availability}} out of {{ride.max_size}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="/cancel_ride/{{ride.id}}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Cancel</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!--End-->
+
+    <!--
+        Received Requests
+    -->
+    <div class="container-fluid justify-content-center" style="background-color: #27292a; color: white; margin-top: 10px;"><br>
+        <br>
+        <h3 class="text-center apply-font">Received Requests</h3>
+        <hr>
+        <div class="row" id="rideDisplay">
+            {% for ride in received_requests %}
+                {% for user in ride.requested_users %}
+                    <div class="col-sm-6" >
+                        <div class="card" style="color: black; margin: 10px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Rider - {{ user }}</h5>
+                                <p class="card-text">{{ ride.source }} to {{ ride.destination }}</p>
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>Date</td>
+                                            <td>{{ride.date}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Starting Time</td>
+                                            <td>{{ride.hour}}:{{ride.minute}} {{ride.ampm}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Availability</td>
+                                            <td>{{ride.availability}} out of {{ride.max_size}}</td>
+                                        </tr>
+                                    </tbody>                                    
+                                </table>
+                                <a href="/accept_request/{{ride.id}}/{{user}}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Accept</a>
+                                <a href="/reject_request/{{ride.id}}/{{user}}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Reject</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <!--End-->
+
+    <!--
+        Own Rides
+    -->
+    <div class="container-fluid justify-content-center" style="background-color: #27292a; color: white; margin-top: 10px;"><br>
+        <br>
+        <h3 class="text-center apply-font">My Rides</h3>
+        <hr>
+        <div class="row" id="rideDisplay">
+            {% for ride in accepted_rides %}
+            <div class="col-sm-6" >
+                <div class="card" style="color: black; margin: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ride.source }} to {{ ride.destination }}</h5>                        
+                        <p class="card-text">{{ ride.ride_type }}</p>
+                        <table class="table table-hover">
+                            <tbody>                
+                                <tr>
+                                    <td>Date</td>
+                                    <td>{{ride.date}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Starting Time</td>
+                                    <td>{{ride.hour}}:{{ride.minute}} {{ride.ampm}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Availability</td>
+                                    <td>{{ride.availability}}/{{ride.max_size}}</td>
+                                </tr>
+                                <tr>
+                                    {% if  request.session.username != ride.owner %}
+                                    <td>Owner</td>
+                                    <td>{{ride.owner}}</td>                                    
+                                    {% else %}
+                                    <td>Confirmed Riders</td>
+                                    <td>
+                                        {% for user in ride.confirmed_users %}
+                                        {{user}}
+                                        {% endfor %}
+                                    </td>
+                                    {% endif %}                                              
+                                </tr>
+                            </tbody>
+                        </table>
+                        {% if request.session.username == ride.owner %}
+                        <a href="/delete_ride/{{ride.id}}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Delete ride</a>
+                        {% else %}
+                        <a href="/cancel_accepted_ride/{{ride.id}}/{{request.session.username}}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Cancel request</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!--End-->
+</body>
+</html>

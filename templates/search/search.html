@@ -68,7 +68,7 @@
 
     <div class="container-fluid justify-content-center" style="background-color: #27292a; color: white; margin-top: 10px;"><br>
         <br>
-        <h3 class="text-center apply-font">Search a ride</h3>  
+        <h3 class="text-center apply-font">Search a ride</h3>
         <hr>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -99,7 +99,7 @@
                                 </tr>
                                 <tr>
                                     <td>Availability</td>
-                                    <td>{{ride.availability}}/{{ride.max_size}}</td>
+                                    <td>{{ride.availability}} out of {{ride.max_size}}</td>
                                 </tr>
                                 <tr>
                                     <td>Owner</td>
@@ -108,6 +108,7 @@
                             </tbody>
                         </table>
                         <a href="/ride_page/{{ride.id}}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">View</a>
+                        <a href="/request_ride/{{ride.id}}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Request</a>
                     </div>
                 </div>
             </div>

@@ -35,6 +35,7 @@
         left: 0;
     }
   </style>
+
 {% if request.session.alert %}
 <body onload="onMissingLogin()"  style="background-color: #3A3B3C;">
     {% else %}
@@ -49,7 +50,7 @@
               <p class="lead" style="color: white;">Travel safely with a pack. Find rides or book a new ride.</p>
               <br>
               <div class="btn-group btn-group-lg" role="group">
-                {% if  not request.session.username  %}
+                {% if not request.session.username  %}
                 <a type="button" class="btn btn-dark apply-font" href="/login/">Login</a>
                 <a type="button" class="btn btn-dark apply-font" style="margin-left: 5px;" href="/register/">Sign Up</a>
                 {% else %}

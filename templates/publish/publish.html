@@ -26,11 +26,24 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <span class="form-label">Staring Point:</span>
-                        <input name="source" required class="form-control"  type="text" id="source" placeholder="Enter location of starting point">
+                        <input name="source" required class="form-control" type="text"  id="source" placeholder="Enter location of starting point">
+                            <script>
+                                var searchInput = 'source';
+                                $(document).ready(function () {
+                                var autocomplete;
+                                autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                                    types: ['geocode'],
+                                    });
+                                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                                        var near_place = autocomplete.getPlace();
+                                    }  );
+                                });
+                            </script>
                     </div>
                 </div>
                 <br>
             </div>
+            
             <br>
             <div class="row">
                 <div class="col-sm-6">
@@ -38,19 +51,15 @@
                         <span class="form-label">Destination:</span>
                         <input name="destination" required class="form-control" type="text"  id="destination" placeholder="Enter location of destination">
                             <script>
-                                var searchInput = 'destination';
+                                var searchInput2 = 'destination';
                                 $(document).ready(function () {
                                 var autocomplete;
-                                autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
-                                types: ['geocode'],
-                                /*componentRestrictions: {
-                                country: "USA"
-                                }*/
-                                });
-                                
-                                google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                                var near_place = autocomplete.getPlace();
-                                });
+                                autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput2)), {
+                                    types: ['geocode'],
+                                    });
+                                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                                        var near_place = autocomplete.getPlace();
+                                    });
                                 });
                             </script>
                     </div>

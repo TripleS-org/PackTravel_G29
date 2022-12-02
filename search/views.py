@@ -1,38 +1,55 @@
-from http.client import HTTPResponse
-from django.shortcuts import render,redirect
-from numpy import True_, dtype
-import requests
-import json
-from django.contrib.auth import login, authenticate
-from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
-
-from publish.forms import RideForm
+from django.shortcuts import render, redirect
 from utils import get_client
+from requests import views as requestsViews
 
-client = None
-db = None
-userDB = None
-ridesDB  = None
-routesDB  = None
+# database connections
+db_client = None
+db_handle = None
+users_collection = None
+rides_collection  = None
 
-def intializeDB():
-    global client, db, userDB, ridesDB, routesDB
-    client = get_client()
-    db = client.SEProject
-    userDB = db.userData
-    ridesDB  = db.rides
-    routesDB  = db.routes
+def initialize_database():
+    global db_client, db_handle, users_collection, rides_collection
+    db_client = get_client()
+    db_handle = db_client.main
+    users_collection = db_handle.users
+    rides_collection  = db_handle.rides
 
 def search_index(request):
-    intializeDB()
-    if not request.session.has_key('username'):
-        request.session['alert'] = "Please login to create a ride."
-        return redirect('index')
-    all_rides = list(ridesDB.find())
-    processed = list()
+    initialize_database()
+
+    if not request.session.has_key("username"):
+        request.session["alert"] = "Please login to view rides."
+        return redirect("index")
+
+    all_rides = list(rides_collection.find())
+    processed = []
+
     for ride in all_rides:
-        ride['id'] = ride.pop('_id')
+        ride["id"] = ride.pop("_id")
         processed.append(ride)
-    return render(request, 'search/search.html', {"username": request.session['username'], "rides":processed})
-    
+    return render(request, "search/search.html", {"username": request.session["username"], "rides": processed})
+
+def request_ride(request, ride_id):
+    initialize_database()
+
+    if not request.session.has_key("username"):
+        request.session["alert"] = "Please login to request rides."
+        return redirect("index")
+
+    # get ride information from db
+    ride = rides_collection.find_one({"_id": ride_id})
+
+    # validation - check for edge cases
+    if ride["availability"] == 0:
+        message = "Ride has reached max capacity."
+        pass
+    elif ride["owner"] == request.session["username"]:
+        message = "Owner of the ride cannot request own rides."
+    elif request.session["username"] in ride["confirmed_users"]:
+        message = "You are already a confirmed member of this ride."
+    else:
+        # add/update request to ride
+        rides_collection.update_one({"_id": ride_id}, {"$addToSet": {"requested_users": request.session["username"]}})
+        message = "Request successful."
+    return redirect(requestsViews.requested_rides)

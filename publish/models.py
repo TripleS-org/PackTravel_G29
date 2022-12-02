@@ -1,11 +1,9 @@
 from django.db import models
 
-
-# declare a new model with a name "GeeksModel"
 class Ride(models.Model):
     # fields of the model
+    source = models.TextField()
     destination = models.TextField()
-    rideDate = models.TextField()
 
     class Meta:
         app_label = 'PackTravel.publish'

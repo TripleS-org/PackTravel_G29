@@ -6,7 +6,6 @@ class TestForms(TransactionTestCase):
 
          form = RegisterForm(data={
                                 'username': 'John',
-                                'unityid' : 'ajohn6',
                                 'first_name' : 'John',
                                 'last_name' : 'Dwyer',
                                 'email' : 'jdwyer@ncsu.edu',

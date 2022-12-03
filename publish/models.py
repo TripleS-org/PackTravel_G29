@@ -1,3 +1,4 @@
+"""Django model for ride creation functionality"""
 from django.db import models
 
 class Ride(models.Model):

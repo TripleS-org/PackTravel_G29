@@ -1,3 +1,4 @@
+"""Django views for ride management functionality"""
 from django.shortcuts import render, redirect
 from utils import get_client
 
@@ -8,6 +9,7 @@ users_collection = None
 rides_collection  = None
 
 def initialize_database():
+    """This method initialises the handles to various database collections"""
     global db_client, db_handle, users_collection, rides_collection
     db_client = get_client()
     db_handle = db_client.main
@@ -15,6 +17,7 @@ def initialize_database():
     rides_collection  = db_handle.rides
 
 def requested_rides(request):
+    """This method processes the request to render the list of rides requested by the user, rides waiting approval and confirmed rides"""
     initialize_database()
 
     # sent requests
@@ -35,9 +38,11 @@ def requested_rides(request):
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
-    return render(request, "requests/requests.html", {"username": request.session["username"],"sent_requests": sent_requests, "received_requests": rides_with_active_requests, "accepted_rides": accepted_rides})
+    return render(request, "requests/requests.html", {"username": request.session["username"],"sent_requests": sent_requests,
+     "received_requests": rides_with_active_requests, "accepted_rides": accepted_rides})
 
 def cancel_ride(request, ride_id):
+    """This method processes the user request to cancel a ride request before it gets confirmed"""
     initialize_database()
 
     if not request.session.has_key("username"):
@@ -56,6 +61,7 @@ def cancel_ride(request, ride_id):
     return redirect(requested_rides)
 
 def accept_request(request, ride_id, user):
+    """This method processes the ride owner's request to accept a rider"""
     initialize_database()
 
     if not request.session.has_key("username"):
@@ -75,6 +81,7 @@ def accept_request(request, ride_id, user):
     return redirect(requested_rides)
 
 def reject_request(request, ride_id, user):
+    """This method processes the ride owner's request to reject a rider"""
     initialize_database()
 
     if not request.session.has_key("username"):
@@ -91,6 +98,7 @@ def reject_request(request, ride_id, user):
     return redirect(requested_rides)
 
 def cancel_accepted_ride(request, ride_id, user):
+    """This method processes user request to cancel an accepted ride"""
     initialize_database()
 
     if not request.session.has_key("username"):
@@ -108,6 +116,7 @@ def cancel_accepted_ride(request, ride_id, user):
     return redirect(requested_rides)
 
 def delete_ride(request, ride_id):
+    """This method processes ride owner request to delete a ride"""
     initialize_database()
 
     if not request.session.has_key("username"):

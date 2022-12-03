@@ -1,3 +1,4 @@
+"""Django views for user login and sign up functionality"""
 from django.shortcuts import render, redirect
 from utils import get_client
 from .forms import RegisterForm, LoginForm
@@ -10,20 +11,21 @@ users_collection = None
 rides_collection  = None
 
 def initialize_database():
+    """This method initializes handles to the various database collections"""
     global db_client, db_handle, users_collection, rides_collection
     db_client = get_client()
     db_handle = db_client.main
     users_collection = db_handle.users
     rides_collection  = db_handle.rides
 
-# Home page for PackTravel
-def index(request, username=None):
-    if request.session.has_key('username'):
-         return render(request, 'home/home.html', {"username":request.session["username"]})
-    return render(request, 'home/home.html', {"username":None})
-
+def index(request):
+    """This method renders the home page of PackTravel"""
+    if request.session.has_key("username"):
+        return render(request, "home/home.html", {"username":request.session["username"]})
+    return render(request, "home/home.html", {"username":None})
 
 def register(request):
+    """This method processes a user registration request"""
     initialize_database()
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -33,8 +35,8 @@ def register(request):
             user = users_collection.find_one({"username": username})
             # print(user)
             if user:
-                return render(request, 'user/register.html', {"form": form,"alert":'Username already exists'})
-            userObj = {
+                return render(request, "user/register.html", {"form": form,"alert":"Username already exists"})
+            user_obj = {
                 "username": username,
                 "fname": form.cleaned_data["first_name"],
                 "lname": form.cleaned_data["last_name"],
@@ -43,34 +45,34 @@ def register(request):
                 "phone": form.cleaned_data["phone_number"],
                 "rides": []
             }
-            users_collection.insert_one(userObj)
-            request.session['username'] = userObj["username"]
-            request.session['fname'] = userObj["fname"]
-            request.session['lname'] = userObj["lname"]
-            request.session['email'] = userObj["email"]
-            request.session['phone'] = userObj["phone"]
+            users_collection.insert_one(user_obj)
+            request.session["username"] = user_obj["username"]
+            request.session["fname"] = user_obj["fname"]
+            request.session["lname"] = user_obj["lname"]
+            request.session["email"] = user_obj["email"]
+            request.session["phone"] = user_obj["phone"]
             return redirect(index, username=request.session["username"])
         else:
             print(form.errors.as_data())
     else:
-        if request.session.has_key('username'):
-            return index(request,request.session['username'])
+        if request.session.has_key("username"):
+            return index(request)
         form = RegisterForm()
-    return render(request, 'user/register.html', {"form": form,"alert":''})
+    return render(request, "user/register.html", {"form": form,"alert":""})
 
 def logout(request):
-   try:
-      request.session.clear()
-   except:
-      pass
-   return redirect(index)
+    """This method processes user logout request"""
+    try:
+        request.session.clear()
+    except: # pylint: disable=bare-except
+        pass
+    return redirect(index)
 
-
-# @describe: Existing user login
 def login(request):
+    """This method processes a login request from a user"""
     initialize_database()
-    if request.session.has_key('username'):
-        return redirect(index, {"username": request.session['username']})
+    if request.session.has_key("username"):
+        return redirect(index, {"username": request.session["username"]})
     else:
         if request.method=="POST":
             form = LoginForm(request.POST)
@@ -80,11 +82,11 @@ def login(request):
 
                 if user and user["password"] == hashlib.sha256(form.cleaned_data["password"].encode()).hexdigest():
                     request.session["username"] = username
-                    request.session['fname'] = user["fname"]
-                    request.session['lname'] = user["lname"]
-                    request.session['email'] = user["email"]
+                    request.session["fname"] = user["fname"]
+                    request.session["lname"] = user["lname"]
+                    request.session["email"] = user["email"]
                     request.session["phone"] = user["phone"]
-                    return redirect(index, request.session['username'])
-        
+                    return redirect(index, request.session["username"])
+
         form = LoginForm()
-        return render(request, 'user/login.html', {"form": form})
+        return render(request, "user/login.html", {"form": form})

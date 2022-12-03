@@ -2,6 +2,7 @@
 from django.db import models
 
 class Ride(models.Model):
+    """Django model class for ride creation"""
     # fields of the model
     source = models.TextField()
     destination = models.TextField()

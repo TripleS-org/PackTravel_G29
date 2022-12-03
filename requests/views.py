@@ -38,8 +38,8 @@ def requested_rides(request):
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
-    return render(request, "requests/requests.html", {"username": request.session["username"],"sent_requests": sent_requests,
-     "received_requests": rides_with_active_requests, "accepted_rides": accepted_rides})
+    data = {"username": request.session["username"], "sent_requests": sent_requests, "received_requests": rides_with_active_requests, "accepted_rides": accepted_rides}
+    return render(request, "requests/requests.html", data)
 
 def cancel_ride(request, ride_id):
     """This method processes the user request to cancel a ride request before it gets confirmed"""

@@ -24,7 +24,7 @@ jobs:
       - name: Install Python Dependencies
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Run linter on various Django applications
+      - name: Run linter on Django applications
         run: |
           pylint --verbose --rcfile=pylintrc user/*
           pylint --verbose --rcfile=pylintrc publish/*

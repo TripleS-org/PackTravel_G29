@@ -20,7 +20,7 @@ def initialize_database():
 
 def index(request):
     """This method renders the home page of PackTravel"""
-    if request.session.has_key("username"):
+    if "username" in request.session:
         return render(request, "home/home.html", {"username":request.session["username"]})
     return render(request, "home/home.html", {"username":None})
 
@@ -35,7 +35,7 @@ def register(request):
             user = users_collection.find_one({"username": username})
             # print(user)
             if user:
-                return render(request, "user/register.html", {"form": form,"alert":"Username already exists"})
+                return render(request, "user/register.html", {"form": form, "alert":"Username already exists"})
             user_obj = {
                 "username": username,
                 "fname": form.cleaned_data["first_name"],
@@ -55,23 +55,23 @@ def register(request):
         else:
             print(form.errors.as_data())
     else:
-        if request.session.has_key("username"):
+        if "username" in request.session:
             return index(request)
         form = RegisterForm()
-    return render(request, "user/register.html", {"form": form,"alert":""})
+    return render(request, "user/register.html", {"form": form, "alert":""})
 
 def logout(request):
     """This method processes user logout request"""
     try:
         request.session.clear()
-    except: # pylint: disable=bare-except
-        pass
+    except KeyError:
+        print("Exception occurred while processing logout request.")
     return redirect(index)
 
 def login(request):
     """This method processes a login request from a user"""
     initialize_database()
-    if request.session.has_key("username"):
+    if "username" in request.session:
         return redirect(index, {"username": request.session["username"]})
     else:
         if request.method=="POST":

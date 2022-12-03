@@ -8,7 +8,7 @@ class RegisterForm(forms.ModelForm):
     first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}))
     last_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control'}))
     email = forms.EmailField(required=True, max_length=60, widget=forms.EmailInput(attrs={'placeholder': 'abc@mail.com', 'class': 'form-control'}))
-    password1 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Password','class': 'form-control'}))
+    password1 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'}))
     phone_number = forms.CharField(required=True, max_length=11, widget=forms.TextInput(attrs={'placeholder': 'Phone Number', 'class': 'form-control'}))
 
     class Meta:

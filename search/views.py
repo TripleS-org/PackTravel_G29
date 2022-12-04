@@ -1,7 +1,7 @@
 """Django views for ride search functionality"""
 from django.shortcuts import render, redirect
 from utils import get_client
-from requests import views as requestsViews
+from request import views as requestsViews
 
 # database connections
 db_client = None

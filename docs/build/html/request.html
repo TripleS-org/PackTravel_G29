@@ -1,0 +1,175 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>request package &#8212; PackTravel 2.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="request-package">
+<h1>request package<a class="headerlink" href="#request-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="request.migrations.html">request.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="request.migrations.html#module-request.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-request.admin">
+<span id="request-admin-module"></span><h2>request.admin module<a class="headerlink" href="#module-request.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-request.apps">
+<span id="request-apps-module"></span><h2>request.apps module<a class="headerlink" href="#module-request.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="request.apps.RequestsConfig">
+<em class="property">class </em><code class="descclassname">request.apps.</code><code class="descname">RequestsConfig</code><span class="sig-paren">(</span><em>app_name</em>, <em>app_module</em><span class="sig-paren">)</span><a class="headerlink" href="#request.apps.RequestsConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="attribute">
+<dt id="request.apps.RequestsConfig.default_auto_field">
+<code class="descname">default_auto_field</code><em class="property"> = 'django.db.models.BigAutoField'</em><a class="headerlink" href="#request.apps.RequestsConfig.default_auto_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="request.apps.RequestsConfig.name">
+<code class="descname">name</code><em class="property"> = 'requests'</em><a class="headerlink" href="#request.apps.RequestsConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-request.models">
+<span id="request-models-module"></span><h2>request.models module<a class="headerlink" href="#module-request.models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-request.tests">
+<span id="request-tests-module"></span><h2>request.tests module<a class="headerlink" href="#module-request.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-request.views">
+<span id="request-views-module"></span><h2>request.views module<a class="headerlink" href="#module-request.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="request.views.accept_request">
+<code class="descclassname">request.views.</code><code class="descname">accept_request</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.accept_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="request.views.cancel_accepted_ride">
+<code class="descclassname">request.views.</code><code class="descname">cancel_accepted_ride</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.cancel_accepted_ride" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="request.views.cancel_ride">
+<code class="descclassname">request.views.</code><code class="descname">cancel_ride</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.cancel_ride" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="request.views.delete_ride">
+<code class="descclassname">request.views.</code><code class="descname">delete_ride</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.delete_ride" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="request.views.initialize_database">
+<code class="descclassname">request.views.</code><code class="descname">initialize_database</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#request.views.initialize_database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="request.views.reject_request">
+<code class="descclassname">request.views.</code><code class="descname">reject_request</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.reject_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="request.views.requested_rides">
+<code class="descclassname">request.views.</code><code class="descname">requested_rides</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.requested_rides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-request">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-request" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PackTravel</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ali,Atharv,Shivangi,Vaishnav,Vishwesh.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/request.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

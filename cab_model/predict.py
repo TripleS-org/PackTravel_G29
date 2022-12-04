@@ -1,6 +1,10 @@
 from datetime import date
 import pickle
 import pandas as pd
+from pathlib import Path
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 class predict_price():
     def __init__(self, distance, dateTimeStr):
@@ -34,7 +38,8 @@ class predict_price():
 
 
     def predictCabs(self, toPred):
-        with open('model.pkl', 'rb') as f:
+        path_to_model = save_model_path = str(BASE_DIR) + "/model/model.pkl"
+        with open(path_to_model, 'rb') as f:
             lassoTrainedModel = pickle.load(f)
 
         res = ""

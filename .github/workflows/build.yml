@@ -31,12 +31,16 @@ jobs:
           pylint --verbose --rcfile=pylintrc requests/*
           pylint --verbose --rcfile=pylintrc search/*
 
-#      - name: Run django tests
-#        run: |
-#          python manage.py test
-#          coverage run --source=src --data-file tests/.coverage -m pytest -s
-#          coverage xml --data-file tests/.coverage -o tests/coverage.xml
-#          coverage report --data-file tests/.coverage -m
+      - name: Run django tests
+        run: |
+          echo "database:" > config.yml
+          echo "  endpoint: packtravel.cyumok3.mongodb.net/?retryWrites=true&w=majority" >> config.yml
+          echo "  username: ${{secrets.DB_USERNAME}}" >> config.yml
+          echo "  password: ${{secrets.DB_PASSWORD}}" >> config.yml
+          cat config.yml
+          coverage run ./manage.py test          
+          coverage xml --data-file .coverage -o coverage.xml
+          coverage report --data-file .coverage -m
           
 #      - name : Send coverage report
 #        run: |

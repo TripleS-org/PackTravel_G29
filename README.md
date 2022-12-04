@@ -26,7 +26,7 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 Any person who is looking to reduce spending on their commute expenditure can use our application.
 
 ## ⚒️ Installation
-*  See [developer environment setup](INSTALL.md#--developer-environment-setup) to setup your development server.
+*   See [developer environment setup](INSTALL.md#--developer-environment-setup) to setup your development server.
       
 ## 🎯 Enhancements
 *   Add machine learning algorithms for predicting ride prices
@@ -34,8 +34,8 @@ Any person who is looking to reduce spending on their commute expenditure can us
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.
-*  mquresh@ncsu.edu
-*  apandit3@ncsu.edu
-*  vnagara3@ncsu.edu
-*  schopra4@ncsu.edu
-*  lsangar@ncsu.edu
+*   mquresh@ncsu.edu
+*   apandit3@ncsu.edu
+*   vnagara3@ncsu.edu
+*   schopra4@ncsu.edu
+*   lsangar@ncsu.edu

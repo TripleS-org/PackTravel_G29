@@ -7,7 +7,7 @@ from request import views as requestsViews
 db_client = None
 db_handle = None
 users_collection = None
-rides_collection  = None
+rides_collection = None
 
 def initialize_database():
     """This method initializes handles to the different database collections"""
@@ -15,7 +15,7 @@ def initialize_database():
     db_client = get_client()
     db_handle = db_client.main
     users_collection = db_handle.users
-    rides_collection  = db_handle.rides
+    rides_collection = db_handle.rides
 
 def search_index(request):
     """This method processes the request to render available rides on the search page"""

@@ -41,7 +41,7 @@ def lassoRegCV(x_train, y_train):
     model_lassocv.fit(x_train, y_train)
     return model_lassocv
 
-save_model_path = str(BASE_DIR) + "/model/model.pkl"
+save_model_path = str(BASE_DIR) + "/cab_model/model.pkl"
 model_lassocv = lassoRegCV(X.to_numpy(), y.to_numpy())
 with open(save_model_path,"wb") as f:
     pickle.dump(model_lassocv, f)

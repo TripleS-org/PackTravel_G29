@@ -34,5 +34,5 @@ jobs:
                   git config --global user.email "qureshi.ali@outlook.com"
                   git add .
                   git commit -m "updating docs" -a || true
-                  git push -u origin adding_docs
+                  git push
         # ===============================

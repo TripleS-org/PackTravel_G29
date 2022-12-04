@@ -27,8 +27,8 @@ def requested_rides(request):
         ride.pop("_id", None)
 
     # received requests
-    rides_with_active_requests = list(rides_collection.find( { "owner": request.session["username"], "requested_users": { "$exists": True, "$ne": [] }} ))
-    for ride in rides_with_active_requests:
+    rec_req = list(rides_collection.find( { "owner": request.session["username"], "requested_users": { "$exists": True, "$ne": [] }} ))
+    for ride in rec_req:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
@@ -38,7 +38,7 @@ def requested_rides(request):
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
-    data = {"username": request.session["username"], "sent_requests": sent_requests, "received_requests": rides_with_active_requests, "accepted_rides": accepted_rides}
+    data = {"username": request.session["username"], "sent_requests": sent_requests, "received_requests": rec_req, "accepted_rides": accepted_rides}
     return render(request, "requests/requests.html", data)
 
 def cancel_ride(request, ride_id):
@@ -74,7 +74,8 @@ def accept_request(request, ride_id, user):
     # accept ride request
     if ride is not None and ride["availability"] > 0:
         new_availability = ride["availability"] - 1
-        rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}, "$push": {"confirmed_users": user}, "$set": {"availability": new_availability}})
+        insert_data = {"$pull": {"requested_users": user}, "$push": {"confirmed_users": user}, "$set": {"availability": new_availability}}
+        rides_collection.update_one({"_id": ride_id}, insert_data)
 
     return redirect(requested_rides)
 

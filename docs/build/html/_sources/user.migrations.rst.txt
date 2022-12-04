@@ -5,6 +5,6 @@ Module contents
 ---------------
 
 .. automodule:: user.migrations
-   :members:
-   :undoc-members:
-   :show-inheritance:
+    :members:
+    :undoc-members:
+    :show-inheritance:

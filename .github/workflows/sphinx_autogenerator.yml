@@ -18,7 +18,7 @@ jobs:
               run: |
                   git pull origin adding_docs
                   sudo apt-get install python3-sphinx                
-                  sphinx-apidoc -f -o docs src
+                  sphinx-apidoc -f -o docs/source PackTravel
                   cd docs/
                   make html
                   cd ..

@@ -23,3 +23,5 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
+## Debugging
+1.  Unable to connect to MongoDB Atlas: Ensure your public IP address is allowed to initiate a connection with the database.

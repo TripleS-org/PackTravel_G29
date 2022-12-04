@@ -25,8 +25,11 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 ## 👥 Audience
 Any person who is looking to reduce spending on their commute expenditure can use our application.
 
-## ⚒️ Installation
+## ⚒️ Deployment and Installation
+*   PackTravel is built using MongoDB Atlas database, Django (Python) for backend-services, and HTML/CSS/JS/Bootstrap for the front-end.
+*   The application can be deployed on any web-server running on premise or in the cloud. See [django deployment](https://docs.djangoproject.com/en/4.1/howto/deployment/) to setup django on a VM.
 *   See [developer environment setup](INSTALL.md#--developer-environment-setup) to setup your development server.
+*   Common issues faced by users while setting up the developer environment are listed [here]((INSTALL.md#--debugging)).
       
 ## 🎯 Enhancements
 *   Add machine learning algorithms for predicting ride prices

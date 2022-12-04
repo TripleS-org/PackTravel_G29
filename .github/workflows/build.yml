@@ -41,11 +41,11 @@ jobs:
           coverage xml --data-file .coverage -o coverage.xml
           coverage report --data-file .coverage -m
           
-#      - name : Send coverage report
-#        run: |
-#          pip install codacy-coverage
-#          export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_TOKEN }}
-#          export CODACY_API_TOKEN=${{ secrets.CODACY_API_TOKEN }}
-#          export CODACY_USERNAME=VSangarya
-#          export CODAY_PROJECT_NAME=AMATSA
-#          python-codacy-coverage -r tests/coverage.xml
+      - name : Send test coverage report
+        run: |
+          pip install codacy-coverage
+          export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_TOKEN }}
+          export CODACY_API_TOKEN=${{ secrets.CODACY_API_TOKEN }}
+          export CODACY_USERNAME=VSangarya
+          export CODAY_PROJECT_NAME=PackTravel
+          python-codacy-coverage -r coverage.xml

@@ -37,7 +37,7 @@ jobs:
           echo "  endpoint: packtravel.cyumok3.mongodb.net/?retryWrites=true&w=majority" >> config.yml
           echo "  username: ${{secrets.DB_USERNAME}}" >> config.yml
           echo "  password: ${{secrets.DB_PASSWORD}}" >> config.yml
-          coverage run ./manage.py test          
+          coverage run --source=user,publish,request,search ./manage.py test
           coverage xml --data-file .coverage -o coverage.xml
           coverage report --data-file .coverage -m
           

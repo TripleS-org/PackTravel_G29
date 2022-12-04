@@ -7,70 +7,70 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 class predict_price():
-    def __init__(self, distance, dateTimeStr):
+    def __init__(self, distance, date_time_str):
         self.distance = distance
-        self.dateTimeStr = dateTimeStr.split(" ")
-        self.date = self.dateTimeStr[0]
-        self.time = self.dateTimeStr[1]
+        self.date_time_str = date_time_str.split(" ")
+        self.date = self.date_time_str[0]
+        self.time = self.date_time_str[1]
         self.columns = ['distance', 'LyftCabs', 'UberCabs', 'Black', 'Black SUV', 'Lux', 'Lux Black', 'Lux Black XL', 'Lyft', 'Lyft XL', 'Shared', 'UberPool', 'UberX', 'UberXL', 'WAV', 'EarlyMorning', 'LateNight', 'MorningNoon', 'Night', 'weekend', 'weekday']
     
-    def populateTimePeriod(self, toPredData):
+    def populateTimePeriod(self, to_pred_data):
         hour = [int(n) for n in self.time.split(":")][0]
-        if 3 <= hour and hour <= 6 : toPredData['EarlyMorning'] = 1
-        elif 6 < hour and hour <= 17 : toPredData['MorningNoon'] = 1
-        elif 17 < hour and hour <= 22 : toPredData['Night'] = 1
-        else : toPredData['LateNight'] = 1      
+        if 3 <= hour and hour <= 6 : to_pred_data['EarlyMorning'] = 1
+        elif 6 < hour and hour <= 17 : to_pred_data['MorningNoon'] = 1
+        elif 17 < hour and hour <= 22 : to_pred_data['Night'] = 1
+        else : to_pred_data['LateNight'] = 1
         
-        dateList = [int(n) for n in self.date.split("-")]
-        d = date(dateList[2], dateList[1], dateList[0]).strftime('%A')
-        if d in ["Saturday", "Sunday"] : toPredData["weekend"] = 1
-        else : toPredData["weekday"] = 1
-        toPredData["weekend"] = 1
+        date_list = [int(n) for n in self.date.split("-")]
+        d = date(date_list[2], date_list[1], date_list[0]).strftime('%A')
+        if d in ["Saturday", "Sunday"] : to_pred_data["weekend"] = 1
+        else : to_pred_data["weekday"] = 1
+        to_pred_data["weekend"] = 1
         
-        return toPredData
+        return to_pred_data
 
-    def dataframeFromDict(self, toPred):
-        newData = pd.DataFrame(toPred.items()).transpose()
-        cols = newData.iloc[0] 
-        newData = newData[1:] 
-        newData.columns = cols 
-        return newData
+    def dataframeFromDict(self, to_pred):
+        new_data = pd.DataFrame(to_pred.items()).transpose()
+        cols = new_data.iloc[0]
+        new_data = new_data[1:]
+        new_data.columns = cols
+        return new_data
 
 
-    def predictCabs(self, toPred):
+    def predictCabs(self, to_pred):
         path_to_model = str(BASE_DIR) + r"\cab_model\model.pkl"
         with open(path_to_model, 'rb') as f:
-            lassoTrainedModel = pickle.load(f)
+            lasso_trained_model = pickle.load(f)
 
         res = ""
         cabs = {
-          "UberCabs" : ['UberPool', 'Black SUV'],
-          "LyftCabs" : ['Shared', 'Lux Black XL']
+            "UberCabs" : ['UberPool', 'Black SUV'],
+            "LyftCabs" : ['Shared', 'Lux Black XL']
         }
 
-        for eachCabComp in cabs.keys():
-            toPred[eachCabComp] = 1
-            priceRange = []
-            for eachCabType in cabs[eachCabComp]:
-                toPred[eachCabType] = 1
-                toPredDf = self.dataframeFromDict(toPred)
-                price = lassoTrainedModel.predict(toPredDf.to_numpy())
-                priceRange.append(price)
-                toPred[eachCabType] = 0
-            res += f"For {eachCabComp}, price ranges from ${round(priceRange[0][0], 2)} to ${round(priceRange[1][0], 2)}\n"
-            toPred[eachCabComp] = 0
+        for each_cab_comp in cabs.keys():
+            to_pred[each_cab_comp] = 1
+            price_range = []
+            for eachCabType in cabs[each_cab_comp]:
+                to_pred[eachCabType] = 1
+                to_pred_df = self.dataframeFromDict(to_pred)
+                price = lasso_trained_model.predict(to_pred_df.to_numpy())
+                price_range.append(price)
+                to_pred[eachCabType] = 0
+            res += f"For {each_cab_comp}, price ranges from ${round(price_range[0][0], 2)} to ${round(price_range[1][0], 2)}\n"
+            to_pred[each_cab_comp] = 0
         return res
 
     def createDataForPrice(self):
-        toPred = {}
+        to_pred = {}
         for each in self.columns:
-            toPred[each] = 0
-        toPred["distance"] = self.distance
-        toPred = self.populateTimePeriod(toPred)
-        return toPred
+            to_pred[each] = 0
+        to_pred["distance"] = self.distance
+        to_pred = self.populateTimePeriod(to_pred)
+        return to_pred
 
 
     def generate_data_return_price(self):
         data = self.createDataForPrice()
-        priceStr = self.predictCabs(data)
-        return priceStr
+        price_str = self.predictCabs(data)
+        return price_str

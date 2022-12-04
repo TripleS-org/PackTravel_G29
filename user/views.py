@@ -18,10 +18,17 @@ def initialize_database():
     users_collection = db_handle.users
     rides_collection  = db_handle.rides
 
-def index(request):
+def index(request, username=None):
     """This method renders the home page of PackTravel"""
+    if username is not None:
+        user = username
+    elif "username" not in request.session:
+        user = None
+    else:
+        user = request.session["username"]
+
     if "username" in request.session:
-        return render(request, "home/home.html", {"username":request.session["username"]})
+        return render(request, "home/home.html", {"username": user})
     return render(request, "home/home.html", {"username":None})
 
 def register(request):
@@ -87,6 +94,8 @@ def login(request):
                     request.session["email"] = user["email"]
                     request.session["phone"] = user["phone"]
                     return redirect(index, request.session["username"])
+                else:
+                    return render(request, "user/login.html", {"form": form, "alert": "Incorrect username or password!"})
 
         form = LoginForm()
         return render(request, "user/login.html", {"form": form})

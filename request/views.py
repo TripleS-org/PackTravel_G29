@@ -45,7 +45,7 @@ def cancel_ride(request, ride_id):
     """This method processes the user request to cancel a ride request before it gets confirmed"""
     initialize_database()
 
-    if not request.session.has_key("username"):
+    if "username" not in request.session:
         request.session["alert"] = "Please login to cancel rides."
         return redirect("index")
 
@@ -74,9 +74,7 @@ def accept_request(request, ride_id, user):
     # accept ride request
     if ride is not None and ride["availability"] > 0:
         new_availability = ride["availability"] - 1
-        rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}})
-        rides_collection.update_one({"_id": ride_id}, {"$push": {"confirmed_users": user}})
-        rides_collection.update_one({"_id": ride_id}, {"$set": {"availability": new_availability}})
+        rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}, "$push": {"confirmed_users": user}, "$set": {"availability": new_availability}})
 
     return redirect(requested_rides)
 
@@ -111,8 +109,7 @@ def cancel_accepted_ride(request, ride_id, user):
     # cancel ride request
     if ride is not None:
         new_availability = ride["availability"] + 1
-        rides_collection.update_one({"_id": ride_id}, {"$pull": {"confirmed_users": user}})
-        rides_collection.update_one({"_id": ride_id}, {"$set": {"availability": new_availability}})
+        rides_collection.update_one({"_id": ride_id}, {"$pull": {"confirmed_users": user}, "$set": {"availability": new_availability}})
 
     return redirect(requested_rides)
 

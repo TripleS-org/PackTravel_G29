@@ -18,7 +18,7 @@ from django.urls import path
 from user import views as userView
 from search import views as searchViews
 from publish import views as publishViews
-from requests import views as requestsViews
+from request import views as requestsViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),

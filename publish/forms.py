@@ -1,3 +1,4 @@
+"""Django forms for ride creation functionality"""
 from django import forms
 from .models import Ride
 

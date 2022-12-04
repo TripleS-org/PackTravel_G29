@@ -1,3 +1,4 @@
+"""Django views for ride management functionality"""
 from django.shortcuts import render, redirect
 from utils import get_client
 
@@ -8,6 +9,7 @@ users_collection = None
 rides_collection  = None
 
 def initialize_database():
+    """This method initialises the handles to various database collections"""
     global db_client, db_handle, users_collection, rides_collection
     db_client = get_client()
     db_handle = db_client.main
@@ -15,6 +17,7 @@ def initialize_database():
     rides_collection  = db_handle.rides
 
 def requested_rides(request):
+    """This method processes the request to render the list of rides requested by the user, rides waiting approval and confirmed rides"""
     initialize_database()
 
     # sent requests
@@ -24,8 +27,8 @@ def requested_rides(request):
         ride.pop("_id", None)
 
     # received requests
-    rides_with_active_requests = list(rides_collection.find( { "owner": request.session["username"], "requested_users": { "$exists": True, "$ne": [] }} ))
-    for ride in rides_with_active_requests:
+    rec_req = list(rides_collection.find( { "owner": request.session["username"], "requested_users": { "$exists": True, "$ne": [] }} ))
+    for ride in rec_req:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
@@ -35,12 +38,14 @@ def requested_rides(request):
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
-    return render(request, "requests/requests.html", {"username": request.session["username"],"sent_requests": sent_requests, "received_requests": rides_with_active_requests, "accepted_rides": accepted_rides})
+    data = {"username": request.session["username"], "sent_requests": sent_requests, "received_requests": rec_req, "accepted_rides": accepted_rides}
+    return render(request, "requests/requests.html", data)
 
 def cancel_ride(request, ride_id):
+    """This method processes the user request to cancel a ride request before it gets confirmed"""
     initialize_database()
 
-    if not request.session.has_key("username"):
+    if "username" not in request.session:
         request.session["alert"] = "Please login to cancel rides."
         return redirect("index")
 
@@ -50,12 +55,13 @@ def cancel_ride(request, ride_id):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # remove ride request
-    if user in ride["requested_users"]:
+    if ride is not None and user in ride["requested_users"]:
         rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}})
 
     return redirect(requested_rides)
 
 def accept_request(request, ride_id, user):
+    """This method processes the ride owner's request to accept a rider"""
     initialize_database()
 
     if not request.session.has_key("username"):
@@ -66,15 +72,15 @@ def accept_request(request, ride_id, user):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # accept ride request
-    if ride["availability"] > 0:
+    if ride is not None and ride["availability"] > 0:
         new_availability = ride["availability"] - 1
-        rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}})
-        rides_collection.update_one({"_id": ride_id}, {"$push": {"confirmed_users": user}})
-        rides_collection.update_one({"_id": ride_id}, {"$set": {"availability": new_availability}})
+        insert_data = {"$pull": {"requested_users": user}, "$push": {"confirmed_users": user}, "$set": {"availability": new_availability}}
+        rides_collection.update_one({"_id": ride_id}, insert_data)
 
     return redirect(requested_rides)
 
 def reject_request(request, ride_id, user):
+    """This method processes the ride owner's request to reject a rider"""
     initialize_database()
 
     if not request.session.has_key("username"):
@@ -85,12 +91,13 @@ def reject_request(request, ride_id, user):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # remove ride request
-    if user in ride["requested_users"]:
+    if ride is not None and user in ride["requested_users"]:
         rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}})
 
     return redirect(requested_rides)
 
 def cancel_accepted_ride(request, ride_id, user):
+    """This method processes user request to cancel an accepted ride"""
     initialize_database()
 
     if not request.session.has_key("username"):
@@ -101,13 +108,14 @@ def cancel_accepted_ride(request, ride_id, user):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # cancel ride request
-    new_availability = ride["availability"] + 1
-    rides_collection.update_one({"_id": ride_id}, {"$pull": {"confirmed_users": user}})
-    rides_collection.update_one({"_id": ride_id}, {"$set": {"availability": new_availability}})
+    if ride is not None:
+        new_availability = ride["availability"] + 1
+        rides_collection.update_one({"_id": ride_id}, {"$pull": {"confirmed_users": user}, "$set": {"availability": new_availability}})
 
     return redirect(requested_rides)
 
 def delete_ride(request, ride_id):
+    """This method processes ride owner request to delete a ride"""
     initialize_database()
 
     if not request.session.has_key("username"):
@@ -118,7 +126,7 @@ def delete_ride(request, ride_id):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # only owner can delete ride
-    if ride["owner"] == request.session["username"]:
+    if ride is not None and ride["owner"] == request.session["username"]:
         rides_collection.delete_one({"_id": ride_id})
 
     return redirect(requested_rides)

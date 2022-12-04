@@ -1,5 +1,6 @@
 # 🐺 PackTravel
 [![Build](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml/badge.svg)](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/df6694ed8d644df1822a1caa1669e504)](https://app.codacy.com/gh/VSangarya/PackTravel?utm_source=github.com&utm_medium=referral&utm_content=VSangarya/PackTravel&utm_campaign=Badge_Grade_Settings)
 [![Commit Acitivity](https://img.shields.io/github/commit-activity/w/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/pulse)
 [![Issues](https://img.shields.io/github/issues/VSangarya/PackTravel?color=red)](https://github.com/VSangarya/PackTravel/issues)
 [![Contributors](https://img.shields.io/github/contributors/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/graphs/contributors)
@@ -9,33 +10,27 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE-OF-CONDUCT.md)
 [![Repo Size](https://img.shields.io/github/repo-size/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/)
 
-_Travelling alone?_ **Let's PackTravel!**
-
-Most university students do not have a car and rely on Wolfline. But what if you want to travel outside Wolfline's limit? Well...why not collaborate on PackTravel to travel off-campus by a cab, rental car, etc.
+PackTravel is a web-application that connects people who want to carpool, share a cab or ride a bus together. Users can offer rides with their own vehicles, or travel together as a group in a cab or a bus. PackTravel helps you stay on a budget by reducing your travel expenses so that you don't have to miss out on that concert you've been wanting to attend 😉.
 
 ## 💎 Features
-*  Create a ride
-*  Create multiple routes to any destination:  Bus, Cab or Personal</li>
-*  Search and view rides posted by other users</li>
-*  Join rides
+*   Users can create rides - personal vehicle, cab or taxi
+*   Autocomplete for source and destination points
+*   Users can send requests to join rides, cancel a ride request
+*   Ride owners can accept requests from other riders to join rides, ride owners can delete their own rides
+*   Forum for every ride to discuss logistics
+*   Integration with Google Maps to show ride route
 
 https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3-af35-732ebd34e76c.mp4
 
-## 📖 Usecases
-* Users: Create new rides, view and join available rides.
-* Administrators: User permissions + update, delete or schedule rides. To request administrator access, please email on help@packtravel.io with the purpose of use.
+## 👥 Audience
+Any person who is looking to reduce spending on their commute expenditure can use our application.
 
 ## ⚒️ Installation
 *  See [developer environment setup](INSTALL.md#--developer-environment-setup) to setup your development server.
       
 ## 🎯 Enhancements
-- [ ] Add machine learning algorithms for predicting lowest priced rides, best pickup and drop-off locations.
-- [ ] Add functionality to merge routes
-- [ ] Show later departures in search if currently searched rides is not available
-- [ ] Increase the geographical area coverage for the application
-- [ ] Extend the userbase to students other than that of the North Carolina State University
-- [ ] Integrate in-app cab booking services
-- [ ] Introduce a two way ride confirmation feature
+*   Add machine learning algorithms for predicting ride prices
+*   Add functionality to merge routes
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.

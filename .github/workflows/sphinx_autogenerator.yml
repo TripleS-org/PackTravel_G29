@@ -3,9 +3,9 @@ name: sphinx-autogenerator
 on:
   # Triggers the workflow on push or pull request events for the "main" branch
   push:
-    branches: ["main"]
+    branches: ["adding_docs"]
   pull_request:
-    branches: ["main"]
+    branches: ["adding_docs"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,5 +34,5 @@ jobs:
                   git config --global user.email "qureshi.ali@outlook.com"
                   git add .
                   git commit -m "updating docs" -a || true
-                  git push
+                  git push -u origin adding_docs
         # ===============================

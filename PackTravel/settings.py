@@ -127,3 +127,11 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST_USER = 'packtravel12@outlook.com'
+EMAIL_HOST_PASSWORD = 'signin12345678'
+EMAIL_PORT = 25    

@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from utils import get_client
+from django.core.mail import send_mail
+from django.conf import settings
 
 # database connections
 db_client = None
@@ -64,13 +66,24 @@ def accept_request(request, ride_id, user):
 
     # get ride information from db
     ride = rides_collection.find_one({"_id": ride_id})
-
+    print("in1")
     # accept ride request
     if ride["availability"] > 0:
         new_availability = ride["availability"] - 1
         rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}})
         rides_collection.update_one({"_id": ride_id}, {"$push": {"confirmed_users": user}})
         rides_collection.update_one({"_id": ride_id}, {"$set": {"availability": new_availability}})
+        ride_updated = rides_collection.find_one({"_id": ride_id})
+        if ride_updated["availability"]==0:
+            print("in")
+            user=users_collection.find_one({"username" : ride["owner"]})
+            body="Your ride to "+ride["destination"]+"has been booked. Please find the users below \n"
+            for i in ride_updated["confirmed_users"]:
+                body+=i+", " 
+            subject="Ride reached capacity"
+            send_capacity_mail(user['email'],body[:-2],subject)
+            print("mail sent")
+
 
     return redirect(requested_rides)
 
@@ -122,3 +135,9 @@ def delete_ride(request, ride_id):
         rides_collection.delete_one({"_id": ride_id})
 
     return redirect(requested_rides)
+def send_capacity_mail(user_mail,body,subject):
+    recepients=[user_mail]
+    send_mail( subject, body, settings.EMAIL_HOST_USER, recepients)
+    
+
+

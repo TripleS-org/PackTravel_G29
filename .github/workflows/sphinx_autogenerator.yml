@@ -21,6 +21,10 @@ jobs:
                   pip install -r requirements.txt
                   sudo apt-get install python3-sphinx                
                   sphinx-apidoc -f -o docs/source PackTravel
+                  sphinx-apidoc -f -o docs/source publish
+                  sphinx-apidoc -f -o docs/source request
+                  sphinx-apidoc -f -o docs/source search
+                  sphinx-apidoc -f -o docs/source user
                   cd docs/
                   make html
                   cd ..

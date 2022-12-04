@@ -12,8 +12,8 @@
 PackTravel is a web-application that connects people who want to carpool, share a cab or ride a bus together. Users can offer rides with their own vehicles, or travel together as a group in a cab or a bus. PackTravel helps you stay on a budget by reducing your travel expenses so that you don't have to miss out on that concert you've been wanting to attend 😉.
 
 ## 💎 Features
-*  Users can create rides - personal vehicle, cab or taxi
-*  Autocomplete for source and destination points
+*   Users can create rides - personal vehicle, cab or taxi
+* Autocomplete for source and destination points
 *  Users can send requests to join rides, cancel a ride request
 *  Ride owners can accept requests from other riders to join rides, ride owners can delete their own rides
 *  Forum for every ride to discuss logistics
@@ -28,8 +28,8 @@ Any person who is looking to reduce spending on their commute expenditure can us
 *  See [developer environment setup](INSTALL.md#--developer-environment-setup) to setup your development server.
       
 ## 🎯 Enhancements
-* [ ] Add machine learning algorithms for predicting ride prices
-* [ ] Add functionality to merge routes
+*   Add machine learning algorithms for predicting ride prices
+*   Add functionality to merge routes
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.

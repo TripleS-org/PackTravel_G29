@@ -15,10 +15,10 @@ PackTravel is a web-application that connects people who want to carpool, share 
 ## 💎 Features
 *   Users can create rides - personal vehicle, cab or taxi
 *   Autocomplete for source and destination points
-*  Users can send requests to join rides, cancel a ride request
-*  Ride owners can accept requests from other riders to join rides, ride owners can delete their own rides
-*  Forum for every ride to discuss logistics
-*  Integration with Google Maps to show ride route 
+*   Users can send requests to join rides, cancel a ride request
+*   Ride owners can accept requests from other riders to join rides, ride owners can delete their own rides
+*   Forum for every ride to discuss logistics
+*   Integration with Google Maps to show ride route
 
 https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3-af35-732ebd34e76c.mp4
 

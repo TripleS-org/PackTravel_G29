@@ -45,16 +45,17 @@ def request_ride(request, ride_id):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # validation - check for edge cases
-    if ride["availability"] == 0:
-        message = "Ride has reached max capacity."
-        pass
-    elif ride["owner"] == request.session["username"]:
-        message = "Owner of the ride cannot request own rides."
-    elif request.session["username"] in ride["confirmed_users"]:
-        message = "You are already a confirmed member of this ride."
-    else:
-        # add/update request to ride
-        rides_collection.update_one({"_id": ride_id}, {"$addToSet": {"requested_users": request.session["username"]}})
-        message = "Request successful."
-    print(message)
+    if ride is not None:
+        if ride["availability"] == 0:
+            message = "Ride has reached max capacity."
+        elif ride["owner"] == request.session["username"]:
+            message = "Owner of the ride cannot request own rides."
+        elif request.session["username"] in ride["confirmed_users"]:
+            message = "You are already a confirmed member of this ride."
+        else:
+            # add/update request to ride
+            rides_collection.update_one({"_id": ride_id}, {"$addToSet": {"requested_users": request.session["username"]}})
+            message = "Request successful."
+        print(message)
+
     return redirect(requestsViews.requested_rides)

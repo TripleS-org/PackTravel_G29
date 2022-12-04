@@ -55,7 +55,7 @@ def cancel_ride(request, ride_id):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # remove ride request
-    if user in ride["requested_users"]:
+    if ride is not None and user in ride["requested_users"]:
         rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}})
 
     return redirect(requested_rides)
@@ -72,7 +72,7 @@ def accept_request(request, ride_id, user):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # accept ride request
-    if ride["availability"] > 0:
+    if ride is not None and ride["availability"] > 0:
         new_availability = ride["availability"] - 1
         rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}})
         rides_collection.update_one({"_id": ride_id}, {"$push": {"confirmed_users": user}})
@@ -92,7 +92,7 @@ def reject_request(request, ride_id, user):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # remove ride request
-    if user in ride["requested_users"]:
+    if ride is not None and user in ride["requested_users"]:
         rides_collection.update_one({"_id": ride_id}, {"$pull": {"requested_users": user}})
 
     return redirect(requested_rides)
@@ -109,9 +109,10 @@ def cancel_accepted_ride(request, ride_id, user):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # cancel ride request
-    new_availability = ride["availability"] + 1
-    rides_collection.update_one({"_id": ride_id}, {"$pull": {"confirmed_users": user}})
-    rides_collection.update_one({"_id": ride_id}, {"$set": {"availability": new_availability}})
+    if ride is not None:
+        new_availability = ride["availability"] + 1
+        rides_collection.update_one({"_id": ride_id}, {"$pull": {"confirmed_users": user}})
+        rides_collection.update_one({"_id": ride_id}, {"$set": {"availability": new_availability}})
 
     return redirect(requested_rides)
 
@@ -127,7 +128,7 @@ def delete_ride(request, ride_id):
     ride = rides_collection.find_one({"_id": ride_id})
 
     # only owner can delete ride
-    if ride["owner"] == request.session["username"]:
+    if ride is not None and ride["owner"] == request.session["username"]:
         rides_collection.delete_one({"_id": ride_id})
 
     return redirect(requested_rides)

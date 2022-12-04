@@ -28,8 +28,8 @@ Any person who is looking to reduce spending on their commute expenditure can us
 *  See [developer environment setup](INSTALL.md#--developer-environment-setup) to setup your development server.
       
 ## 🎯 Enhancements
-- [ ] Add machine learning algorithms for predicting ride prices
-- [ ] Add functionality to merge routes
+* [ ] Add machine learning algorithms for predicting ride prices
+* [ ] Add functionality to merge routes
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.

@@ -24,15 +24,16 @@ jobs:
       - name: Install Python Dependencies
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Run linter on Django applications
+      - name: Run linter on source files
         run: |
           pylint --verbose --rcfile=pylintrc user/*
           pylint --verbose --rcfile=pylintrc publish/*
           pylint --verbose --rcfile=pylintrc requests/*
           pylint --verbose --rcfile=pylintrc search/*
 
-#      - name: Run tests and coverage report
-#        run: |       
+#      - name: Run django tests
+#        run: |
+#          python manage.py test
 #          coverage run --source=src --data-file tests/.coverage -m pytest -s
 #          coverage xml --data-file tests/.coverage -o tests/coverage.xml
 #          coverage report --data-file tests/.coverage -m

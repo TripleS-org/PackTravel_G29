@@ -1,7 +1,7 @@
 """Django url tests for ride management functionality"""
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from requests.views import requested_rides, cancel_ride, cancel_accepted_ride, accept_request, reject_request, delete_ride
+from request.views import requested_rides, cancel_ride, cancel_accepted_ride, accept_request, reject_request, delete_ride
 
 
 class TestUrl(SimpleTestCase):

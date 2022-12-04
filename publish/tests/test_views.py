@@ -28,14 +28,14 @@ class TestViews(TestCase):
 
     def test_ride_creation(self):
         session = self.client.session
-        session["username"] = "test"
+        session["username"] = "django-test"
         session.save()
         response = self.client.post(self.create_ride_url, {
-            "source": "New York, USA",
-            "destination": "Boston, USA",
+            "source": "Raleigh, NC",
+            "destination": "New York, NY",
             "ride_type": "Personal",
             "capacity": 5,
-            "date": "2022-01-01",
+            "date": "2023-12-31",
             "hour": "11",
             "minute": "00",
             "ampm": "am",

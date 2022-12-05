@@ -48,6 +48,7 @@ def distance_and_cost(source, destination, date, hour, minute, ampm):
 
 def create_ride(request):
     """This method processes the user request to create a new ride offering"""
+    # pylint: disable=line-too-long
     initialize_database()
 
     if request.method == "POST":

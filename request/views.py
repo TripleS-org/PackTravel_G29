@@ -146,5 +146,10 @@ def delete_ride(request, ride_id):
 
 def send_capacity_mail(user_mail, body, subject):
     """Method to send email"""
-    recepients = [user_mail]
-    send_mail(subject, body, settings.EMAIL_HOST_USER, recepients)
+    try:
+        recepients = [user_mail]
+        send_mail(subject, body, settings.EMAIL_HOST_USER, recepients)
+    except ValueError:
+        print("failed to send mail due to error in body")
+    except: # pylint: disable=bare-except
+        print("failed to send mail")

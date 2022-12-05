@@ -1,8 +1,10 @@
 """Django views for ride creation functionality"""
 from django.shortcuts import render, redirect
 from datetime import datetime
+from cab_model.predict import predict_price
 from utils import get_client
 import uuid
+import requests
 
 # database connections
 db_client = None
@@ -27,6 +29,23 @@ def publish_index(request):
         return redirect("index")
     return render(request, "publish/publish.html", {"username": request.session["username"], "alert": True})
 
+
+def distance_and_cost(source, destination, date, hour, minute, ampm):
+    """Method to retrieve distance between source and origin"""
+    api_key ="AIzaSyBeY27HO3FB80oI60eThoWotLWQHXlHkTs"
+    date = date.split("-")
+    url ="https://maps.googleapis.com/maps/api/distancematrix/json?"+ "origins=" + source +"&destinations=" + destination +"&key=" + api_key
+    if ampm.lower() == "pm" : hour = str(int(hour) + 12)
+    date_time = f"{date[1]}-{date[2]}-{date[0]} {hour}:{minute}:{00}"
+    response = requests.get(url)
+    distance_data = response.json()
+    distance_miles = distance_data['rows'][0]['elements'][0]['distance']['value']/1600
+    p = predict_price(distance_miles, date_time)
+    cost1, cost2 = p.generate_data_return_price()
+    cost = cost1 +" and " +cost2
+    return cost
+
+
 def create_ride(request):
     """This method processes the user request to create a new ride offering"""
     initialize_database()
@@ -45,6 +64,7 @@ def create_ride(request):
             "max_size": int(request.POST.get("capacity")),
             "info": request.POST.get("info"),
             "owner": request.session["username"],
+            "cost" : distance_and_cost(request.POST.get("source"), request.POST.get("destination"), request.POST.get("date"), request.POST.get("hour"), request.POST.get("minute"), request.POST.get("ampm")),
             "requested_users": [],
             "confirmed_users": []
             }

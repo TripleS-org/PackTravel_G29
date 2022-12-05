@@ -3,7 +3,7 @@
 |Notes|Score (261)|Evidence|
 |-----|------|---------|
 |Video1|3|[In README.md](https://github.com/VSangarya/PackTravel#-features), New features: Decoupled routes and rides in the old application for better UX; Cab price prediction using a machine learning model in "View Ride" page; Two-way ride request/confirmation feature between riders and owners; Rides have dynamic availability based on riders who have been accepted to travel; Owners can delete rides and users can cancel ride requests; Auto-complete feature for location (soure and destination) while creating a new ride; Ride route, distance and ETA is shown in the "View Ride" page; Emails are sent to ride owners when a ride capacity is reached; Improved code quality.|
-|Bonus: Xfold improvement|3|1. Performance: Shifted to use Google APIs in Search Ride -> View Ride page. We removed the existing use of Selenium on client-side to render routes between a source and a destination. This improves client performance because no memory overheads are there to render a new browser tab. 2. Lessen developer time: We cleaned code for better maintenance and improved readability for new developers - removed stale methods, unused imports etc. We fixed nearly 300 issues identified by pylint and codacy static analysis reports; Added comprehensive testcases to cover code coverage for existing functionality. 3. Scalability: We identified an [architecture](https://github.com/VSangarya/PackTravel#-scaling-packtravel) to easily scale PackTravel to reduce latency and support more users.|
+|Bonus: Xfold improvement|3|1. Performance: Shifted to use Google APIs in Search Ride -> View Ride page. We removed the existing use of Selenium on client-side to render routes between a source and a destination. This improves client performance because no memory overheads are there to render a new browser tab. 2. Lessen developer time: We cleaned code for better maintenance and improved readability for new developers - removed stale methods, unused imports etc. We fixed nearly 300 issues identified by pylint and codacy static analysis reports; Added comprehensive testcases to cover code coverage for existing functionality. 3. Scalability: We identified an [architecture](https://github.com/VSangarya/PackTravel#scaling-packtravel) to easily scale PackTravel to reduce latency and support more users.|
 |Docs: what: point descriptions of each class/function (in isolation)|3|All modules, Files, Classes, Methods have doc-strings|
 |Use of style checkers|3|Configured [pylintrc](https://github.com/VSangarya/PackTravel/blob/main/pylintrc) with Google's Python style-guide|
 |Use of code formatters.|3|.vscode [dir](https://github.com/VSangarya/PackTravel/blob/main/.vscode/settings.json) with formatter settings used by every dev|
@@ -77,7 +77,7 @@ Tests that can be run after your software has been built or deployed to show whe
 Automated test suite for your software | 3 | [Github Workflows](https://github.com/VSangarya/PackTravel/blob/main/.github/workflows/build.yml) | 
 Framework to periodically (e.g. nightly) run your tests on the latest version of the source code | 3 | We run tests when a branch is being merged to main | 
 Using continuous integration, automatically running tests whenever changes are made to your source code | 3 | [Build](https://github.com/VSangarya/PackTravel/blob/main/.github/workflows/build.yml)| 
-Test results publicly visible | 3 | [Builds on a pull request](https://github.com/VSangarya/PackTravel/pulls) | 
+Test results publicly visible | 3 | Yes, the GitHub Actions for build has logs for test-case results. We have a badge for test code-coverage in README.md | 
 Manually-run tests documented | N/A | N/A | 
 Project has resources (e.g. blog, Twitter, RSS feed, Facebook page, wiki, mailing list) that are regularly updated with information about your software | 3 | All updates on the readme [README.md](https://github.com/VSangarya/PackTravel#-PackTravel) | 
 Documentation states how many projects and users are associated with your project | 3 | All users are mentioned in [README]((https://github.com/VSangarya/PackTravel#-PackTravel)) | 
@@ -97,7 +97,7 @@ The website and documentation clearly state the licence of your software | 3 | [
 Software released under an open source licence | 3 | [LICENSE](../LICENSE) | 
 Software released under an OSI-approved open-source licence | 3 | [LICENSE](../LICENSE) | 
 Source code files include a licence header |  |  | 
-Do you have a recommended citation for your software | 3 | Zenodo Badge in [README]((https://github.com/VSangarya/PackTravel#-PackTravel)) | 
-Documentation includes a project roadmap (a list of project and development milestones for the next 3, 6 months) | 3 | Enhancements in [README]((https://github.com/VSangarya/PackTravel#-PackTravel)) | 
+Do you have a recommended citation for your software | 3 | Zenodo Badge in [README](https://github.com/VSangarya/PackTravel#-PackTravel) | 
+Documentation includes a project roadmap (a list of project and development milestones for the next 3, 6 months) | 3 | Enhancements in [README](https://github.com/VSangarya/PackTravel#-enhancements) | 
 Documentation describe how the project is funded, and the period over which funding is guaranteed? | 3 | We used free tools hence no funding required | 
-Do you make timely announcements of the deprecation of components, APIs, etc. | 3 | All updates are mentioned in [README]((https://github.com/VSangarya/PackTravel#-PackTravel)) | 
+Do you make timely announcements of the deprecation of components, APIs, etc. | 3 | All updates are mentioned in [README](https://github.com/VSangarya/PackTravel#-PackTravel) | 

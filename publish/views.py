@@ -1,7 +1,7 @@
 """Django views for ride creation functionality"""
 from django.shortcuts import render, redirect
 from datetime import datetime
-from cab_model.get_price_and_return import return_price
+from cab_model.predict import predict_price
 from utils import get_client
 import uuid
 import requests
@@ -36,11 +36,12 @@ def distance_and_cost(source, destination, date, hour, minute, ampm):
     date = date.split("-")
     url ="https://maps.googleapis.com/maps/api/distancematrix/json?"+ "origins=" + source +"&destinations=" + destination +"&key=" + api_key
     if ampm.lower() == "pm" : hour = str(int(hour) + 12)
-    date_time = f"{date[1]}-{date[2]}-{date[0]} {hour}:{minute}:{00}"
-    response = requests.get(url, timeout = 100)
+    date_time = f"-{date[2]}-{date[1]}-{date[0]} {hour}:{minute}:{00}"
+    response = requests.get(url, timeout=100)
     distance_data = response.json()
     distance_miles = distance_data["rows"][0]["elements"][0]["distance"]["value"]/1600
-    cost1, cost2 = return_price(distance_miles, date_time)
+    p = predict_price(distance_miles, date_time)
+    cost1, cost2 = p.generate_data_return_price()
     cost = cost1 +" and " +cost2
     return cost
 

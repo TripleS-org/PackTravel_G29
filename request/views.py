@@ -1,8 +1,8 @@
 """Django views for ride management functionality"""
 from django.shortcuts import render, redirect
-from utils import get_client
 from django.core.mail import send_mail
 from django.conf import settings
+from utils import get_client
 
 # database connections
 db_client = None
@@ -143,9 +143,8 @@ def delete_ride(request, ride_id):
         rides_collection.delete_one({"_id": ride_id})
 
     return redirect(requested_rides)
+
 def send_capacity_mail(user_mail,body,subject):
-    recepients=[user_mail]
+    """Method to send email"""
+    recepients = [user_mail]
     send_mail( subject, body, settings.EMAIL_HOST_USER, recepients)
-    
-
-

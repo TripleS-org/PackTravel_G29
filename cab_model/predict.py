@@ -21,7 +21,6 @@ class predict_price():
         elif 17 < hour and hour <= 22 : to_pred_data['Night'] = 1
         else : to_pred_data['LateNight'] = 1
         
-        date_list = [int(n) for n in self.date.split("-")]
         date_list = self.date.split("-")
         for i in range(len(date_list)):
             if date_list[i] != "": date_list[i] = int(date_list[i])

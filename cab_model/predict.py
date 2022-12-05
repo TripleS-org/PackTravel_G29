@@ -44,7 +44,7 @@ class predict_price():
 
 
     def predictCabs(self, to_pred):
-        path_to_model = str(BASE_DIR) + r"\cab_model\model.pkl"
+        path_to_model = str(BASE_DIR) + r"/cab_model/model.pkl"
         with open(path_to_model, 'rb') as f:
             lasso_trained_model = pickle.load(f)
 

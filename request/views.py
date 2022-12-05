@@ -6,7 +6,7 @@ from utils import get_client
 db_client = None
 db_handle = None
 users_collection = None
-rides_collection  = None
+rides_collection = None
 
 def initialize_database():
     """This method initialises the handles to various database collections"""
@@ -14,26 +14,26 @@ def initialize_database():
     db_client = get_client()
     db_handle = db_client.main
     users_collection = db_handle.users
-    rides_collection  = db_handle.rides
+    rides_collection = db_handle.rides
 
 def requested_rides(request):
     """This method processes the request to render the list of rides requested by the user, rides waiting approval and confirmed rides"""
     initialize_database()
 
     # sent requests
-    sent_requests = list(rides_collection.find( { "requested_users": request.session["username"] } ))
+    sent_requests = list(rides_collection.find({ "requested_users": request.session["username"]} ))
     for ride in sent_requests:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
     # received requests
-    rec_req = list(rides_collection.find( { "owner": request.session["username"], "requested_users": { "$exists": True, "$ne": [] }} ))
+    rec_req = list(rides_collection.find({ "owner": request.session["username"], "requested_users": { "$exists": True, "$ne": [] }}))
     for ride in rec_req:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
     # accepted rides
-    accepted_rides = list(rides_collection.find({ "$or": [ { "owner": request.session["username"] }, { "confirmed_users": request.session["username"] } ] }))
+    accepted_rides = list(rides_collection.find({ "$or": [ { "owner": request.session["username"] }, { "confirmed_users": request.session["username"] }]}))
     for ride in accepted_rides:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)

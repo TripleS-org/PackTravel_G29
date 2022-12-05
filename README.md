@@ -1,6 +1,7 @@
 # 🐺 PackTravel
 [![Build](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml/badge.svg)](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/df6694ed8d644df1822a1caa1669e504)](https://app.codacy.com/gh/VSangarya/PackTravel?utm_source=github.com&utm_medium=referral&utm_content=VSangarya/PackTravel&utm_campaign=Badge_Grade_Settings)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/df6694ed8d644df1822a1caa1669e504)](https://www.codacy.com/gh/VSangarya/PackTravel/dashboard?utm_source=github.com&utm_medium=referral&utm_content=VSangarya/PackTravel&utm_campaign=Badge_Coverage)
 [![Commit Acitivity](https://img.shields.io/github/commit-activity/w/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/pulse)
 [![Issues](https://img.shields.io/github/issues/VSangarya/PackTravel?color=red)](https://github.com/VSangarya/PackTravel/issues)
 [![Contributors](https://img.shields.io/github/contributors/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/graphs/contributors)
@@ -25,8 +26,11 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 ## 👥 Audience
 Any person who is looking to reduce spending on their commute expenditure can use our application.
 
-## ⚒️ Installation
-*  See [developer environment setup](INSTALL.md#--developer-environment-setup) to setup your development server.
+## ⚒️ Deployment and Installation
+*   PackTravel is built using MongoDB Atlas database, Django (Python) for backend-services, and HTML/CSS/JS/Bootstrap for the front-end.
+*   The application can be deployed on any web-server running on premise or in the cloud. See [django deployment](https://docs.djangoproject.com/en/4.1/howto/deployment/) to setup django on a VM.
+*   See [developer environment setup](INSTALL.md#--developer-environment-setup) to setup your development server.
+*   Common issues faced by users while setting up the developer environment are listed [here](INSTALL.md#debugging).
       
 ## 🎯 Enhancements
 *   Add machine learning algorithms for predicting ride prices
@@ -34,8 +38,8 @@ Any person who is looking to reduce spending on their commute expenditure can us
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.
-*  mquresh@ncsu.edu
-*  apandit3@ncsu.edu
-*  vnagara3@ncsu.edu
-*  schopra4@ncsu.edu
-*  lsangar@ncsu.edu
+*   mquresh@ncsu.edu
+*   apandit3@ncsu.edu
+*   vnagara3@ncsu.edu
+*   schopra4@ncsu.edu
+*   lsangar@ncsu.edu

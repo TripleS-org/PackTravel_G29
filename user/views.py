@@ -8,7 +8,7 @@ import hashlib
 db_client = None
 db_handle = None
 users_collection = None
-rides_collection  = None
+rides_collection = None
 
 def initialize_database():
     """This method initializes handles to the various database collections"""
@@ -16,7 +16,7 @@ def initialize_database():
     db_client = get_client()
     db_handle = db_client.main
     users_collection = db_handle.users
-    rides_collection  = db_handle.rides
+    rides_collection = db_handle.rides
 
 def index(request, username=None):
     """This method renders the home page of PackTravel"""
@@ -37,8 +37,8 @@ def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-            password=form.cleaned_data["password1"]
-            username=form.cleaned_data["username"]
+            password = form.cleaned_data["password1"]
+            username = form.cleaned_data["username"]
             user = users_collection.find_one({"username": username})
             # print(user)
             if user:
@@ -81,7 +81,7 @@ def login(request):
     if "username" in request.session:
         return redirect(index, {"username": request.session["username"]})
     else:
-        if request.method=="POST":
+        if request.method == "POST":
             form = LoginForm(request.POST)
             if form.is_valid():
                 username = form.cleaned_data["username"]

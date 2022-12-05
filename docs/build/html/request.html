@@ -39,6 +39,13 @@
 <li class="toctree-l2"><a class="reference internal" href="request.migrations.html#module-request.migrations">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="request.tests.html">request.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="request.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.tests.html#module-request.tests.test_urls">request.tests.test_urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.tests.html#module-request.tests.test_views">request.tests.test_views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request.tests.html#module-request.tests">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -47,9 +54,11 @@
 </div>
 <div class="section" id="module-request.admin">
 <span id="request-admin-module"></span><h2>request.admin module<a class="headerlink" href="#module-request.admin" title="Permalink to this headline">¶</a></h2>
+<p>Django admin for ride management functionality</p>
 </div>
 <div class="section" id="module-request.apps">
 <span id="request-apps-module"></span><h2>request.apps module<a class="headerlink" href="#module-request.apps" title="Permalink to this headline">¶</a></h2>
+<p>Django app for ride management functionality</p>
 <dl class="class">
 <dt id="request.apps.RequestsConfig">
 <em class="property">class </em><code class="descclassname">request.apps.</code><code class="descname">RequestsConfig</code><span class="sig-paren">(</span><em>app_name</em>, <em>app_module</em><span class="sig-paren">)</span><a class="headerlink" href="#request.apps.RequestsConfig" title="Permalink to this definition">¶</a></dt>
@@ -69,46 +78,58 @@
 </div>
 <div class="section" id="module-request.models">
 <span id="request-models-module"></span><h2>request.models module<a class="headerlink" href="#module-request.models" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-request.tests">
-<span id="request-tests-module"></span><h2>request.tests module<a class="headerlink" href="#module-request.tests" title="Permalink to this headline">¶</a></h2>
+<p>Django model for ride management functionality</p>
 </div>
 <div class="section" id="module-request.views">
 <span id="request-views-module"></span><h2>request.views module<a class="headerlink" href="#module-request.views" title="Permalink to this headline">¶</a></h2>
+<p>Django views for ride management functionality</p>
 <dl class="function">
 <dt id="request.views.accept_request">
 <code class="descclassname">request.views.</code><code class="descname">accept_request</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.accept_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method processes the ride owner’s request to accept a rider</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="request.views.cancel_accepted_ride">
 <code class="descclassname">request.views.</code><code class="descname">cancel_accepted_ride</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.cancel_accepted_ride" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method processes user request to cancel an accepted ride</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="request.views.cancel_ride">
 <code class="descclassname">request.views.</code><code class="descname">cancel_ride</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.cancel_ride" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method processes the user request to cancel a ride request before it gets confirmed</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="request.views.delete_ride">
 <code class="descclassname">request.views.</code><code class="descname">delete_ride</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.delete_ride" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method processes ride owner request to delete a ride</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="request.views.initialize_database">
 <code class="descclassname">request.views.</code><code class="descname">initialize_database</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#request.views.initialize_database" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method initialises the handles to various database collections</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="request.views.reject_request">
 <code class="descclassname">request.views.</code><code class="descname">reject_request</code><span class="sig-paren">(</span><em>request</em>, <em>ride_id</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.reject_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method processes the ride owner’s request to reject a rider</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="request.views.requested_rides">
 <code class="descclassname">request.views.</code><code class="descname">requested_rides</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.requested_rides" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method processes the request to render the list of rides requested by the user, rides waiting approval and confirmed rides</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="request.views.send_capacity_mail">
+<code class="descclassname">request.views.</code><code class="descname">send_capacity_mail</code><span class="sig-paren">(</span><em>user_mail</em>, <em>body</em>, <em>subject</em><span class="sig-paren">)</span><a class="headerlink" href="#request.views.send_capacity_mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to send email</p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-request">

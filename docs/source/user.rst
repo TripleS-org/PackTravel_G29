@@ -36,14 +36,6 @@ user.forms module
     :undoc-members:
     :show-inheritance:
 
-user.link module
-----------------
-
-.. automodule:: user.link
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 user.models module
 ------------------
 

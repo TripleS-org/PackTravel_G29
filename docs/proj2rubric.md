@@ -1,6 +1,6 @@
 # Project Evaluation
 
-|Notes|Score (261)|Evidence|
+|Notes|Score (262)|Evidence|
 |-----|------|---------|
 |Video1|3|[In README.md](https://github.com/VSangarya/PackTravel#-features), New features: Decoupled routes and rides in the old application for better UX; Cab price prediction using a machine learning model in "View Ride" page; Two-way ride request/confirmation feature between riders and owners; Rides have dynamic availability based on riders who have been accepted to travel; Owners can delete rides and users can cancel ride requests; Auto-complete feature for location (soure and destination) while creating a new ride; Ride route, distance and ETA is shown in the "View Ride" page; Emails are sent to ride owners when a ride capacity is reached; Improved code quality.|
 |Bonus: Xfold improvement|3|1. Performance: Shifted to use Google APIs in Search Ride -> View Ride page. We removed the existing use of Selenium on client-side to render routes between a source and a destination. This improves client performance because no memory overheads are there to render a new browser tab. 2. Lessen developer time: We cleaned code for better maintenance and improved readability for new developers - removed stale methods, unused imports etc. We fixed nearly 300 issues identified by pylint and codacy static analysis reports; Added comprehensive testcases to cover code coverage for existing functionality. 3. Scalability: We identified an [architecture](https://github.com/VSangarya/PackTravel#scaling-packtravel) to easily scale PackTravel to reduce latency and support more users.|
@@ -43,8 +43,8 @@
 |Is your software hosted in an established, third-party repository likeGitHub (https://github.com), BitBucket (https://bitbucket.org),LaunchPad (https://launchpad.net) orSourceForge (https://sourceforge.net)?|3|Yes, it is hosted on GitHub|
 |Is your documentation clearly available on your website or within your software?|3|All required documentation set up via the repositories readme, installation guides and setup steps, auto-generated through sphinx.|
 |Does your documentation include a "quick start" guide, that provides a short overview of how to use your software with some basic examples of use?|3||
-|If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software?|2|No additonal documentation present. Installation and set up instructions provide all required details.|
-|Do you provide a comprehensive guide to all your software’s commands, functions and options?|2|All functions are described in code. Classes and methods in source code give an overview of the code functionality.|
+|If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software?|3|No additonal documentation present. Installation and set up instructions provide all required details.|
+|Do you provide a comprehensive guide to all your software’s commands, functions and options?|3|All functions are described in code. Classes and methods in source code give an overview of the code functionality.|
 |Do you provide troubleshooting information that describes the symptoms and step-by-step solutions for problems and error messages?|1|Debugging resources, issues and e-mail information present to assist with troubleshooting.|
 |If your software can be used as a library, package or service by other software, do you provide comprehensive API documentation?|N/A|The software does not provide API documentation and cannot be used a package for other software at present|
 |Do you store your documentation under revision control with your source code?|3|[Github releases](https://github.com/VSangarya/PackTravel/releases)|

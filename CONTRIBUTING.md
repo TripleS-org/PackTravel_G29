@@ -61,8 +61,8 @@ This project uses [GitHub Issues](https://github.com/VSangarya/PackTravel/issues
 -   Link the issue to the pull request if fixing a reported bug.
 
 ## Contributors
--  Atharv Pandit
--  Muhammad Ali Qureshi
--  Shivangi Chopra
--  Vaishnav Nagarajan
--  Vishwesh Sangarya
+-   Atharv Pandit
+-   Muhammad Ali Qureshi
+-   Shivangi Chopra
+-   Vaishnav Nagarajan
+-   Vishwesh Sangarya

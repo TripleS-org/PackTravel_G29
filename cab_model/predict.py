@@ -20,20 +20,19 @@ class predict_price():
         elif 6 < hour and hour <= 17 : to_pred_data['MorningNoon'] = 1
         elif 17 < hour and hour <= 22 : to_pred_data['Night'] = 1
         else : to_pred_data['LateNight'] = 1
-        
+
         date_list = self.date.split("-")
         for i in range(len(date_list)):
             if date_list[i] != "": 
                 date_list[i] = int(date_list[i])
             else:
                 date_list[i] = 0
-        d = date(date_list[1], date_list[2], date_list[0]).strftime('%A')
+        d = date(day=date_list[0], month=date_list[1], year=date_list[2]).strftime('%A')
+
         if d in ["Saturday", "Sunday"] : to_pred_data["weekend"] = 1
         else : to_pred_data["weekday"] = 1
         to_pred_data["weekend"] = 1
-        print("###########################################################")
-        print(d)
-        print(date_list)
+
         return to_pred_data
 
     def dataframeFromDict(self, to_pred):

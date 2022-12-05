@@ -35,6 +35,11 @@
       /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
       /* background: #D3D3D3; */
     }
+    .myDiv {
+      border: 5px outset black;
+      background-color: white;
+      text-align: center;
+    }
   </style>
 
   <body style="background-color: #3a3b3c">
@@ -54,6 +59,8 @@
       <p>{{ride.info}}</p>
 
       <div id="maps" style="width: 100%; height: 300px"></div>
+      <div id="msg" class="myDiv"> </div>
+      
       <script>
         function GMaps() {
           var directionsService = new google.maps.DirectionsService();
@@ -73,6 +80,14 @@
             function (response, status) {
               if (status === "OK") {
                 directionsDisplay.setDirections(response);
+                var directionsData = response.routes[0].legs[0];
+                if (!directionsData) {
+                    window.alert('Directions request failed');
+                    return;
+                }
+                else {
+                    document.getElementById('msg').innerHTML += " Driving distance : " + directionsData.distance.text + "<br />" + " Drive Duration : " + directionsData.duration.text;
+                }
               }
             }
           );

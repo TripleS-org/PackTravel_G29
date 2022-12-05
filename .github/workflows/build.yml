@@ -24,23 +24,28 @@ jobs:
       - name: Install Python Dependencies
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Run linter on Python code files
+      - name: Run linter on source files
         run: |
-          pylint --errors-only --verbose --rcfile=pylintrc user/*.py
-          pylint --errors-only --verbose --rcfile=pylintrc publish/*.py
-          pylint --errors-only --verbose --rcfile=pylintrc search/*.py
+          pylint --verbose --rcfile=pylintrc user/*
+          pylint --verbose --rcfile=pylintrc publish/*
+          pylint --verbose --rcfile=pylintrc request/*
+          pylint --verbose --rcfile=pylintrc search/*
 
-#      - name: Run tests and coverage report
-#        run: |       
-#          coverage run --source=src --data-file tests/.coverage -m pytest -s
-#          coverage xml --data-file tests/.coverage -o tests/coverage.xml
-#          coverage report --data-file tests/.coverage -m
+      - name: Run django tests
+        run: |
+          echo "database:" > config.yml
+          echo "  endpoint: packtravel.cyumok3.mongodb.net/?retryWrites=true&w=majority" >> config.yml
+          echo "  username: ${{secrets.DB_USERNAME}}" >> config.yml
+          echo "  password: ${{secrets.DB_PASSWORD}}" >> config.yml
+          coverage run --source=user,publish,request,search ./manage.py test
+          coverage xml --data-file .coverage -o coverage.xml
+          coverage report --data-file .coverage -m
           
-#      - name : Send coverage report
-#        run: |
-#          pip install codacy-coverage
-#          export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_TOKEN }}
-#          export CODACY_API_TOKEN=${{ secrets.CODACY_API_TOKEN }}
-#          export CODACY_USERNAME=VSangarya
-#          export CODAY_PROJECT_NAME=AMATSA
-#          python-codacy-coverage -r tests/coverage.xml
+      - name : Send test coverage report
+        run: |
+          pip install codacy-coverage
+          export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_TOKEN }}
+          export CODACY_API_TOKEN=${{ secrets.CODACY_API_TOKEN }}
+          export CODACY_USERNAME=VSangarya
+          export CODAY_PROJECT_NAME=PackTravel
+          python-codacy-coverage -r coverage.xml

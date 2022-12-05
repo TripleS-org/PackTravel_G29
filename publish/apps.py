@@ -1,3 +1,4 @@
+"""Django app for ride creation functionality"""
 from django.apps import AppConfig
 
 

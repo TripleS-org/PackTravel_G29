@@ -1,3 +1,4 @@
+"""Django app for user login and sign up functionality"""
 from django.apps import AppConfig
 
 

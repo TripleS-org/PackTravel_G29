@@ -46,6 +46,7 @@ Any person who is looking to reduce spending on their commute expenditure can us
 *   Merge rides - users should be able to join rides in a via point between a source and a destination (feature). 
 *   Ride ratings - users should be able to rate other users after a ride is complete (feature).
 *   2FA - Add functionality to support 2 factor authentication to login (security)
+*   Cab Fare estimation to help make a more informed ride choice
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.

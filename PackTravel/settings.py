@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-lncd0d7jfejnf7_2ycdtawwo&$_y=q$n8#%2fk5bxaqy$*9mwo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['packtravel.azurewebsites.net']
 
 
 # Application definition
@@ -127,3 +127,11 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST_USER = 'email'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 25

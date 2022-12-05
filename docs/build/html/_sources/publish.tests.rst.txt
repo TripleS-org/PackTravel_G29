@@ -12,6 +12,14 @@ publish.tests.test\_urls module
     :undoc-members:
     :show-inheritance:
 
+publish.tests.test\_views module
+--------------------------------
+
+.. automodule:: publish.tests.test_views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

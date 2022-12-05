@@ -27,10 +27,15 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "user/login.html")
 
     def test_logout(self):
-        response = self.client.post(self.login_url,{"username" : "ap1","password": "12345" })
-        self.assertEquals(response.status_code, 200) # pylint: disable=deprecated-method
+        response = self.client.post(self.login_url,{"username" : "ap","password": "12345" })
+        self.assertEquals(response.status_code, 302) # pylint: disable=deprecated-method
         response = self.client.get(self.logout_url)
         self.assertEquals(response.status_code, 302) # pylint: disable=deprecated-method
         self.assertRedirects(response, "/index/")
+
+    def test_login_redirect(self):
+        response = self.client.post(self.login_url,{"username" : "ap","password": "12345" })
+        self.assertEquals(response.status_code, 302) # pylint: disable=deprecated-method
+        self.assertRedirects(response, "/index/ap")
 
     

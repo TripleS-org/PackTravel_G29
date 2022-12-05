@@ -80,6 +80,14 @@
             function (response, status) {
               if (status === "OK") {
                 directionsDisplay.setDirections(response);
+                var directionsData = response.routes[0].legs[0];
+                if (!directionsData) {
+                    
+                    return;
+                }
+                else {
+                    document.getElementById('msg').innerHTML += " Driving distance : " + directionsData.distance.text;
+                }
               }
             }
           );

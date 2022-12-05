@@ -86,7 +86,7 @@ Listing the important partners and collaborators in your website | 3 | Github |
 Listing the project's publications on our website or link to a resource where these are available | 0 | No publications | 
 Listing third-party publications that refer to the software on our website or link to a resource where these are available | 0 | No publications | 
 Users can subscribe to notifications to changes to your source code repository | 3 | Software is on Github | 
-Since the software is developed as an open source project (and, not just a project developing open source software), do you have a governance model | 3 | 2 approvers required to merge into main | 
+Since the software is developed as an open source project (and, not just a project developing open source software), do you have a governance model | 3 | 2 approvers required to merge into main - [pr](https://github.com/VSangarya/PackTravel/pull/14) | 
 Do you accept contributions (e.g. bug fixes, enhancements, documentation updates, tutorials) from people who are not part of your project? | 3 | Software is open source, other collaborators can create a pull request for a change | 
 Do you have a contributions policy | 3 | [CONTRIBUTING.md](../CONTRIBUTING.md) | 
 Is your contributions' policy publicly available? | 3 | [CONTRIBUTING.md](../CONTRIBUTING.md) | 

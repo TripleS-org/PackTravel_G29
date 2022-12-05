@@ -62,7 +62,7 @@ def show_ride(request, ride_id):
     """This method processes the user request to view a single ride's information"""
     initialize_database()
     ride = rides_collection.find_one({"_id": ride_id})
-    return render(request,"publish/show_ride.html", {"ride_id": ride["_id"], "ride": ride})
+    return render(request, "publish/show_ride.html", {"ride_id": ride["_id"], "ride": ride})
 
 def add_forum(request):
     """This method processes the user request to add comments in the ride's forum section"""
@@ -72,6 +72,6 @@ def add_forum(request):
         date = datetime.now()
         content = request.POST["content"]
         ride_id = request.POST["ride"]
-        post = {"user":username, "date":date,"content":content}
+        post = {"user":username, "date":date, "content":content}
         rides_collection.update_one({"_id": ride_id}, {"$push": {"forum": post}})
         return redirect(show_ride, ride_id=ride_id)

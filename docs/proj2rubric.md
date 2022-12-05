@@ -21,7 +21,7 @@
 |Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing|3|[README.md](https://github.com/VSangarya/PackTravel#-PackTravel)|
 |Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code.|0|N/A|
 |Use of version control tools|3|Git Version Control|
-|Test cases exist|3|Tests are written using Django Tests|
+|Test cases exist|3|Tests cases testing urls and views for each django app.They are written using Django Tests and under the "test" folder of each app|
 |Test cases are routinely executed|3|Tests are run every pull request by GitHub Actions in [build.yml](https://github.com/VSangarya/PackTravel/blob/main/.github/workflows/build.yml) GitHub action|
 |The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|Info on style guide, branching strategies, how to raise a PR etc.|
 |Issues are discussed before they are closed|3|Discussed on GitHub Issues and PR comments, WhatsApp|

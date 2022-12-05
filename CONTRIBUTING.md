@@ -37,7 +37,7 @@ To work on a new feature or bugfix:
 This project uses Python linter to ensure the code style is uniform and conforms to a well known syntactical style. [Pylint analyser](https://pylint.pycqa.org/en/latest/)
 
 ## How to report an issue 
-This project uses [GitHub Issues](https://github.com/VSangarya/AMATSA/issues) to track bugs. 
+This project uses [GitHub Issues](https://github.com/VSangarya/PackTravel/issues) to track bugs. 
 
 ### Before you report an issue
 - Check the debugging section to see solutions for frequently encountered problems.

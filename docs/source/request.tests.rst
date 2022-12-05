@@ -1,21 +1,21 @@
-publish.tests package
+request.tests package
 =====================
 
 Submodules
 ----------
 
-publish.tests.test\_urls module
+request.tests.test\_urls module
 -------------------------------
 
-.. automodule:: publish.tests.test_urls
+.. automodule:: request.tests.test_urls
     :members:
     :undoc-members:
     :show-inheritance:
 
-publish.tests.test\_views module
+request.tests.test\_views module
 --------------------------------
 
-.. automodule:: publish.tests.test_views
+.. automodule:: request.tests.test_views
     :members:
     :undoc-members:
     :show-inheritance:
@@ -24,7 +24,7 @@ publish.tests.test\_views module
 Module contents
 ---------------
 
-.. automodule:: publish.tests
+.. automodule:: request.tests
     :members:
     :undoc-members:
     :show-inheritance:

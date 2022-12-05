@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     request.migrations
+    request.tests
 
 Submodules
 ----------
@@ -31,14 +32,6 @@ request.models module
 ---------------------
 
 .. automodule:: request.models
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-request.tests module
---------------------
-
-.. automodule:: request.tests
     :members:
     :undoc-members:
     :show-inheritance:

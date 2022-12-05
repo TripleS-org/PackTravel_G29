@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     search.migrations
+    search.tests
 
 Submodules
 ----------
@@ -31,14 +32,6 @@ search.models module
 --------------------
 
 .. automodule:: search.models
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-search.tests module
--------------------
-
-.. automodule:: search.tests
     :members:
     :undoc-members:
     :show-inheritance:

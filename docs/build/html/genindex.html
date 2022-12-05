@@ -39,7 +39,6 @@
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#F"><strong>F</strong></a>
- | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
@@ -133,14 +132,6 @@
         <li><a href="user.html#user.forms.RegisterForm.Meta.fields">(user.forms.RegisterForm.Meta attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="G">G</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="user.html#user.link.get_link">get_link() (in module user.link)</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -247,10 +238,10 @@
 </li>
       <li><a href="publish.html#module-publish.admin">publish.admin (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="publish.html#module-publish.apps">publish.apps (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="publish.html#module-publish.forms">publish.forms (module)</a>
 </li>
       <li><a href="publish.migrations.html#module-publish.migrations">publish.migrations (module)</a>
@@ -258,6 +249,10 @@
       <li><a href="publish.html#module-publish.models">publish.models (module)</a>
 </li>
       <li><a href="publish.tests.html#module-publish.tests">publish.tests (module)</a>
+</li>
+      <li><a href="publish.tests.html#module-publish.tests.test_urls">publish.tests.test_urls (module)</a>
+</li>
+      <li><a href="publish.tests.html#module-publish.tests.test_views">publish.tests.test_views (module)</a>
 </li>
       <li><a href="publish.html#module-publish.views">publish.views (module)</a>
 </li>
@@ -289,9 +284,13 @@
 </li>
       <li><a href="request.html#module-request.models">request.models (module)</a>
 </li>
+      <li><a href="request.tests.html#module-request.tests">request.tests (module)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="request.html#module-request.tests">request.tests (module)</a>
+      <li><a href="request.tests.html#module-request.tests.test_urls">request.tests.test_urls (module)</a>
+</li>
+      <li><a href="request.tests.html#module-request.tests.test_views">request.tests.test_views (module)</a>
 </li>
       <li><a href="request.html#module-request.views">request.views (module)</a>
 </li>
@@ -327,16 +326,28 @@
 </li>
       <li><a href="search.html#module-search.models">search.models (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="search.html#module-search.tests">search.tests (module)</a>
+      <li><a href="search.tests.html#module-search.tests">search.tests (module)</a>
+</li>
+      <li><a href="search.tests.html#module-search.tests.test_views">search.tests.test_views (module)</a>
 </li>
       <li><a href="search.html#module-search.views">search.views (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="search.html#search.views.search_index">search_index() (in module search.views)</a>
 </li>
       <li><a href="search.html#search.apps.SearchConfig">SearchConfig (class in search.apps)</a>
 </li>
+      <li><a href="request.html#request.views.send_capacity_mail">send_capacity_mail() (in module request.views)</a>
+</li>
+      <li><a href="publish.tests.html#publish.tests.test_views.TestViews.setUp">setUp() (publish.tests.test_views.TestViews method)</a>
+
+      <ul>
+        <li><a href="request.tests.html#request.tests.test_views.TestViews.setUp">(request.tests.test_views.TestViews method)</a>
+</li>
+        <li><a href="search.tests.html#search.tests.test_views.TestViews.setUp">(search.tests.test_views.TestViews method)</a>
+</li>
+      </ul></li>
       <li><a href="publish.html#publish.views.show_ride">show_ride() (in module publish.views)</a>
 </li>
       <li><a href="publish.html#publish.models.Ride.source">source (publish.models.Ride attribute)</a>
@@ -347,22 +358,80 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="request.tests.html#request.tests.test_urls.TestUrl.test_accept_request_resolves">test_accept_request_resolves() (request.tests.test_urls.TestUrl method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_views.TestViews.test_accept_ride_request">test_accept_ride_request() (request.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="publish.tests.html#publish.tests.test_urls.TestUrl.test_add_forum_resolves">test_add_forum_resolves() (publish.tests.test_urls.TestUrl method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_views.TestViews.test_cancel_accepted_ride">test_cancel_accepted_ride() (request.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_urls.TestUrl.test_cancel_accepted_ride_resolves">test_cancel_accepted_ride_resolves() (request.tests.test_urls.TestUrl method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_views.TestViews.test_cancel_ride_logged_in_user">test_cancel_ride_logged_in_user() (request.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_urls.TestUrl.test_cancel_ride_resolves">test_cancel_ride_resolves() (request.tests.test_urls.TestUrl method)</a>
+</li>
+      <li><a href="publish.tests.html#publish.tests.test_urls.TestUrl.test_create_ride_resolves">test_create_ride_resolves() (publish.tests.test_urls.TestUrl method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_views.TestViews.test_delete_ride">test_delete_ride() (request.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_urls.TestUrl.test_delete_ride_resolves">test_delete_ride_resolves() (request.tests.test_urls.TestUrl method)</a>
+</li>
       <li><a href="user.tests.html#user.tests.test_urls.TestUrl.test_index_resolved">test_index_resolved() (user.tests.test_urls.TestUrl method)</a>
 </li>
       <li><a href="user.tests.html#user.tests.test_urls.TestUrl.test_login_resolved">test_login_resolved() (user.tests.test_urls.TestUrl method)</a>
 </li>
       <li><a href="user.tests.html#user.tests.test_urls.TestUrl.test_logout_resolved">test_logout_resolved() (user.tests.test_urls.TestUrl method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="publish.tests.html#publish.tests.test_views.TestViews.test_publish_for_logged_in_user">test_publish_for_logged_in_user() (publish.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="publish.tests.html#publish.tests.test_views.TestViews.test_publish_for_logged_out_user">test_publish_for_logged_out_user() (publish.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="publish.tests.html#publish.tests.test_urls.TestUrl.test_publish_index_resolves">test_publish_index_resolves() (publish.tests.test_urls.TestUrl method)</a>
+</li>
       <li><a href="user.tests.html#user.tests.test_urls.TestUrl.test_register_resolved">test_register_resolved() (user.tests.test_urls.TestUrl method)</a>
 </li>
-      <li><a href="user.tests.html#user.tests.test_forms.TestForms.test_registerForm_validData">test_registerForm_validData() (user.tests.test_forms.TestForms method)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="user.tests.html#user.tests.test_forms.TestForms.test_registerform_validdata">test_registerform_validdata() (user.tests.test_forms.TestForms method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_urls.TestUrl.test_reject_request_resolves">test_reject_request_resolves() (request.tests.test_urls.TestUrl method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_views.TestViews.test_reject_ride_request">test_reject_ride_request() (request.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="search.tests.html#search.tests.test_views.TestViews.test_request_ride">test_request_ride() (search.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_urls.TestUrl.test_requested_ride_resolves">test_requested_ride_resolves() (request.tests.test_urls.TestUrl method)</a>
+</li>
+      <li><a href="request.tests.html#request.tests.test_views.TestViews.test_requested_rides">test_requested_rides() (request.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="publish.tests.html#publish.tests.test_views.TestViews.test_ride_creation">test_ride_creation() (publish.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="search.tests.html#search.tests.test_views.TestViews.test_search_logged_in_user">test_search_logged_in_user() (search.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="search.tests.html#search.tests.test_views.TestViews.test_search_logged_out_user">test_search_logged_out_user() (search.tests.test_views.TestViews method)</a>
+</li>
+      <li><a href="publish.tests.html#publish.tests.test_urls.TestUrl.test_show_ride_resolves">test_show_ride_resolves() (publish.tests.test_urls.TestUrl method)</a>
 </li>
       <li><a href="user.tests.html#user.tests.test_forms.TestForms">TestForms (class in user.tests.test_forms)</a>
 </li>
-      <li><a href="user.tests.html#user.tests.test_urls.TestUrl">TestUrl (class in user.tests.test_urls)</a>
+      <li><a href="publish.tests.html#publish.tests.test_urls.TestUrl">TestUrl (class in publish.tests.test_urls)</a>
+
+      <ul>
+        <li><a href="request.tests.html#request.tests.test_urls.TestUrl">(class in request.tests.test_urls)</a>
 </li>
+        <li><a href="user.tests.html#user.tests.test_urls.TestUrl">(class in user.tests.test_urls)</a>
+</li>
+      </ul></li>
+      <li><a href="publish.tests.html#publish.tests.test_views.TestViews">TestViews (class in publish.tests.test_views)</a>
+
+      <ul>
+        <li><a href="request.tests.html#request.tests.test_views.TestViews">(class in request.tests.test_views)</a>
+</li>
+        <li><a href="search.tests.html#search.tests.test_views.TestViews">(class in search.tests.test_views)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -376,8 +445,6 @@
       <li><a href="user.html#module-user.apps">user.apps (module)</a>
 </li>
       <li><a href="user.html#module-user.forms">user.forms (module)</a>
-</li>
-      <li><a href="user.html#module-user.link">user.link (module)</a>
 </li>
       <li><a href="user.migrations.html#module-user.migrations">user.migrations (module)</a>
 </li>

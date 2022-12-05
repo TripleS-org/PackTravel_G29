@@ -1,4 +1,4 @@
 database:
   endpoint: packtravel.cyumok3.mongodb.net/?retryWrites=true&w=majority
-  username: database
-  password: givemewriteaccess
+  username: <username>
+  password: <password>

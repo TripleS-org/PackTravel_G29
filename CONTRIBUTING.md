@@ -1,82 +1,68 @@
-# Contributing to PackTravel
+# 📒 Guidelines for contributing to the Pack Travel
 
-:+1::tada: Kudos! Thanks for your time and effort in contributing to PackTravel! :tada::+1:
+Kudos if you are reading this page! You are thinking about making your first contribution to this repository. 
 
-The following is a set of guidelines for contributing to PackTravel.
+This page lists the guidelines to keep in mind while working with files in this repository. As a new project, this is an evolving page. Contributors are welcome to propose standard practices (and suggest improvements!) that we can follow to maintain this repository.
 
+<details>
+  <summary><h2>𝌞 Table of Contents</h2></summary>
+  <p>
+  
+-   [Getting Started](#getting-started)
+    -   [Branching Strategy](#branching-strategy)
+    -   [Style Guides](#style-guides)
 
-#### Table Of Contents
+-   [How to report an issue?](#how-to-report-an-issue)
+    
+-   [How to create a pull request?](#how-to-create-a-pull-request)
+    
+-   [Contributors](#contributors)
 
-[Code of Conduct](#code-of-conduct)
+  </p>
+</details>
 
+## Getting Started
+### Branching Strategy
+`main` is the latest stable branch that can be deployed on production workloads.
 
-[How Can I Contribute?](#how-can-i-contribute)
-  * [Reporting Bugs](#reporting-bugs)
-  * [Suggesting Enhancements](#suggesting-enhancements)
-  * [Style Guides](#style-guides)
-  * [Pull Requests](#pull-requests)
-
-
-## Code of Conduct
-
-This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to the given [email](mailto:help@packtravel.io).
-
-
-## How Can I Contribute?
-
-### Reporting Bugs
-
-This section guides you through submitting a bug report. Following these guidelines helps maintainers and the community understand your report :pencil:, reproduce the behavior :computer: :computer:, and find related reports :mag_right:.
-
-> **Note:** If you find a **Closed** issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
-#### Before Submitting A Bug Report
-
-* **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/amisha-w/PackTravel/issues).
-
-* If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/amisha-w/PackTravel/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
-
-#### How Do I Submit the fixes for the Bug?
-
-* **Use a clear and descriptive title** for the issue to identify the problem.
-* **Describe the exact steps which reproduce the problem** in as many details as possible.
-* **Provide specific examples to demonstrate the steps**. Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. If you're providing snippets in the issue, use [Markdown code blocks](https://help.github.com/articles/markdown-basics/#multiple-lines).
-* **Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior.
-* **Explain which behavior you expected to see instead and why.**
-* **Include screenshots and animated GIFs** which clearly demonstrates the problem.
-* **If the problem wasn't triggered by a specific action**, describe what you were doing before the problem happened and share more information using the guidelines below.
-* **Open a new GitHub pull request** with the patch.
-* **Ensure the PR description clearly describes the problem and solution.**
-Provide more context by answering these questions:
-
-
-### Suggesting Enhancements
-
-This section guides you through submitting an enhancement suggestion, including completely new features and minor improvements to existing functionality. Following these guidelines helps maintainers and the community understand your suggestion :pencil: and find related suggestions :mag_right:.
-
-* **Drop an [email](mailto:help@packtravel.io) suggesting your change and start writing code.**
-* **Do not open an issue on GitHub until you have collected positive feedback about the change. GitHub issues are primarily intended for bug reports and fixes.**
+To work on a new feature or bugfix:
+1.  Create a new branch, say `add-new-icons` from `main`.
+2.  Make changes to files in `add-new-icons` branch, commit regularly and push the changes to remote.
+3.  When the task is complete, create a pull request to merge your changes from `add-new-icons` to `main`. 
+4.  Request feedback from other collaborators on the pull request and incorporate changes if any.
+5.  Once the review cycle is over, merge the pull request using a **merge-commit**.
+6.  After successful merge, delete branch `add-new-icons`.
 
 ### Style Guides
-This project uses Python linter to ensure the code style is uniform and conforms to a well known syntactical style: [Pylint analyser](https://pylint.pycqa.org/en/latest/).
+This project uses Python linter to ensure the code style is uniform and conforms to a well known syntactical style. [Pylint analyser](https://pylint.pycqa.org/en/latest/)
 
-### Pull Requests
+## How to report an issue 
+This project uses [GitHub Issues](https://github.com/VSangarya/PackTravel/issues) to track bugs. 
 
-The process described here has several goals:
+### Before you report an issue
+-   Check the debugging section to see solutions for frequently encountered problems.
+-   Attempt to reproduce the bug on the latest release version of the project (bugs are fixed regularly! 😎).
 
-- Maintain Atom's quality
-- Fix problems that are important to users
-- Engage the community in working toward the best possible Atom
-- Enable a sustainable system for Atom's maintainers to review contributions
+### Submitting a bug report
+1.  Give a clear and concise summary to the issue.
 
-Please follow these steps to have your contribution considered by the maintainers:
+2.  Add labels that seem fit to the issue.
 
-1. Only touch relevant files
-2. Make sure your code is clean
-3. Make sure you unit test your changes
-4. Keep your commit history short and clean
-5. Write a convincing description of your PR and why we should land it.
+3.  A good report has the following sections:
+   -Steps to reproduce the problem (if any)
+   -Expected behavior
+   -Actual behavior
+   -Any special case where this issue is encountered (if any)
+   -Additional notes (if any)
 
-While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.
+## How to create a pull request
+-   Target your pull request to `main` branch.
+-   Give a concise summary and a short description of what changed in files that have beed added/modified.
+-   Link the issue to the pull request if fixing a reported bug.
 
-
-Thanks! 
+## Contributors
+-   Atharv Pandit
+-   Muhammad Ali Qureshi
+-   Shivangi Chopra
+-   Vaishnav Nagarajan
+-   Vishwesh Sangarya

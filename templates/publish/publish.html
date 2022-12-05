@@ -36,6 +36,8 @@
                                     });
                                     google.maps.event.addListener(autocomplete, 'place_changed', function () {
                                         var near_place = autocomplete.getPlace();
+                                        var lat1 = near_place.geometry.location.lat();
+                                        var lng1 = near_place.geometry.location.lng();
                                     }  );
                                 });
                             </script>
@@ -59,6 +61,9 @@
                                     });
                                     google.maps.event.addListener(autocomplete, 'place_changed', function () {
                                         var near_place = autocomplete.getPlace();
+                                        var lat2 = near_place.geometry.location.lat();
+                                        var lng2 = near_place.geometry.location.lng();
+                                        //var distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(lat1, lng1), new google.maps.LatLng(lat2, lng2));
                                     });
                                 });
                             </script>

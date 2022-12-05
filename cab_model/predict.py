@@ -31,7 +31,9 @@ class predict_price():
         if d in ["Saturday", "Sunday"] : to_pred_data["weekend"] = 1
         else : to_pred_data["weekday"] = 1
         to_pred_data["weekend"] = 1
-        
+        print("###########################################################")
+        print(d)
+        print(date_list)
         return to_pred_data
 
     def dataframeFromDict(self, to_pred):

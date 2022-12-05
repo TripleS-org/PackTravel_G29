@@ -36,7 +36,7 @@ def distance_and_cost(source, destination, date, hour, minute, ampm):
     date = date.split("-")
     url ="https://maps.googleapis.com/maps/api/distancematrix/json?"+ "origins=" + source +"&destinations=" + destination +"&key=" + api_key
     if ampm.lower() == "pm" : hour = str(int(hour) + 12)
-    date_time = f"-{date[2]}-{date[1]}-{date[0]} {hour}:{minute}:{00}"
+    date_time = f"{date[2]}-{date[1]}-{date[0]} {hour}:{minute}:{00}"
     response = requests.get(url, timeout=100)
     distance_data = response.json()
     distance_miles = distance_data["rows"][0]["elements"][0]["distance"]["value"]/1600

@@ -1,6 +1,6 @@
 # Project Evaluation
 
-|Notes|Score|Evidence|
+|Notes|Score (260)|Evidence|
 |-----|------|---------|
 |Video1|3| [In README.md](https://github.com/VSangarya/PackTravel#-features)|
 |Bonus: Xfold improvement|3||
@@ -27,7 +27,7 @@
 |Issues are discussed before they are closed|3|Discussed on GitHub Issues and PR comments, WhatsApp|
 |Chat channel: exists|3|[WhatsApp](../images/chat-channel.png)|
 |Test cases: a large proportion of the issues related to handling failing cases.|3|Bugs reported: Issues 2,3,4,6|
-|Evidence that the whole team is using the same tools: everyone can get to all tools and files|3|[dev environment setup](https://github.com/VSangarya/PackTravel#--developer-environment-setup), .vscode [dir](https://github.com/VSangarya/PackTravel/blob/main/.vscode/settings.json) for style configuration|
+|Evidence that the whole team is using the same tools: everyone can get to all tools and files|3|[dev environment setup](https://github.com/VSangarya/PackTravel/blob/main/INSTALL.md#--developer-environment-setup), .vscode [dir](https://github.com/VSangarya/PackTravel/blob/main/.vscode/settings.json) for style configuration|
 |Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|2|Tools/Style and Style checkers were setup as the first commit. All devs pulled these settings. Hence, no further changes were made.|
 |Evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)|3|Code is deployed on every developer's PC|
 |Evidence that the members of the team are working across multiple places in the code base|3|Every dev has worked on writing code, tests, documentation. Evidence in commits.|

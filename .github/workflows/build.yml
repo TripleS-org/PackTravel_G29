@@ -47,5 +47,6 @@ jobs:
           export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_TOKEN }}
           export CODACY_API_TOKEN=${{ secrets.CODACY_API_TOKEN }}
           export CODACY_USERNAME=VSangarya
+          export CODACY_ORGANIZATION_PROVIDER=gh
           export CODAY_PROJECT_NAME=PackTravel
           python-codacy-coverage -r coverage.xml

@@ -17,24 +17,24 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "home/home.html")
 
     def test_register(self):
-        response=self.client.get(self.register_url)
+        response = self.client.get(self.register_url)
         self.assertEquals(response.status_code, 200) # pylint: disable=deprecated-method
         self.assertTemplateUsed(response, "user/register.html")
 
     def test_login(self):
-        response=self.client.get(self.login_url)
+        response = self.client.get(self.login_url)
         self.assertEquals(response.status_code, 200) # pylint: disable=deprecated-method
         self.assertTemplateUsed(response, "user/login.html")
 
     def test_logout(self):
-        response = self.client.post(self.login_url,{"username" : "ap","password": "12345" })
+        response = self.client.post(self.login_url,{"username" : "ap", "password": "12345" })
         self.assertEquals(response.status_code, 302) # pylint: disable=deprecated-method
         response = self.client.get(self.logout_url)
         self.assertEquals(response.status_code, 302) # pylint: disable=deprecated-method
         self.assertRedirects(response, "/index/")
 
     def test_login_redirect(self):
-        response = self.client.post(self.login_url,{"username" : "ap","password": "12345" })
+        response = self.client.post(self.login_url,{"username" : "ap", "password": "12345" })
         self.assertEquals(response.status_code, 302) # pylint: disable=deprecated-method
         self.assertRedirects(response, "/index/ap")
 

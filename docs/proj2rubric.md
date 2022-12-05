@@ -80,7 +80,7 @@ Using continuous integration, automatically running tests whenever changes are m
 Test results publicly visible | 3 | Yes, the GitHub Actions for build has logs for test-case results. We have a badge for test code-coverage in README.md | 
 Manually-run tests documented | N/A | N/A | 
 Project has resources (e.g. blog, Twitter, RSS feed, Facebook page, wiki, mailing list) that are regularly updated with information about your software | 3 | All updates on the readme [README.md](https://github.com/VSangarya/PackTravel#-PackTravel) | 
-Documentation states how many projects and users are associated with your project | 3 | All users are mentioned in [README]((https://github.com/VSangarya/PackTravel#-PackTravel)) | 
+Documentation states how many projects and users are associated with your project | 3 | All users are mentioned in [README.md](https://github.com/VSangarya/PackTravel#-PackTravel) | 
 Provide success stories on your website | 0 | Software not yet used publicly | 
 Listing the important partners and collaborators in your website | 3 | Github | 
 Listing the project's publications on our website or link to a resource where these are available | 0 | No publications | 

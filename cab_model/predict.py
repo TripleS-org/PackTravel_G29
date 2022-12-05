@@ -23,7 +23,7 @@ class predict_price():
 
         date_list = self.date.split("-")
         for i in range(len(date_list)):
-            if date_list[i] != "": 
+            if date_list[i] != "":
                 date_list[i] = int(date_list[i])
             else:
                 date_list[i] = 0

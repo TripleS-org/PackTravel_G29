@@ -22,6 +22,9 @@ class predict_price():
         else : to_pred_data['LateNight'] = 1
         
         date_list = [int(n) for n in self.date.split("-")]
+        date_list = self.date.split("-")
+        for i in range(len(date_list)):
+            if date_list[i] != "": date_list[i] = int(date_list[i])
         d = date(date_list[1], date_list[2], date_list[0]).strftime('%A')
         if d in ["Saturday", "Sunday"] : to_pred_data["weekend"] = 1
         else : to_pred_data["weekday"] = 1

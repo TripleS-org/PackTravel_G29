@@ -15,4 +15,8 @@ class TestViews(TestCase):
         response = self.client.get(self.index_url)
         self.assertEquals(response.status_code, 200) # pylint: disable=deprecated-method
         self.assertTemplateUsed(response, "home/home.html")
-        
+
+    def test_register(self):
+        response=self.client.get(self.register_url)
+        self.assertEquals(response.status_code, 200) # pylint: disable=deprecated-method
+        self.assertTemplateUsed(response, "user/register.html")

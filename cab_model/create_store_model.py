@@ -12,7 +12,7 @@ warnings.filterwarnings('ignore')
 filepath = os.path.join(BASE_DIR, 'data')
 df_cabs = pd.read_csv(filepath+r"/cab_rides.csv")
 df_cabs['time_stamp'] = df_cabs['time_stamp'].astype(str).str[:-3].astype(np.int64)
-df_cabs.dropna(inplace = True)
+df_cabs.dropna(inplace=True)
 
 cab_company = pd.get_dummies(df_cabs.cab_type)
 cab_company.columns = ['LyftCabs', 'UberCabs']

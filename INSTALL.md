@@ -17,7 +17,6 @@ Windows:  `.venv/Scripts/activate`<br/>
 pip install -r requirements.txt
 ```
 5.  Add your MongoDB connection string and user credentials to the `config.yml` file in the repository root directory.
-
 6.  Start the development server using the following commands 
 ```Text
 python manage.py migrate

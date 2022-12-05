@@ -31,10 +31,6 @@ Any person who is looking to reduce spending on their commute expenditure can us
 *   The application can be deployed on any web-server running on premise or in the cloud. See [django deployment](https://docs.djangoproject.com/en/4.1/howto/deployment/) to setup django on a VM.
 *   See [developer environment setup](INSTALL.md#--developer-environment-setup) to setup your development server.
 *   Common issues faced by users while setting up the developer environment are listed [here](INSTALL.md#debugging).
-      
-## 🎯 Enhancements
-*   Add machine learning algorithms for predicting ride prices
-*   Add functionality to merge routes
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.

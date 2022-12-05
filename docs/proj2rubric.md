@@ -25,7 +25,7 @@
 |Test cases are routinely executed|3|Tests are run every pull request by GitHub Actions in [build.yml](https://github.com/VSangarya/PackTravel/blob/main/.github/workflows/build.yml) GitHub action|
 |The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up|3|Info on style guide, branching strategies, how to raise a PR etc.|
 |Issues are discussed before they are closed|3|Discussed on GitHub Issues and PR comments, WhatsApp|
-|Chat channel: exists|3|[WhatsApp](images/chat-channel.png)|
+|Chat channel: exists|3|[WhatsApp](../images/chat-channel.png)|
 |Test cases: a large proportion of the issues related to handling failing cases.|3|Bugs reported: Issues 2,3,4,6|
 |Evidence that the whole team is using the same tools: everyone can get to all tools and files|3|[dev environment setup](https://github.com/VSangarya/PackTravel#--developer-environment-setup), .vscode [dir](https://github.com/VSangarya/PackTravel/blob/main/.vscode/settings.json) for style configuration|
 |Evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)|2|Tools/Style and Style checkers were setup as the first commit. All devs pulled these settings. Hence, no further changes were made.|

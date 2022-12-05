@@ -23,7 +23,7 @@ def requested_rides(request):
     initialize_database()
 
     # sent requests
-    sent_requests = list(rides_collection.find({ "requested_users": request.session["username"]} ))
+    sent_requests = list(rides_collection.find({ "requested_users": request.session["username"]}))
     for ride in sent_requests:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
@@ -35,7 +35,7 @@ def requested_rides(request):
         ride.pop("_id", None)
 
     # accepted rides
-    accepted_rides = list(rides_collection.find({ "$or": [ { "owner": request.session["username"] }, { "confirmed_users": request.session["username"] }]}))
+    accepted_rides = list(rides_collection.find({ "$or": [ { "owner": request.session["username"] }, { "confirmed_users": request.session["username"]}]}))
     for ride in accepted_rides:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
@@ -79,14 +79,14 @@ def accept_request(request, ride_id, user):
         insert_data = {"$pull": {"requested_users": user}, "$push": {"confirmed_users": user}, "$set": {"availability": new_availability}}
         rides_collection.update_one({"_id": ride_id}, insert_data)
         ride_updated = rides_collection.find_one({"_id": ride_id})
-        if ride_updated["availability"]==0:
+        if ride_updated["availability"] == 0:
             print("in")
             user = users_collection.find_one({"username" : ride["owner"]})
             body = "Your ride to " + ride["destination"] + "has been booked. Please find the users below \n"
             for i in ride_updated["confirmed_users"]:
                 body += i+", "
             subject = "Ride reached capacity"
-            send_capacity_mail(user["email"],body[:-2],subject)
+            send_capacity_mail(user["email"], body[:-2], subject)
             print("mail sent")
 
 
@@ -144,7 +144,7 @@ def delete_ride(request, ride_id):
 
     return redirect(requested_rides)
 
-def send_capacity_mail(user_mail,body,subject):
+def send_capacity_mail(user_mail, body, subject):
     """Method to send email"""
     recepients = [user_mail]
-    send_mail( subject, body, settings.EMAIL_HOST_USER, recepients)
+    send_mail(subject, body, settings.EMAIL_HOST_USER, recepients)

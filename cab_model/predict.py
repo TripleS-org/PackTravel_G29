@@ -1,3 +1,4 @@
+"""Module to contain functionality to predict cab price"""
 from datetime import date
 import pickle
 import pandas as pd
@@ -7,19 +8,25 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 class predict_price():
+    """Class to contain functionality to predict cab price"""
     def __init__(self, distance, date_time_str):
         self.distance = distance
         self.date_time_str = date_time_str.split(" ")
         self.date = self.date_time_str[0]
         self.time = self.date_time_str[1]
         self.columns = ['distance', 'LyftCabs', 'UberCabs', 'Black', 'Black SUV', 'Lux', 'Lux Black', 'Lux Black XL', 'Lyft', 'Lyft XL', 'Shared', 'UberPool', 'UberX', 'UberXL', 'WAV', 'EarlyMorning', 'LateNight', 'MorningNoon', 'Night', 'weekend', 'weekday']
-    
+
     def populateTimePeriod(self, to_pred_data):
+        """This method sanitizes the format of time"""
         hour = [int(n) for n in self.time.split(":")][0]
-        if 3 <= hour and hour <= 6 : to_pred_data['EarlyMorning'] = 1
-        elif 6 < hour and hour <= 17 : to_pred_data['MorningNoon'] = 1
-        elif 17 < hour and hour <= 22 : to_pred_data['Night'] = 1
-        else : to_pred_data['LateNight'] = 1
+        if 3 <= hour and hour <= 6 :
+            to_pred_data['EarlyMorning'] = 1
+        elif 6 < hour and hour <= 17 :
+            to_pred_data['MorningNoon'] = 1
+        elif 17 < hour and hour <= 22 :
+            to_pred_data['Night'] = 1
+        else :
+            to_pred_data['LateNight'] = 1
 
         date_list = self.date.split("-")
         for i in range(len(date_list)):
@@ -29,13 +36,16 @@ class predict_price():
                 date_list[i] = 0
         d = date(day=date_list[0], month=date_list[1], year=date_list[2]).strftime('%A')
 
-        if d in ["Saturday", "Sunday"] : to_pred_data["weekend"] = 1
-        else : to_pred_data["weekday"] = 1
+        if d in ["Saturday", "Sunday"] :
+            to_pred_data["weekend"] = 1
+        else :
+            to_pred_data["weekday"] = 1
         to_pred_data["weekend"] = 1
 
         return to_pred_data
 
     def dataframeFromDict(self, to_pred):
+        """This method converts a dictionary to data frame"""
         new_data = pd.DataFrame(to_pred.items()).transpose()
         cols = new_data.iloc[0]
         new_data = new_data[1:]
@@ -44,6 +54,7 @@ class predict_price():
 
 
     def predictCabs(self, to_pred):
+        """This method predicts cab price with input data"""
         path_to_model = str(BASE_DIR) + r"/cab_model/model.pkl"
         with open(path_to_model, 'rb') as f:
             lasso_trained_model = pickle.load(f)
@@ -71,6 +82,7 @@ class predict_price():
         return res1, res2
 
     def createDataForPrice(self):
+        """This method creates data to predict cab price"""
         to_pred = {}
         for each in self.columns:
             to_pred[each] = 0
@@ -80,6 +92,7 @@ class predict_price():
 
 
     def generate_data_return_price(self):
+        """This method returns estimate price"""
         data = self.createDataForPrice()
         price_str = self.predictCabs(data)
         return price_str

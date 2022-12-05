@@ -20,7 +20,7 @@ PackTravel is a web-application that connects people who want to carpool, share 
 *   Ride owners can accept requests from other riders to join rides, ride owners can delete their own rides
 *   Forum for every ride to discuss logistics
 *   Integration with Google Maps to show ride route , distance and duration.
-*   Users can now get an estimated cab fare for a particular ride to help them make an informed choice
+*   Users can now get an estimated cab fare predicted with machine learning using date and time of the ride as attribute.
 *   Emails are sent to ride owners when a ride capacity is reached.
 
 https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3-af35-732ebd34e76c.mp4

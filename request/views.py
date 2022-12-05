@@ -23,19 +23,19 @@ def requested_rides(request):
     initialize_database()
 
     # sent requests
-    sent_requests = list(rides_collection.find({ "requested_users": request.session["username"]}))
+    sent_requests = list(rides_collection.find({"requested_users": request.session["username"]}))
     for ride in sent_requests:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
     # received requests
-    rec_req = list(rides_collection.find({ "owner": request.session["username"], "requested_users": { "$exists": True, "$ne": [] }}))
+    rec_req = list(rides_collection.find({"owner": request.session["username"], "requested_users": {"$exists": True, "$ne": []}}))
     for ride in rec_req:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)
 
     # accepted rides
-    accepted_rides = list(rides_collection.find({ "$or": [ { "owner": request.session["username"] }, { "confirmed_users": request.session["username"]}]}))
+    accepted_rides = list(rides_collection.find({ "$or": [{ "owner": request.session["username"]}, {"confirmed_users": request.session["username"]}]}))
     for ride in accepted_rides:
         ride["id"] = ride["_id"]
         ride.pop("_id", None)

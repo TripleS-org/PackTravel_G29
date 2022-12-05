@@ -34,11 +34,11 @@ Any person who is looking to reduce spending on their commute expenditure can us
 
 ## Scaling PackTravel
 ![Scale PackTravel](images/scale-PackTravel.png "Scale PackTravel")
-*  It is possible to scale PackTravel horizontally because of how we designed the application.
-*  All APIs are stateless (REST); Therefore, any application server in a cluster can handle a request.
-*  We can use a CDN such as Amazon S3, Cloudflare to serve static assets (images). This enables quicker load time as CDN servers are spread across geographic reasons.
-*  The bottleneck in PackTravel is the email sending feature. If we use a message queue such as Kafka to offload the task of sending an email to a different application (Kafka consumer), it will free our application server's resources quickly.
-*  MongoDB is designed to handle large amounts of data and high levels of throughput. It can distribute data across multiple servers and process it in parallel. It has built-in support for sharding and this makes it easy to scale MongoDB horizontally by adding more servers as needed to handle the increased load.
+*   It is possible to scale PackTravel horizontally because of how we designed the application.
+*   All APIs are stateless (REST); Therefore, any application server in a cluster can handle a request.
+*   We can use a CDN such as Amazon S3, Cloudflare to serve static assets (images). This enables quicker load time as CDN servers are spread across geographic reasons.
+*   The bottleneck in PackTravel is the email sending feature. If we use a message queue such as Kafka to offload the task of sending an email to a different application (Kafka consumer), it will free our application server's resources quickly.
+*   MongoDB is designed to handle large amounts of data and high levels of throughput. It can distribute data across multiple servers and process it in parallel. It has built-in support for sharding and this makes it easy to scale MongoDB horizontally by adding more servers as needed to handle the increased load.
 
 ## 🎯 Enhancements
 *   Merge rides - users should be able to join rides in a via point between a source and a destination (feature). 

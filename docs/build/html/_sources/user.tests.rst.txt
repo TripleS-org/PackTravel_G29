@@ -20,6 +20,14 @@ user.tests.test\_urls module
     :undoc-members:
     :show-inheritance:
 
+user.tests.test\_views module
+-----------------------------
+
+.. automodule:: user.tests.test_views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

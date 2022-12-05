@@ -82,7 +82,7 @@
                 directionsDisplay.setDirections(response);
                 var directionsData = response.routes[0].legs[0];
                 if (!directionsData) {
-                    
+                    window.alert('Directions request failed');
                     return;
                 }
                 else {

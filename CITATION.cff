@@ -1,4 +1,4 @@
-cff-version: 2.1
+cff-version: 2.1.0
 message: "Hello!! If you use this software, please cite it using the metadata from this file"
 title: "PackTravel"
 authors:
@@ -12,6 +12,6 @@ authors:
     given-names: Vaishnav
   - family-names: Sangarya
     given-names: Vishwesh
-version: "2.1
+version: "2.1.0"
 date-released: "12/05/2022
 doi: 10.5281/zenodo.7402572

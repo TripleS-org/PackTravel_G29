@@ -11,13 +11,16 @@ class TestUrl(SimpleTestCase):
         self.assertEquals(resolve(url).func, publish_index) # pylint: disable=deprecated-method
 
     def test_create_ride_resolves(self):
+        """Tests for creating ride"""
         url = reverse('create_ride')
         self.assertEquals(resolve(url).func, create_ride) # pylint: disable=deprecated-method
 
     def test_show_ride_resolves(self):
+        """Tests for showing ride urls"""
         url = reverse('showridepage', args=['078508ce-2efc-4316-8987-12b9551be5b4'])
         self.assertEquals(resolve(url).func, show_ride) # pylint: disable=deprecated-method
 
     def test_add_forum_resolves(self):
+        """Tests for forum urls"""
         url = reverse('addforum')
         self.assertEquals(resolve(url).func, add_forum) # pylint: disable=deprecated-method

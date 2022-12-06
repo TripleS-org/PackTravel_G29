@@ -7,17 +7,21 @@ class TestUrl(SimpleTestCase):
     """Django class to test urls for user login and sign up functionality"""
 
     def test_index_resolved(self):
+        """Tests for Index URL resolution"""
         url = reverse('index')
         self.assertEquals(resolve(url).func, index) # pylint: disable=deprecated-method
 
     def test_register_resolved(self):
+        """Tests for Register URL resolution"""
         url = reverse('register')
         self.assertEquals(resolve(url).func, register) # pylint: disable=deprecated-method
 
     def test_login_resolved(self):
+        """Tests for Login URL resolution"""
         url = reverse('login')
         self.assertEquals(resolve(url).func, login) # pylint: disable=deprecated-method
 
     def test_logout_resolved(self):
+        """Tests for Logout URL resolution"""
         url = reverse('logout')
         self.assertEquals(resolve(url).func, logout) # pylint: disable=deprecated-method

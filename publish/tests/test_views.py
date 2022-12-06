@@ -12,12 +12,14 @@ class TestViews(TestCase):
         self.add_forum_url = reverse("addforum")
 
     def test_publish_for_logged_out_user(self):
+        """Tests for publishing ride for logged out user"""
         response = self.client.get(self.publish_url)
         # 302 - redirects to index when user is not logged in
         self.assertEquals(response.status_code, 302) # pylint: disable=deprecated-method
         self.assertRedirects(response, "/index/")
 
     def test_publish_for_logged_in_user(self):
+        """Tests for publishing ride for logged in user"""
         session = self.client.session
         session["username"] = "test"
         session.save()
@@ -27,6 +29,7 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "publish/publish.html")
 
     def test_ride_creation(self):
+        """Tests for ride creation"""
         session = self.client.session
         session["username"] = "django-test"
         session.save()

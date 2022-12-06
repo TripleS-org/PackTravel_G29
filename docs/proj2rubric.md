@@ -42,9 +42,9 @@
 |Is your source code publicly available to download, either as a downloadable bundle or via access to a source code repository?|3|Can be downloaded or cloned through Github |
 |Is your software hosted in an established, third-party repository likeGitHub (https://github.com), BitBucket (https://bitbucket.org),LaunchPad (https://launchpad.net) orSourceForge (https://sourceforge.net)?|3|Yes, it is hosted on GitHub|
 |Is your documentation clearly available on your website or within your software?|3|All required documentation set up via the repositories readme, installation guides and setup steps, auto-generated through sphinx.|
-|Does your documentation include a "quick start" guide, that provides a short overview of how to use your software with some basic examples of use?|3||
-|If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software?|3|No additonal documentation present. Installation and set up instructions provide all required details.|
-|Do you provide a comprehensive guide to all your software’s commands, functions and options?|3|All functions are described in code. Classes and methods in source code give an overview of the code functionality.|
+|Does your documentation include a "quick start" guide, that provides a short overview of how to use your software with some basic examples of use?|3|[README.md](https://github.com/VSangarya/PackTravel/blob/main/README.md)|
+|If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software?|2|No additonal documentation present. Installation and set up instructions provide all required details.|
+|Do you provide a comprehensive guide to all your software’s commands, functions and options?|2|All functions are described in code. Classes and methods in source code give an overview of the code functionality.|
 |Do you provide troubleshooting information that describes the symptoms and step-by-step solutions for problems and error messages?|1|Debugging resources, issues and e-mail information present to assist with troubleshooting.|
 |If your software can be used as a library, package or service by other software, do you provide comprehensive API documentation?|N/A|The software does not provide API documentation and cannot be used a package for other software at present|
 |Do you store your documentation under revision control with your source code?|3|[Github releases](https://github.com/VSangarya/PackTravel/releases)|
@@ -80,7 +80,7 @@ Using continuous integration, automatically running tests whenever changes are m
 Test results publicly visible | 3 | Yes, the GitHub Actions for build has logs for test-case results. We have a badge for test code-coverage in README.md | 
 Manually-run tests documented | N/A | N/A | 
 Project has resources (e.g. blog, Twitter, RSS feed, Facebook page, wiki, mailing list) that are regularly updated with information about your software | 3 | All updates on the readme [README.md](https://github.com/VSangarya/PackTravel#-PackTravel) | 
-Documentation states how many projects and users are associated with your project | 3 | All users are mentioned in [README]((https://github.com/VSangarya/PackTravel#-PackTravel)) | 
+Documentation states how many projects and users are associated with your project | 3 | All users are mentioned in [README.md](https://github.com/VSangarya/PackTravel#-PackTravel) | 
 Provide success stories on your website | 0 | Software not yet used publicly | 
 Listing the important partners and collaborators in your website | 3 | Github | 
 Listing the project's publications on our website or link to a resource where these are available | 0 | No publications | 

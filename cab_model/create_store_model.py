@@ -35,6 +35,12 @@ X = df_cabs.loc[:, df_cabs.columns != 'price']
 y = pd.DataFrame(df_cabs['price'])
 
 def lassoRegCV(x_train, y_train):
+    """
+    Lasso regression model to predict cab prices.
+    Other models such as Linear Reg., Lasso Reg., KNN Reg. and Random forest Reg. explored and tested as well. 
+    Performed different hyperparameter tuning for the models as well and data transformation such as normalizing data. 
+    Selected Lasso regression as final model based on testing error rates.
+    """
     model_lassocv_ret = LassoCV(alphas=None, cv=10, max_iter=100000)
     model_lassocv_ret.fit(x_train, y_train)
     return model_lassocv_ret

@@ -5,7 +5,7 @@ from user.forms import RegisterForm
 class TestForms(TransactionTestCase):
     """Django test class for forms in user login and sign up functionality"""
     def test_registerform_validdata(self):
-
+        """Tests for Registration Validation"""
         form = RegisterForm(data={
             'username': 'John',
             'first_name' : 'John',

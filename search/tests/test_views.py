@@ -10,11 +10,13 @@ class TestViews(TestCase):
         self.request_ride_url = reverse("request_ride", args=["078508ce-2efc-4316-8987-12b9551be5b4"])
 
     def test_search_logged_out_user(self):
+        """Tests for searching logged out user"""
         response = self.client.get(self.search_url)
         self.assertEquals(response.status_code, 302) # pylint: disable=deprecated-method
         self.assertRedirects(response, "/index/")
 
     def test_search_logged_in_user(self):
+        """Tests for searching logged in user"""
         session = self.client.session
         session["username"] = "test"
         session.save()
@@ -24,6 +26,7 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "search/search.html")
 
     def test_request_ride(self):
+        """Tests for requesting ride"""
         session = self.client.session
         session["username"] = "test"
         session.save()

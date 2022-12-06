@@ -14,6 +14,7 @@ class TestViews(TestCase):
         self.delete_ride_url = reverse("delete_ride", args=["078508ce-2efc-4316-8987-12b9551be5b4"])
 
     def test_requested_rides(self):
+        """Tests for ride requested"""
         session = self.client.session
         session["username"] = "test"
         session.save()
@@ -22,6 +23,7 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "requests/requests.html")
 
     def test_cancel_ride_logged_in_user(self):
+        """Tests for ride canceled for logged in user"""
         session = self.client.session
         session["username"] = "test"
         session.save()
@@ -31,6 +33,7 @@ class TestViews(TestCase):
         self.assertRedirects(response, "/requests/")
 
     def test_accept_ride_request(self):
+        """Tests for ride accepted"""
         session = self.client.session
         session["username"] = "test"
         session.save()
@@ -40,6 +43,7 @@ class TestViews(TestCase):
         self.assertRedirects(response, "/requests/")
 
     def test_reject_ride_request(self):
+        """Tests for ride rejected"""
         session = self.client.session
         session["username"] = "test"
         session.save()
@@ -49,6 +53,7 @@ class TestViews(TestCase):
         self.assertRedirects(response, "/requests/")
 
     def test_cancel_accepted_ride(self):
+        """Tests for accepted ride cancellation"""
         session = self.client.session
         session["username"] = "test"
         session.save()
@@ -58,6 +63,7 @@ class TestViews(TestCase):
         self.assertRedirects(response, "/requests/")
 
     def test_delete_ride(self):
+        """Tests for ride deleted"""
         session = self.client.session
         session["username"] = "test"
         session.save()

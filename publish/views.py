@@ -32,7 +32,7 @@ def publish_index(request):
 
 def distance_and_cost(source, destination, date, hour, minute, ampm):
     """Method to retrieve distance between source and origin"""
-    api_key = "AIzaSyBeY27HO3FB80oI60eThoWotLWQHXlHkTs"
+    api_key = "AIzaSyC0Q5ug3tqN6lhUzknGab8sbbpsOoELkRQ"
     date = date.split("-")
     url = "https://maps.googleapis.com/maps/api/distancematrix/json?"+ "origins=" + source +"&destinations=" + destination +"&key=" + api_key
     if ampm.lower() == "pm" : hour = str(int(hour) + 12)

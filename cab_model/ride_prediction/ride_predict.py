@@ -8,7 +8,7 @@ class RideDemandPredictor:
     def __init__(self, model_path='ride_demand_model.pkl'):
         self.model_path = model_path
         self.model = None
-        self.is_trained = True
+        self.is_trained = False
 
     def load_data(self, file_path):
         data = pd.read_csv(file_path)
@@ -48,15 +48,15 @@ if __name__ == "__main__":
     historical_data_path = 'historical_data.csv'
     data = predictor.load_data(historical_data_path)
 
-    train_model_flag = False  # Set to True if you want to train the model
+    train_model_flag = False
 
     if train_model_flag:
         predictor.train_model(data)
     else:
         predictor.load_model()
 
-    time_of_day = 8  # Example time (8 AM)
-    location = 0  # Example location code; replace with actual coded location
+    time_of_day = 8
+    location = 0
     prediction = predictor.predict_demand(time_of_day, location)
 
     print(f"Predicted ride demand for time {time_of_day}:00 and location code {location} is: {prediction}")

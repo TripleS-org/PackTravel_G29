@@ -57,7 +57,7 @@ def distance_and_cost(source, destination, date, hour, minute, ampm):
 
     # Check if both locations are in the same country
     if source_country != destination_country:
-        return f"Error: Rides cannot be created between different countries: {source_country} and {destination_country}."
+        return JsonResponse({'error': f"INVALID RIDE! Ride cannot be created between different countries: {source_country} and {destination_country}."}, status=400)
     
     api_key = "AIzaSyC0Q5ug3tqN6lhUzknGab8sbbpsOoELkRQ"
     date = date.split("-")
@@ -95,6 +95,12 @@ def distance_and_cost(source, destination, date, hour, minute, ampm):
 def create_ride(request):
     """This method processes the user request to create a new ride offering"""
     initialize_database()
+
+    source_country = request.POST.get('source_country')
+    destination_country = request.POST.get('destination_country')
+
+    if source_country != destination_country:
+        return JsonResponse({'error': f"Rides cannot be created between different countries: {source_country} and {destination_country}."}, status=400)
 
     if request.method == "POST":
         source = request.POST.get("source")
@@ -141,7 +147,6 @@ def create_ride(request):
         return JsonResponse({'success': 'Ride created successfully.'}, status=201)  # Success response
 
     return render(request, "publish/publish.html", {"username": request.session["username"]})
-
 
 def show_ride(request, ride_id):
     """This method processes the user request to view a single ride's information"""

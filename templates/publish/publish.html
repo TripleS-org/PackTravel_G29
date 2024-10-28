@@ -239,6 +239,33 @@
             </div>
             <br><br>
         </form>
+        <script>
+            $(document).ready(function () {
+                $('form').on('submit', function (e) {
+                    e.preventDefault(); // Prevent default form submission
+                    
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            // Handle success (e.g., redirect)
+                            window.location.href = '/success_page/';
+                        },
+                        error: function (xhr) {
+                            // Check if there is an error and show the alert
+                            if (xhr.status === 400) {
+                                var errorMessage = xhr.responseJSON.error;
+                                alert(errorMessage);
+                            } else {
+                                alert('Invalid Ride. Please enter correct details');
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
 </div>
+
 </body>
 </html>

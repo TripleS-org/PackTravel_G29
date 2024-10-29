@@ -39,5 +39,7 @@ urlpatterns = [
     path('login/', userView.login, name='login'),
     path('create_ride/', publishViews.create_ride, name='create_ride'),
     path('ride_page/<ride_id>', publishViews.show_ride, name='showridepage'),
-    path('add_forum/', publishViews.add_forum, name='addforum')
+    path('add_forum/', publishViews.add_forum, name='addforum'),
+    path('profile/', userView.user_profile, name='user_profile'), 
+
 ]

@@ -1,7 +1,7 @@
 """Django views for user login and sign up functionality"""
 from django.shortcuts import render, redirect
 from utils import get_client
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ProfileForm
 import hashlib
 
 # database connections
@@ -9,6 +9,7 @@ db_client = None
 db_handle = None
 users_collection = None
 rides_collection = None
+user_profile = None
 
 def initialize_database():
     """This method initializes handles to the various database collections"""
@@ -99,3 +100,30 @@ def login(request):
 
         form = LoginForm()
         return render(request, "user/login.html", {"form": form})
+    
+
+def user_profile(request):
+    """This method processes the user profile form"""
+    initialize_database()
+    
+    if request.method == "POST":
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            username = request.session["username"]  # Get the current logged-in user's username
+            user_data = {
+                "travel_preferences": form.cleaned_data["travel_preferences"],
+                "likes": form.cleaned_data["likes"],
+                "is_smoker": form.cleaned_data["is_smoker"],
+            }
+            # Update the user's profile in the database
+            users_collection.insert_one(user_data)
+            request.session["travel_preferences"] = user_data["travel_preferences"]
+            request.session["likes"] = user_data["likes"]
+            request.session["is_smoker"] = user_data["is_smoker"]
+            return redirect(index) 
+    else:
+        form = ProfileForm()
+
+    return render(request, "user/profile.html", {"form": form})
+
+

@@ -104,7 +104,7 @@ def login(request):
         return render(request, "user/login.html", {"form": form})
     
 
-def user_profile(request):
+def user_profile(request): 
     """This method processes the user profile form"""
     initialize_database()
     
@@ -118,7 +118,11 @@ def user_profile(request):
                 "is_smoker": form.cleaned_data["is_smoker"],
             }
             # Update the user's profile in the database
-            users_collection.insert_one(user_data)
+            users_collection.update_one(
+                {"username": username},  # Filter by username
+                {"$set": user_data}      # Update operation
+            )
+            # Update session with new profile data
             request.session["travel_preferences"] = user_data["travel_preferences"]
             request.session["likes"] = user_data["likes"]
             request.session["is_smoker"] = user_data["is_smoker"]
@@ -127,6 +131,7 @@ def user_profile(request):
         form = ProfileForm()
 
     return render(request, "user/profile.html", {"form": form})
+
 
 
 def feedback(request):

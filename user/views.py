@@ -1,7 +1,7 @@
 """Django views for user login and sign up functionality"""
 from django.shortcuts import render, redirect
 from utils import get_client
-from .forms import RegisterForm, LoginForm, ProfileForm
+from .forms import RegisterForm, LoginForm, ProfileForm, FeedbackForm
 import hashlib
 
 # database connections
@@ -9,15 +9,17 @@ db_client = None
 db_handle = None
 users_collection = None
 rides_collection = None
+feedback_collection= None
 user_profile = None
 
 def initialize_database():
     """This method initializes handles to the various database collections"""
-    global db_client, db_handle, users_collection, rides_collection
+    global db_client, db_handle, users_collection, rides_collection, feedback_collection
     db_client = get_client()
     db_handle = db_client.main
     users_collection = db_handle.users
     rides_collection = db_handle.rides
+    feedback_collection = db_handle.feedback
 
 def index(request, username=None):
     """This method renders the home page of PackTravel"""
@@ -125,5 +127,27 @@ def user_profile(request):
         form = ProfileForm()
 
     return render(request, "user/profile.html", {"form": form})
+
+
+def feedback(request):
+    """This method processes the user feedback form"""
+    initialize_database()
+
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback_data = {
+                "username": request.session.get("username"),
+                "ride_rating": form.cleaned_data["ride_rating"],
+                "driver_rating": form.cleaned_data["driver_rating"],
+                "feedback": form.cleaned_data["feedback"]
+            }
+            # Insert feedback into the new feedback collection
+            feedback_collection.insert_one(feedback_data)
+            return redirect(index)
+    else:
+        form = FeedbackForm()
+
+    return render(request, "user/feedback.html", {"form": form})
 
 

@@ -137,7 +137,7 @@ def user_profile(request):
 
 
 
-def feedback(request):
+def feedback(request, ride_id):
     """This method processes the user feedback form"""
     initialize_database()
 
@@ -152,6 +152,10 @@ def feedback(request):
             }
             # Insert feedback into the new feedback collection
             feedback_collection.insert_one(feedback_data)
+            rides_collection.update_one(
+                {"_id": ride_id}, 
+                {"$set": {"is_finished": True}}
+            )
             return redirect(index)
     else:
         form = FeedbackForm()

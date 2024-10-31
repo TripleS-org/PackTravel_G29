@@ -38,3 +38,39 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = User  
         fields = ('travel_preferences', 'likes', 'is_smoker')  
+
+
+class FeedbackForm(forms.Form):
+    """Class for ride feedback form"""
+    ride_rating = forms.IntegerField(
+        required=True,
+        min_value=1,
+        max_value=5,
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Rate the ride (1-5)',
+            'class': 'form-control'
+        })
+    )
+    
+    driver_rating = forms.IntegerField(
+        required=True,
+        min_value=1,
+        max_value=5,
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Rate the driver (1-5)',
+            'class': 'form-control'
+        })
+    )
+    
+    feedback = forms.CharField(
+        required=True,
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Share your experience...',
+            'class': 'form-control',
+            'rows': 4
+        })
+    )
+    
+    class Meta:
+        model = User
+        fields = ('ride_rating', 'driver_rating', 'feedback')

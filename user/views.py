@@ -104,25 +104,20 @@ def login(request):
 
 def user_profile(request):
     """This method processes the user profile form"""
-    initialize_database()
-    
+    try:
+        profile = request.user.userprofile
+    except UserProfile.DoesNotExist:
+        profile = UserProfile(user=request.user)
+
     if request.method == "POST":
-        form = ProfileForm(request.POST)
+        form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
-            username = request.session["username"]  # Get the current logged-in user's username
-            user_data = {
-                "travel_preferences": form.cleaned_data["travel_preferences"],
-                "likes": form.cleaned_data["likes"],
-                "is_smoker": form.cleaned_data["is_smoker"],
-            }
-            # Update the user's profile in the database
-            users_collection.insert_one(user_data)
-            request.session["travel_preferences"] = user_data["travel_preferences"]
-            request.session["likes"] = user_data["likes"]
-            request.session["is_smoker"] = user_data["is_smoker"]
-            return redirect(index) 
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect('index')
     else:
-        form = ProfileForm()
+        form = ProfileForm(instance=profile)
 
     return render(request, "user/profile.html", {"form": form})
 

@@ -31,6 +31,9 @@
     <!--
         Incoming Requests
     -->
+ 
+    {% if not ride.is_finished %}
+
     <div class="container-fluid justify-content-center" style="background-color: #27292a; color: white; margin-top: 10px;"><br>
         <br>
         <h3 class="text-center apply-font">Sent Requests</h3>
@@ -65,11 +68,17 @@
             {% endfor %}
         </div>
     </div>
+
+    {% endif %}
+  
     <!--End-->
 
     <!--
         Received Requests
     -->
+
+   
+    {% if not ride.is_finished %}
     <div class="container-fluid justify-content-center" style="background-color: #27292a; color: white; margin-top: 10px;"><br>
         <br>
         <h3 class="text-center apply-font">Received Requests</h3>
@@ -107,11 +116,15 @@
             {% endfor %}
         </div>
     </div>
+    {% endif %}
+  
     <!--End-->
 
     <!--
         Own Rides
     -->
+   
+    {% if not ride.is_finished %}
     <div class="container-fluid justify-content-center" style="background-color: #27292a; color: white; margin-top: 10px;"><br>
         <br>
         <h3 class="text-center apply-font">My Rides</h3>
@@ -157,12 +170,15 @@
                         {% else %}
                         <a href="/cancel_accepted_ride/{{ride.id}}/{{request.session.username}}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Cancel request</a>
                         {% endif %}
+                        <a href="/feedback/{{ride.id}}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Finish ride</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
+    {% endif %}
+   
     <!--End-->
 </body>
 </html>

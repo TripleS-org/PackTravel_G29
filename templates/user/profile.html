@@ -12,6 +12,19 @@
     <div class="card mx-auto shadow-2-strong bg-white rounded" style="width: 60%; margin: 50px; padding: 50px;">
         <h3>User Profile</h3>
         <hr>
+        
+        {% if user.travel_preferences or user.likes or user.is_smoker %}
+            <!-- Display the user's profile information -->
+            <div>
+                <p><strong>Travel Preferences:</strong> {{ user.travel_preferences }}</p>
+                <p><strong>Likes:</strong> {{ user.likes }}</p>
+                <p><strong>Smoker:</strong> {{ user.is_smoker|yesno:"Yes,No" }}</p>
+            </div>
+            <hr>
+            <p><em>If you want to update your profile, fill the form below:</em></p>
+        {% endif %}
+        
+        <!-- Show form for editing the profile -->
         <form method="POST" class="form-group">
             {% csrf_token %}
             {{ form.as_p }}

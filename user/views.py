@@ -113,7 +113,7 @@ def user_profile(request):
     if request.method == "POST":
         form = ProfileForm(request.POST)
         if form.is_valid():
-            username = request.session["username"]  # Get the current logged-in user's username
+            username = request.session("username")
             user_data = {
                 "travel_preferences": form.cleaned_data["travel_preferences"],
                 "likes": form.cleaned_data["likes"],
@@ -121,10 +121,9 @@ def user_profile(request):
             }
             # Update the user's profile in the database
             users_collection.update_one(
-                {"username": username},  # Filter by username
-                {"$set": user_data}      # Update operation
+                {"username": username},  
+                {"$set": user_data}     
             )
-            # Update session with new profile data
             request.session["travel_preferences"] = user_data["travel_preferences"]
             request.session["likes"] = user_data["likes"]
             request.session["is_smoker"] = user_data["is_smoker"]

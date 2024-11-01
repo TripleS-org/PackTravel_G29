@@ -105,14 +105,13 @@ def login(request):
     
 
 def user_profile(request): 
+    initialize_database()
+
     """This method processes the user profile form"""
-    try:
-        profile = request.user.userprofile
-    except UserProfile.DoesNotExist:
-        profile = UserProfile(user=request.user)
+
 
     if request.method == "POST":
-        form = ProfileForm(request.POST, instance=profile)
+        form = ProfileForm(request.POST)
         if form.is_valid():
             username = request.session["username"]  # Get the current logged-in user's username
             user_data = {
@@ -131,7 +130,7 @@ def user_profile(request):
             request.session["is_smoker"] = user_data["is_smoker"]
             return redirect(index) 
     else:
-        form = ProfileForm(instance=profile)
+        form = ProfileForm()
 
     return render(request, "user/profile.html", {"form": form})
 

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PackTravel - Ride History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #3A3B3C;">
+    {% include 'nav.html' %}
+
+    <div class="container mt-5 text-white">
+        <h2 class="text-center mb-4">Ride History</h2>
+
+        {% if completed_rides %}
+            <div class="table-responsive">
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Pickup Location</th>
+                            <th scope="col">Dropoff Location</th>
+                            <th scope="col">Driver</th>
+                            <th scope="col">Ride Rating</th>
+                            <th scope="col">Driver Rating</th>
+                            <th scope="col">Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ride in completed_rides %}
+                            <tr>
+                                <td>{{ ride.date }}</td>
+                                <td>{{ ride.pickup_location }}</td>
+                                <td>{{ ride.dropoff_location }}</td>
+                                <td>{{ ride.driver }}</td>
+                                <td>{{ ride.ride_rating }}</td>
+                                <td>{{ ride.driver_rating }}</td>
+                                <td>{{ ride.feedback }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center mt-4" role="alert">
+                No completed rides with feedback available.
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

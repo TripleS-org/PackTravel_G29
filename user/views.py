@@ -108,18 +108,21 @@ def user_profile(request):
     initialize_database()
 
     """This method processes the user profile form"""
+    username = request.session.get("username")
 
+    if username is None:
+        return redirect(login)
+
+    user = users_collection.find_one({"username": username})
 
     if request.method == "POST":
         form = ProfileForm(request.POST)
         if form.is_valid():
-            username = request.session("username")
             user_data = {
                 "travel_preferences": form.cleaned_data["travel_preferences"],
                 "likes": form.cleaned_data["likes"],
                 "is_smoker": form.cleaned_data["is_smoker"],
             }
-            # Update the user's profile in the database
             users_collection.update_one(
                 {"username": username},  
                 {"$set": user_data}     
@@ -127,11 +130,17 @@ def user_profile(request):
             request.session["travel_preferences"] = user_data["travel_preferences"]
             request.session["likes"] = user_data["likes"]
             request.session["is_smoker"] = user_data["is_smoker"]
-            return redirect(index) 
+            return redirect(index)
     else:
-        form = ProfileForm()
+        initial_data = {
+            "travel_preferences": user.get("travel_preferences", ""),
+            "likes": user.get("likes", ""),
+            "is_smoker": user.get("is_smoker", False)
+        }
+        form = ProfileForm(initial=initial_data)
 
-    return render(request, "user/profile.html", {"form": form})
+    return render(request, "user/profile.html", {"form": form, "user": user})
+
 
 
 

@@ -1,7 +1,7 @@
 """Django views for user login and sign up functionality"""
 from django.shortcuts import render, redirect
 from utils import get_client
-from .forms import RegisterForm, LoginForm, ProfileForm, FeedbackForm
+from .forms import RegisterForm
 import hashlib
 
 # database connections

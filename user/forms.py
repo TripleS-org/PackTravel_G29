@@ -1,76 +1,70 @@
-"""Django form definition for user"""
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.validators import MinLengthValidator
 
-class RegisterForm(forms.ModelForm):
-    """Class for user registration form"""
-    username = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter a username', 'class': 'form-control'}))
-    first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}))
-    last_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control'}))
-    email = forms.EmailField(required=True, max_length=60, widget=forms.EmailInput(attrs={'placeholder': 'abc@mail.com', 'class': 'form-control'}))
-    password1 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'}))
-    phone_number = forms.CharField(required=True, max_length=11, widget=forms.TextInput(attrs={'placeholder': 'Phone Number', 'class': 'form-control'}))
+class RegisterForm(UserCreationForm):
+    email = forms.EmailField()
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)
+    phone_number = forms.CharField(max_length=15)
+    password1 = forms.CharField(
+        label="Password",
+        strip=False,
+        widget=forms.PasswordInput,
+        validators=[MinLengthValidator(8)]
+    )
+    password2 = forms.CharField(
+        label="Password confirmation",
+        widget=forms.PasswordInput,
+        strip=False,
+        help_text="Enter the same password as before, for verification."
+    )
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if not username.isalnum():
+            raise forms.ValidationError("Username should only contain alphanumeric characters.")
+        return username
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        if not first_name.isalpha():
+            raise forms.ValidationError("First name should only contain alphabetic characters.")
+        return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data.get('last_name')
+        if not last_name.isalpha():
+            raise forms.ValidationError("Last name should only contain alphabetic characters.")
+        return last_name
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+        username = cleaned_data.get("username")
+
+        if password1 and password1 == username:
+            raise forms.ValidationError("Password can't be the same as the username.")
+        
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("The two password fields didn't match.")
+
+        return cleaned_data
 
     class Meta:
         model = User
-        fields = (
-            'username',
-            'first_name',
-            'last_name',
-            'email',
-            'password1',
-            'phone_number',
-        )
+        fields = ['username', 'email', 'password1', 'password2', 'first_name', 'last_name', 'phone_number']
 
-class LoginForm(forms.ModelForm):
-    """Class for user login form"""
-    username = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter your username', 'class': 'form-control'}))
-    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'}))
-    class Meta:
-        model = User
-        fields = ('username', 'password')
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email is already in use.")
+        return email
 
-class ProfileForm(forms.ModelForm):
-    """Class for user profile form"""
-    travel_preferences = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter your travel preferences', 'class': 'form-control'}))
-    likes = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter your likes (comma separated)', 'class': 'form-control'}))
-    is_smoker = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}), label="Do you smoke?")
-    class Meta:
-        model = User  
-        fields = ('travel_preferences', 'likes', 'is_smoker')  
-
-
-class FeedbackForm(forms.Form):
-    """Class for ride feedback form"""
-    ride_rating = forms.IntegerField(
-        required=True,
-        min_value=1,
-        max_value=5,
-        widget=forms.NumberInput(attrs={
-            'placeholder': 'Rate the ride (1-5)',
-            'class': 'form-control'
-        })
-    )
-    
-    driver_rating = forms.IntegerField(
-        required=True,
-        min_value=1,
-        max_value=5,
-        widget=forms.NumberInput(attrs={
-            'placeholder': 'Rate the driver (1-5)',
-            'class': 'form-control'
-        })
-    )
-    
-    feedback = forms.CharField(
-        required=True,
-        widget=forms.Textarea(attrs={
-            'placeholder': 'Share your experience...',
-            'class': 'form-control',
-            'rows': 4
-        })
-    )
-    
-    class Meta:
-        model = User
-        fields = ('ride_rating', 'driver_rating', 'feedback')
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data.get('phone_number')
+        if not phone_number.isdigit():
+            raise forms.ValidationError("Phone number should only contain digits.")
+        return phone_number

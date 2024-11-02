@@ -41,6 +41,7 @@ urlpatterns = [
     path('ride_page/<ride_id>', publishViews.show_ride, name='showridepage'),
     path('add_forum/', publishViews.add_forum, name='addforum'),
     path('profile/', userView.user_profile, name='user_profile'), 
-    path('feedback/<str:ride_id>', userView.feedback, name='feedback')
-
+    path('feedback/<str:ride_id>', userView.feedback, name='feedback'),
+    #path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
+    #path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
 ]

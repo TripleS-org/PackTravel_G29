@@ -102,9 +102,8 @@ def login(request):
 
         form = LoginForm()
         return render(request, "user/login.html", {"form": form})
-    
 
-def user_profile(request): 
+def user_profile(request):
     initialize_database()
 
     username = request.session.get("username")
@@ -123,8 +122,8 @@ def user_profile(request):
                 "is_smoker": form.cleaned_data["is_smoker"],
             }
             users_collection.update_one(
-                {"username": username},  
-                {"$set": user_data}     
+                {"username": username},
+                {"$set": user_data} 
             )
             request.session["travel_preferences"] = user_data["travel_preferences"]
             request.session["likes"] = user_data["likes"]
@@ -159,7 +158,7 @@ def feedback(request, ride_id):
             # Insert feedback into the new feedback collection
             feedback_collection.insert_one(feedback_data)
             rides_collection.update_one(
-                {"_id": ride_id}, 
+                {"_id": ride_id},
                 {"$set": {"is_finished": True}}
             )
             return redirect(index)

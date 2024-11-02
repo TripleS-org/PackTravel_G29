@@ -13,7 +13,7 @@ class TestViews(TestCase):
         self.register_url = reverse("register")
         self.logout_url = reverse("logout")
         self.login_url = reverse("login")        
-        self.test_user = User.objects.create_user(username='testuser', password='12345')
+        self.test_user = User.objects.create_user(username="testuser", password="12345")
 
     def test_index(self):
         """Tests for Client Index URL Validation"""

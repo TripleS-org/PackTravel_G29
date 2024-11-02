@@ -39,7 +39,6 @@ class ProfileForm(forms.ModelForm):
         model = User  
         fields = ('travel_preferences', 'likes', 'is_smoker')  
 
-
 class FeedbackForm(forms.Form):
     """Class for ride feedback form"""
     ride_rating = forms.IntegerField(
@@ -50,8 +49,7 @@ class FeedbackForm(forms.Form):
             'placeholder': 'Rate the ride (1-5)',
             'class': 'form-control'
         })
-    )
-    
+    )   
     driver_rating = forms.IntegerField(
         required=True,
         min_value=1,
@@ -61,7 +59,6 @@ class FeedbackForm(forms.Form):
             'class': 'form-control'
         })
     )
-    
     feedback = forms.CharField(
         required=True,
         widget=forms.Textarea(attrs={

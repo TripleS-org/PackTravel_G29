@@ -168,5 +168,3 @@ def feedback(request, ride_id):
         form = FeedbackForm()
 
     return render(request, "user/feedback.html", {"form": form})
-
-

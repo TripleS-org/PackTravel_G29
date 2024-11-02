@@ -21,6 +21,7 @@ from publish import views as publishViews
 from request import views as requestsViews
 
 urlpatterns = [
+    path('', userView.index, name='home'),
     path('admin/', admin.site.urls),
     path('search/', searchViews.search_index, name='search'),
     path('request_ride/<ride_id>', searchViews.request_ride, name='request_ride'),
@@ -38,5 +39,8 @@ urlpatterns = [
     path('login/', userView.login, name='login'),
     path('create_ride/', publishViews.create_ride, name='create_ride'),
     path('ride_page/<ride_id>', publishViews.show_ride, name='showridepage'),
-    path('add_forum/', publishViews.add_forum, name='addforum')
+    path('add_forum/', publishViews.add_forum, name='addforum'),
+    path('profile/', userView.user_profile, name='user_profile'), 
+    path('feedback/<str:ride_id>', userView.feedback, name='feedback')
+
 ]

@@ -57,8 +57,15 @@ Any person who is looking to reduce spending on their commute expenditure can us
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.
+<<<<<<< HEAD
 *   mquresh@ncsu.edu
 *   apandit3@ncsu.edu
 *   vnagara3@ncsu.edu
 *   schopra4@ncsu.edu
 *   lsangar@ncsu.edu
+=======
+*   skulkar6@ncsu.edu
+*   spustak@ncsu.edu
+*   sakre@ncsu.edu
+
+>>>>>>> 063a6ade5edb10b94a771efa226ba8769a628530

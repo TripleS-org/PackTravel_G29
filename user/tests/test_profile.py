@@ -78,3 +78,4 @@ class TestUserProfileView(TestCase):
         response = self.client.get(self.profile_url)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, f"{reverse('login')}?next={self.profile_url}")
+        

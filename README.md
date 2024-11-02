@@ -1,16 +1,16 @@
 # 🐺 PackTravel
-[![Build](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml/badge.svg)](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/df6694ed8d644df1822a1caa1669e504)](https://app.codacy.com/gh/VSangarya/PackTravel?utm_source=github.com&utm_medium=referral&utm_content=VSangarya/PackTravel&utm_campaign=Badge_Grade_Settings)
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/df6694ed8d644df1822a1caa1669e504)](https://www.codacy.com/gh/VSangarya/PackTravel/dashboard?utm_source=github.com&utm_medium=referral&utm_content=VSangarya/PackTravel&utm_campaign=Badge_Coverage)
+[![Build](https://github.com/TripleS-org/PackTravel_G29/actions/workflows/build.yml/badge.svg)](https://github.com/TripleS-org/PackTravel_G29/actions/workflows/build.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/9df7800c90694928ba61e4ff7950359a)](https://app.codacy.com/gh/TripleS-org/PackTravel_G29/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/5a62cd5de3a0437d845e93064befbfe8)](https://www.codacy.com/gh/TripleS-org/PackTravel_G29/dashboard?utm_source=github.com&utm_medium=referral&utm_content=TripleS-org/PackTravel_G29&utm_campaign=Badge_Coverage)
 <a href="https://doi.org/10.5281/zenodo.7402572"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7402572.svg" alt="DOI"></a>
-[![Commit Acitivity](https://img.shields.io/github/commit-activity/w/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/pulse)
-[![Issues](https://img.shields.io/github/issues/VSangarya/PackTravel?color=red)](https://github.com/VSangarya/PackTravel/issues)
-[![Contributors](https://img.shields.io/github/contributors/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/graphs/contributors)
-[![License](https://img.shields.io/github/license/VSangarya/PackTravel)](LICENSE)
-![Languages](https://img.shields.io/github/languages/count/VSangarya/PackTravel)
-[![Code Size](https://img.shields.io/github/languages/code-size/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/)
+[![Commit Acitivity](https://img.shields.io/github/commit-activity/w/TripleS-org/PackTravel_G29)](https://github.com/TripleS-org/PackTravel_G29/pulse)
+[![Issues](https://img.shields.io/github/issues/TripleS-org/PackTravel_G29?color=red)](https://github.com/TripleS-org/PackTravel_G29/issues)
+[![Contributors](https://img.shields.io/github/contributors/TripleS-org/PackTravel_G29)](https://github.com/TripleS-org/PackTravel_G29/graphs/contributors)
+[![License](https://img.shields.io/github/license/TripleS-org/PackTravel_G29)](LICENSE)
+![Languages](https://img.shields.io/github/languages/count/TripleS-org/PackTravel_G29)
+[![Code Size](https://img.shields.io/github/languages/code-size/TripleS-org/PackTravel_G29)](https://github.com/TripleS-org/PackTravel_G29/)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE-OF-CONDUCT.md)
-[![Repo Size](https://img.shields.io/github/repo-size/VSangarya/PackTravel)](https://github.com/VSangarya/PackTravel/)
+[![Repo Size](https://img.shields.io/github/repo-size/TripleS-org/PackTravel_G29)](https://github.com/TripleS-org/PackTravel_G29/)
 
 PackTravel is a web-application that connects people who want to carpool, share a cab or ride a bus together. Users can offer rides with their own vehicles, or travel together as a group in a cab or a bus. PackTravel helps you stay on a budget by reducing your travel expenses so that you don't have to miss out on that concert you've been wanting to attend 😉.
 
@@ -24,7 +24,12 @@ PackTravel is a web-application that connects people who want to carpool, share 
 *   Users can now get an estimated cab fare predicted with machine learning using date and time of the ride as attribute.
 *   Emails are sent to ride owners when a ride capacity is reached.
 
-https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3-af35-732ebd34e76c.mp4
+
+## Watch the Demo Video
+<video width="320" height="240" controls>
+    <source src="https://github.com/TripleS-org/PackTravel_G29/raw/main/images/VIDEO-2024-11-01-20-28-18.mp4" type="video/mp4">
+</video>
+
 
 ## 👥 Audience
 Any person who is looking to reduce spending on their commute expenditure can use our application.

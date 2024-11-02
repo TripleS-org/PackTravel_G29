@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PackTravel - Feedback</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #3A3B3C;">
+    {% include 'nav.html' %}
+
+    <div class="card mx-auto shadow-2-strong bg-white rounded" style="width: 60%; margin: 50px; padding: 50px;">
+        <h3>Ride Feedback</h3>
+        <hr>
+        <form method="POST" class="form-group">
+            {% csrf_token %}
+            
+            <label for="ride-rating" class="form-label">Ride Rating (1-5)</label>
+            <input type="number" id="ride-rating" name="ride_rating" min="1" max="5" class="form-control mb-3" required>
+
+            <label for="driver-rating" class="form-label">Driver Rating (1-5)</label>
+            <input type="number" id="driver-rating" name="driver_rating" min="1" max="5" class="form-control mb-3" required>
+
+            <label for="feedback" class="form-label">Feedback</label>
+            <textarea id="feedback" name="feedback" class="form-control mb-4" rows="4" placeholder="Share your experience..." required></textarea>
+
+            <button type="submit" style="color: white; background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Submit Feedback</button>
+        </form>
+    </div>
+</body>
+</html>

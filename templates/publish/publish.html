@@ -10,7 +10,76 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBeY27HO3FB80oI60eThoWotLWQHXlHkTs"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyC0Q5ug3tqN6lhUzknGab8sbbpsOoELkRQ"></script>
+
+    <script>
+        async function createRide(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const source = document.getElementById("source").value;
+            const destination = document.getElementById("destination").value;
+            const date = document.querySelector('input[name="date"]').value;
+            const hour = document.querySelector('select[name="hour"]').value;
+            const minute = document.querySelector('select[name="minute"]').value;
+            const ampm = document.querySelector('select[name="ampm"]').value;
+            const rideType = document.querySelector('select[name="ride_type"]').value;
+            const capacity = document.querySelector('select[name="capacity"]').value;
+            const info = document.querySelector('textarea[name="info"]').value;
+
+            const response = await fetch('/create_ride/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}' // Ensure CSRF token is included
+                },
+                body: new URLSearchParams({
+                    source,
+                    destination,
+                    date,
+                    hour,
+                    minute,
+                    ampm,
+                    ride_type: rideType,
+                    capacity,
+                    info
+                }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('Ride created successfully!'); // Notify on success
+                // Optionally redirect or clear form
+            } else {
+                alert(result.error || 'Failed to create ride. Please try again.'); // Show error message
+            }
+        }
+
+        $(document).ready(function () {
+            var searchInput = 'source';
+            var autocomplete = new google.maps.places.Autocomplete(document.getElementById(searchInput), {
+                types: ['geocode'],
+            });
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var near_place = autocomplete.getPlace();
+                var lat1 = near_place.geometry.location.lat();
+                var lng1 = near_place.geometry.location.lng();
+            });
+
+            var searchInput2 = 'destination';
+            var autocomplete2 = new google.maps.places.Autocomplete(document.getElementById(searchInput2), {
+                types: ['geocode'],
+            });
+
+            google.maps.event.addListener(autocomplete2, 'place_changed', function () {
+                var near_place = autocomplete2.getPlace();
+                var lat2 = near_place.geometry.location.lat();
+                var lng2 = near_place.geometry.location.lng();
+            });
+        });
+    </script>
+    
 </head>
 
     <body  style="background-color: #3A3B3C;">
@@ -88,7 +157,7 @@
             </div>
             <br>
             Time at Starting Point:
-            <div class="row"
+            <div class="row">
                 <div class="col-sm-7">
                     <div class="row">
                         <div class="col-sm-4">
@@ -170,6 +239,33 @@
             </div>
             <br><br>
         </form>
+        <script>
+            $(document).ready(function () {
+                $('form').on('submit', function (e) {
+                    e.preventDefault(); // Prevent default form submission
+                    
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            // Handle success (e.g., redirect)
+                            window.location.href = '/index/';
+                        },
+                        error: function (xhr) {
+                            // Check if there is an error and show the alert
+                            if (xhr.status === 400) {
+                                var errorMessage = xhr.responseJSON.error;
+                                alert(errorMessage);
+                            } else {
+                                alert('Invalid Ride. Please enter correct details');
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
 </div>
+
 </body>
 </html>

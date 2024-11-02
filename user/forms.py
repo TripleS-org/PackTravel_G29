@@ -29,3 +29,46 @@ class LoginForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password')
+
+class ProfileForm(forms.ModelForm):
+    """Class for user profile form"""
+    travel_preferences = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter your travel preferences', 'class': 'form-control'}))
+    likes = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter your likes (comma separated)', 'class': 'form-control'}))
+    is_smoker = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}), label='Do you smoke?')
+    class Meta:
+        model = User
+        fields = ('travel_preferences', 'likes', 'is_smoker')
+
+class FeedbackForm(forms.Form):
+    """Class for ride feedback form"""
+    ride_rating = forms.IntegerField(
+        required=True,
+        min_value=1,
+        max_value=5,
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Rate the ride (1-5)',
+            'class': 'form-control'
+        })
+    )
+    driver_rating = forms.IntegerField(
+        required=True,
+        min_value=1,
+        max_value=5,
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Rate the driver (1-5)',
+            'class': 'form-control'
+        })
+    )
+    feedback = forms.CharField(
+        required=True,
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Share your experience...',
+            'class': 'form-control',
+            'rows': 4
+        })
+    )
+
+    class Meta:
+        model = User
+        fields = ('ride_rating', 'driver_rating', 'feedback')
+          

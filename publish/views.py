@@ -41,7 +41,7 @@ def get_country(location):
     if geocode_data["status"] == "OK":
         # Extract the country from the address components
         for component in geocode_data["results"][0]["address_components"]:
-            if 'country' in component["types"]:
+            if "country" in component["types"]:
                 return component["long_name"]
     return None
 

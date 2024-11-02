@@ -26,7 +26,8 @@ PackTravel is a web-application that connects people who want to carpool, share 
 
 ## Watch the Demo Video
 
-[Watch the video](https://usercontent.github.com/TripleS-org/PackTravel_G29/main/images/VIDEO-2024-11-01-20-28-18.mp4)
+[Watch the video](https://github.com/TripleS-org/PackTravel_G29/raw/main/images/VIDEO-2024-11-01-20-28-18.mp4)
+
 
 
 

@@ -12,9 +12,7 @@ class TestViews(TestCase):
         self.index_url = reverse("index")
         self.register_url = reverse("register")
         self.logout_url = reverse("logout")
-        self.login_url = reverse("login")
-        
-        # Create a test user
+        self.login_url = reverse("login")        
         self.test_user = User.objects.create_user(username='testuser', password='12345')
 
     def test_index(self):
@@ -37,7 +35,7 @@ class TestViews(TestCase):
 
     def test_logout(self):
         """Tests for Client Logout URL Validation"""
-        self.client.login(username='testuser', password='12345')
+        self.client.login(username="testuser", password="12345")
         response = self.client.get(self.logout_url)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse("index"))
@@ -52,4 +50,4 @@ class TestViews(TestCase):
         """Tests for login with invalid credentials"""
         response = self.client.post(self.login_url, {"username": "wronguser", "password": "wrongpass"})
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "user/login.html")      
+        self.assertTemplateUsed(response, "user/login.html")   

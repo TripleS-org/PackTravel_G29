@@ -107,7 +107,6 @@ def login(request):
 def user_profile(request): 
     initialize_database()
 
-    """This method processes the user profile form"""
     username = request.session.get("username")
 
     if username is None:

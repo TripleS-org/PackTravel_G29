@@ -34,7 +34,7 @@ class ProfileForm(forms.ModelForm):
     """Class for user profile form"""
     travel_preferences = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter your travel preferences', 'class': 'form-control'}))
     likes = forms.CharField(max_length=255, required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter your likes (comma separated)', 'class': 'form-control'}))
-    is_smoker = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}), label="Do you smoke?")
+    is_smoker = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}), label='Do you smoke?')
     class Meta:
         model = User  
         fields = ('travel_preferences', 'likes', 'is_smoker')  

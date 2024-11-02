@@ -2,7 +2,6 @@
 [![Build](https://github.com/TripleS-org/PackTravel_G29/actions/workflows/build.yml/badge.svg)](https://github.com/TripleS-org/PackTravel_G29/actions/workflows/build.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/9df7800c90694928ba61e4ff7950359a)](https://app.codacy.com/gh/TripleS-org/PackTravel_G29/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/5a62cd5de3a0437d845e93064befbfe8)](https://www.codacy.com/gh/TripleS-org/PackTravel_G29/dashboard?utm_source=github.com&utm_medium=referral&utm_content=TripleS-org/PackTravel_G29&utm_campaign=Badge_Coverage)
-<a href="https://doi.org/10.5281/zenodo.7402572"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7402572.svg" alt="DOI"></a>
 [![Commit Acitivity](https://img.shields.io/github/commit-activity/w/TripleS-org/PackTravel_G29)](https://github.com/TripleS-org/PackTravel_G29/pulse)
 [![Issues](https://img.shields.io/github/issues/TripleS-org/PackTravel_G29?color=red)](https://github.com/TripleS-org/PackTravel_G29/issues)
 [![Contributors](https://img.shields.io/github/contributors/TripleS-org/PackTravel_G29)](https://github.com/TripleS-org/PackTravel_G29/graphs/contributors)
@@ -26,6 +25,7 @@ PackTravel is a web-application that connects people who want to carpool, share 
 
 
 ## Watch the Demo Video
+
 <video width="320" height="240" controls>
     <source src="https://github.com/TripleS-org/PackTravel_G29/raw/main/images/VIDEO-2024-11-01-20-28-18.mp4" type="video/mp4">
 </video>
@@ -57,15 +57,7 @@ Any person who is looking to reduce spending on their commute expenditure can us
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.
-<<<<<<< HEAD
-*   mquresh@ncsu.edu
-*   apandit3@ncsu.edu
-*   vnagara3@ncsu.edu
-*   schopra4@ncsu.edu
-*   lsangar@ncsu.edu
-=======
+
 *   skulkar6@ncsu.edu
 *   spustak@ncsu.edu
 *   sakre@ncsu.edu
-
->>>>>>> 063a6ade5edb10b94a771efa226ba8769a628530

@@ -39,7 +39,6 @@ def get_country(location):
     response = requests.get(url)
     response.raise_for_status()  # Raise an error for bad responses
     geocode_data = response.json()
-    
     if geocode_data['status'] == 'OK':
         # Extract the country from the address components
         for component in geocode_data['results'][0]['address_components']:
@@ -58,7 +57,6 @@ def distance_and_cost(source, destination, date, hour, minute, ampm):
     # Check if both locations are in the same country
     if source_country != destination_country:
         return JsonResponse({'error': f"INVALID RIDE! Ride cannot be created between different countries: {source_country} and {destination_country}."}, status=400)
-    
     api_key = "AIzaSyC0Q5ug3tqN6lhUzknGab8sbbpsOoELkRQ"
     date = date.split("-")
     url = "https://maps.googleapis.com/maps/api/distancematrix/json?"+ "origins=" + source +"&destinations=" + destination +"&key=" + api_key
@@ -83,7 +81,6 @@ def distance_and_cost(source, destination, date, hour, minute, ampm):
                 raise KeyError("The 'distance' key was not found in the response.")
         else:
             raise KeyError("The response does not contain 'rows' or is empty.")
-            
     except requests.exceptions.RequestException as e:
         return f"Error retrieving data from Google Maps API: {e}"
     except KeyError as ke:
@@ -105,7 +102,6 @@ def create_ride(request):
     if request.method == "POST":
         source = request.POST.get("source")
         destination = request.POST.get("destination")
-        
         # Calculate distance and cost
         cost = distance_and_cost(
             source,

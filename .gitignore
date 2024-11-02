@@ -1,6 +1,7 @@
 # files
 .DS_Store
-
+db.sqlite3
 # directories
 .venv
 __pycache__
+

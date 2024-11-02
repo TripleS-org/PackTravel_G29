@@ -1,7 +1,7 @@
 """Django views for user login and sign up functionality"""
 from django.shortcuts import render, redirect
 from utils import get_client
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ProfileForm, FeedbackForm
 import hashlib
 
 # database connections
@@ -9,14 +9,17 @@ db_client = None
 db_handle = None
 users_collection = None
 rides_collection = None
+feedback_collection= None
+#user_profile = None
 
 def initialize_database():
     """This method initializes handles to the various database collections"""
-    global db_client, db_handle, users_collection, rides_collection
+    global db_client, db_handle, users_collection, rides_collection, feedback_collection
     db_client = get_client()
     db_handle = db_client.main
     users_collection = db_handle.users
     rides_collection = db_handle.rides
+    feedback_collection = db_handle.feedback
 
 def index(request, username=None):
     """This method renders the home page of PackTravel"""
@@ -99,3 +102,67 @@ def login(request):
 
         form = LoginForm()
         return render(request, "user/login.html", {"form": form})
+
+def user_profile(request):
+    initialize_database()
+
+    username = request.session.get("username")
+
+    if username is None:
+        return redirect(login)
+
+    user = users_collection.find_one({"username": username})
+
+    if request.method == "POST":
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            user_data = {
+                "travel_preferences": form.cleaned_data["travel_preferences"],
+                "likes": form.cleaned_data["likes"],
+                "is_smoker": form.cleaned_data["is_smoker"],
+            }
+            users_collection.update_one(
+                {"username": username},
+                {"$set": user_data}
+            )
+            request.session["travel_preferences"] = user_data["travel_preferences"]
+            request.session["likes"] = user_data["likes"]
+            request.session["is_smoker"] = user_data["is_smoker"]
+            return redirect(index)
+    else:
+        initial_data = {
+            "travel_preferences": user.get("travel_preferences", ""),
+            "likes": user.get("likes", ""),
+            "is_smoker": user.get("is_smoker", False)
+        }
+        form = ProfileForm(initial=initial_data)
+
+    return render(request, "user/profile.html", {"form": form, "user": user})
+
+
+
+
+def feedback(request, ride_id):
+    """This method processes the user feedback form"""
+    initialize_database()
+
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback_data = {
+                "username": request.session.get("username"),
+                "ride_rating": form.cleaned_data["ride_rating"],
+                "driver_rating": form.cleaned_data["driver_rating"],
+                "feedback": form.cleaned_data["feedback"]
+            }
+            # Insert feedback into the new feedback collection
+            feedback_collection.insert_one(feedback_data)
+            rides_collection.update_one(
+                {"_id": ride_id},
+                {"$set": {"is_finished": True}}
+            )
+            return redirect(index)
+    else:
+        form = FeedbackForm()
+
+    return render(request, "user/feedback.html", {"form": form})

@@ -10,7 +10,7 @@ db_handle = None
 users_collection = None
 rides_collection = None
 feedback_collection= None
-user_profile = None
+#user_profile = None
 
 def initialize_database():
     """This method initializes handles to the various database collections"""
@@ -123,7 +123,7 @@ def user_profile(request):
             }
             users_collection.update_one(
                 {"username": username},
-                {"$set": user_data} 
+                {"$set": user_data}
             )
             request.session["travel_preferences"] = user_data["travel_preferences"]
             request.session["likes"] = user_data["likes"]

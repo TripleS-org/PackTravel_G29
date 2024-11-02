@@ -1,4 +1,5 @@
 # 🐺 PackTravel
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7afa7fbd58664ce090109c9bdf2e39d6)](https://app.codacy.com/gh/TripleS-org/PackTravel_G29?utm_source=github.com&utm_medium=referral&utm_content=TripleS-org/PackTravel_G29&utm_campaign=Badge_Grade)
 [![Build](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml/badge.svg)](https://github.com/VSangarya/PackTravel/actions/workflows/build.yml)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/df6694ed8d644df1822a1caa1669e504)](https://app.codacy.com/gh/VSangarya/PackTravel?utm_source=github.com&utm_medium=referral&utm_content=VSangarya/PackTravel&utm_campaign=Badge_Grade_Settings)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/df6694ed8d644df1822a1caa1669e504)](https://www.codacy.com/gh/VSangarya/PackTravel/dashboard?utm_source=github.com&utm_medium=referral&utm_content=VSangarya/PackTravel&utm_campaign=Badge_Coverage)

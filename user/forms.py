@@ -73,5 +73,4 @@ class FeedbackForm(forms.Form):
     
     class Meta:
         model = User
-        fields = ('ride_rating', 'driver_rating', 'feedback')
-        
+        fields = ('ride_rating', 'driver_rating', 'feedback')     

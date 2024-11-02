@@ -52,5 +52,4 @@ class TestViews(TestCase):
         """Tests for login with invalid credentials"""
         response = self.client.post(self.login_url, {"username": "wronguser", "password": "wrongpass"})
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "user/login.html")
-        
+        self.assertTemplateUsed(response, "user/login.html")      

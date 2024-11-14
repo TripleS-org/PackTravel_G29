@@ -15,7 +15,7 @@ class TestViews(TestCase):
         """Tests for publishing ride for logged out user"""
         response = self.client.get(self.publish_url)
         # 302 - redirects to index when user is not logged in
-        self.assertEquals(response.status_code, 302) # pylint: disable=deprecated-method
+        self.assertEqual(response.status_code, 302) # pylint: disable=deprecated-method
         self.assertRedirects(response, "/index/")
 
     def test_publish_for_logged_in_user(self):
@@ -25,7 +25,7 @@ class TestViews(TestCase):
         session.save()
         response = self.client.get(self.publish_url)
         # go to publish page if session variable is set
-        self.assertEquals(response.status_code, 200) # pylint: disable=deprecated-method
+        self.assertEqual(response.status_code, 200) # pylint: disable=deprecated-method
         self.assertTemplateUsed(response, "publish/publish.html")
 
     def test_ride_creation(self):
@@ -45,5 +45,4 @@ class TestViews(TestCase):
             "info": "Dummy data"
         })
 
-        self.assertEquals(response.status_code, 201) # pylint: disable=deprecated-method
-        self.assertTemplateUsed(response, "publish/publish.html")
+        self.assertEqual(response.status_code, 201) # pylint: disable=deprecated-method

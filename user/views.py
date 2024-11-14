@@ -1,5 +1,8 @@
 """Django views for user login and sign up functionality"""
+<<<<<<< HEAD
 from django.contrib.auth.decorators import login_required
+=======
+>>>>>>> 6958b7e1dec9ede84c61dfc22d7ab2100b41f9c0
 from django.shortcuts import render, redirect
 from utils import get_client
 from .forms import RegisterForm, LoginForm, ProfileForm, FeedbackForm
@@ -105,6 +108,7 @@ def login(request):
         form = LoginForm()
         return render(request, "user/login.html", {"form": form})
 
+<<<<<<< HEAD
 @login_required
 def user_profile(request):
     try:
@@ -121,6 +125,43 @@ def user_profile(request):
         form = ProfileForm(instance=profile)
 
     return render(request, 'user/profile.html', {'form': form})
+=======
+def user_profile(request):
+    initialize_database()
+
+    username = request.session.get("username")
+
+    if username is None:
+        return redirect(login)
+
+    user = users_collection.find_one({"username": username})
+
+    if request.method == "POST":
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            user_data = {
+                "travel_preferences": form.cleaned_data["travel_preferences"],
+                "likes": form.cleaned_data["likes"],
+                "is_smoker": form.cleaned_data["is_smoker"],
+            }
+            users_collection.update_one(
+                {"username": username},
+                {"$set": user_data}
+            )
+            request.session["travel_preferences"] = user_data["travel_preferences"]
+            request.session["likes"] = user_data["likes"]
+            request.session["is_smoker"] = user_data["is_smoker"]
+            return redirect(index)
+    else:
+        initial_data = {
+            "travel_preferences": user.get("travel_preferences", ""),
+            "likes": user.get("likes", ""),
+            "is_smoker": user.get("is_smoker", False)
+        }
+        form = ProfileForm(initial=initial_data)
+
+    return render(request, "user/profile.html", {"form": form, "user": user})
+>>>>>>> 6958b7e1dec9ede84c61dfc22d7ab2100b41f9c0
 
 
 

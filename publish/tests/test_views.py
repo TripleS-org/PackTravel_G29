@@ -46,3 +46,4 @@ class TestViews(TestCase):
         })
 
         self.assertEquals(response.status_code, 201) # pylint: disable=deprecated-method
+        self.assertTemplateUsed(response, "publish/publish.html")

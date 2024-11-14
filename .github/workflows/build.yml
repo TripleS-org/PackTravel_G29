@@ -34,7 +34,7 @@ jobs:
       - name: Run django tests
         run: |
           echo "database:" > config.yml
-          echo "  endpoint: packtravel.cyumok3.mongodb.net/?retryWrites=true&w=majority" >> config.yml
+          echo "  endpoint: packtravel.1uznz.mongodb.net/?retryWrites=true&w=majority" >> config.yml
           echo "  username: ${{secrets.DB_USERNAME}}" >> config.yml
           echo "  password: ${{secrets.DB_PASSWORD}}" >> config.yml
           coverage run --source=user,publish,request,search ./manage.py test

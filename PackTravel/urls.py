@@ -19,6 +19,7 @@ from user import views as userView
 from search import views as searchViews
 from publish import views as publishViews
 from request import views as requestsViews
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', userView.index, name='home'),
@@ -41,6 +42,11 @@ urlpatterns = [
     path('ride_page/<ride_id>', publishViews.show_ride, name='showridepage'),
     path('add_forum/', publishViews.add_forum, name='addforum'),
     path('profile/', userView.user_profile, name='user_profile'), 
-    path('feedback/<str:ride_id>', userView.feedback, name='feedback')
-
+    path('feedback/<str:ride_id>', userView.feedback, name='feedback'),
+    path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
+    path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 ]

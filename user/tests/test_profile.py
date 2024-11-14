@@ -27,6 +27,35 @@ class TestProfileForm(TestCase):
         })
         self.assertFalse(form.is_valid())
         self.assertIn('travel_preferences', form.errors)
+    
+    def test_profileform_long_travel_preferences(self):
+        """Test that the form is invalid when travel_preferences is too long."""
+        form = ProfileForm(data={
+            'travel_preferences': 'A' * 256,  # Assuming max_length is 255
+            'likes': 'Reading',
+            'is_smoker': False,
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('travel_preferences', form.errors)
+
+    def test_profileform_long_likes(self):
+        """Test that the form is invalid when likes is too long."""
+        form = ProfileForm(data={
+            'travel_preferences': 'Beach',
+            'likes': 'A' * 256,  # Assuming max_length is 255
+            'is_smoker': False,
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('likes', form.errors)
+
+    def test_profileform_invalid_smoker_value(self):
+        """Test that the form is invalid when is_smoker is not a boolean."""
+        form = ProfileForm(data={
+            'travel_preferences': 'Beach',
+            'likes': 'Reading',
+            'is_smoker': 'Not a boolean',
+        })
+        self.assertTrue(form.is_valid())
 
 class TestUserProfileView(TestCase):
     """Test cases for the user profile view, including GET and POST requests."""

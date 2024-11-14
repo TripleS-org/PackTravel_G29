@@ -39,10 +39,51 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse("index"))
 
-
     def test_login_invalid_credentials(self):
         """Test the login page loads successfully and uses the correct template."""
         response = self.client.post(self.login_url, 
         {"username": "wronguser", "password": "wrongpass"})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "user/login.html")
+     
+    def test_register_post_valid_data(self):
+        response = self.client.post(self.register_url, {
+            "username": "newuser",
+            "password1": "complex_password123",
+            "password2": "complex_password123"
+        })
+        self.assertEqual(response.status_code, 200)
+
+    def test_register_post_invalid_data(self):
+        response = self.client.post(self.register_url, {
+            "username": "newuser",
+            "password1": "password",
+            "password2": "different_password"
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(User.objects.filter(username="newuser").exists())
+
+    def test_login_post_invalid_username(self):
+        response = self.client.post(self.login_url, {
+            "username": "nonexistentuser",
+            "password": "12345"
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "user/login.html")
+
+    def test_login_post_invalid_password(self):
+        response = self.client.post(self.login_url, {
+            "username": "testuser",
+            "password": "wrongpassword"
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "user/login.html")
+
+    def test_logout_unauthenticated_user(self):
+        response = self.client.get(self.logout_url)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse("index"))
+
+    def test_csrf_token_present(self):
+        response = self.client.get(self.login_url)
+        self.assertContains(response, 'csrfmiddlewaretoken')

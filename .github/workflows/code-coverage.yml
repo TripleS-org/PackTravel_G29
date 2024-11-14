@@ -25,19 +25,19 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install codacy-coverage  # Install the codacy-coverage tool
+          pip install pytest pytest-cov codacy-coverage  # Install pytest, pytest-cov, and codacy-coverage
 
       - name: Run tests
         run: |
-          pytest --maxfail=1 --disable-warnings -q
+          pytest --maxfail=1 --disable-warnings -q  # Run tests with maxfail=1 to stop after one failure
 
       - name: Generate coverage report
         run: |
-          pytest --cov=your_project --cov-report=xml  # Replace 'your_project' with the name of your project folder
+          pytest --cov=your_project --cov-report=xml  # Replace 'your_project' with your project folder
           
       - name: Upload coverage to Codacy
         run: |
-          codacy-coverage -r coverage.xml  # Upload the coverage to Codacy
+          codacy-coverage -r coverage.xml  # Upload coverage report to Codacy
 
       - name: Commit Codacy badge to README
         run: |

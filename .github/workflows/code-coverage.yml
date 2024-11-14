@@ -19,20 +19,20 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install coverage
-
       - name: Set environment variables
         run: |
           echo "DJANGO_SETTINGS_MODULE=PackTravel_G29.settings" >> $GITHUB_ENV
           echo "Environment variable DJANGO_SETTINGS_MODULE set to PackTravel_G29.settings"
-
+          
       - name: Run Django checks
-        run: python manage.py check  # Ensures settings are properly loaded
+        run: python manage.py check
 
       - name: Run tests with coverage
         run: |
           coverage run --source='.' manage.py test
-          coverage xml
-
+          coverage report -m  # View coverage in the console for debugging
+          coverage xml -o coverage.xml  # Ensure `coverage.xml` is in the root directory
+          
       - name: Upload coverage to Codacy
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}

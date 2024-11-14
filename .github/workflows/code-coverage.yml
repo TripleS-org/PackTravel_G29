@@ -1,4 +1,4 @@
-name: CI/CD with Tests and Codacy Badge
+name: Python CI with Codacy Coverage
 
 on:
   push:
@@ -13,58 +13,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the code
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    # Set up Python
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
 
-    # Install dependencies
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install codacy-coverage  # Install the codacy-coverage tool
 
-    # Run tests
-    - name: Run tests
-      run: |
-        python manage.py test
+      - name: Run tests
+        run: |
+          pytest --maxfail=1 --disable-warnings -q
 
-    # Install Codacy badge uploader
-    - name: Install Codacy Badge uploader
-      run: |
-        pip install codacy-coverage
+      - name: Generate coverage report
+        run: |
+          pytest --cov=your_project --cov-report=xml  # Replace 'your_project' with the name of your project folder
+          
+      - name: Upload coverage to Codacy
+        run: |
+          codacy-coverage -r coverage.xml  # Upload the coverage to Codacy
 
-    # Upload coverage to Codacy
-    - name: Upload coverage to Codacy
-      run: |
-        codacy-coverage -r coverage.xml
-
-    # Get the Codacy badge URL
-    - name: Get Codacy badge URL
-      id: codacy_badge
-      run: |
-        badge_url=$(curl -s "https://api.codacy.com/project/badges/coverage?project=$GITHUB_REPOSITORY" | jq -r '.url')
-        echo "::set-output name=badge_url::$badge_url"
-
-    # Configure Git user identity for commits
-    - name: Configure Git user
-      run: |
-        git config --global user.email "github-actions@github.com"
-        git config --global user.name "GitHub Actions"
-
-    # Update README.md with Codacy badge
-    - name: Update README with Codacy badge
-      run: |
-        echo "Updating README.md with Codacy badge"
-        badge_url=${{ steps.codacy_badge.outputs.badge_url }}
-        sed -i "s|<codacy_badge_placeholder>|![Codacy Badge]($badge_url)|g" README.md
-        git add README.md
-        git commit -m "Update README with Codacy coverage badge"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit Codacy badge to README
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          # Replace <codacy_badge_placeholder> with the actual Codacy badge URL
+          sed -i 's|<codacy_badge_placeholder>|https://app.codacy.com/project/badge/Coverage/<YOUR_PROJECT_ID>?branch=main|' README.md
+          git add README.md
+          git commit -m "Update README.md with Codacy badge"
+          git push

@@ -27,6 +27,10 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-cov codacy-coverage  # Install pytest, pytest-cov, and codacy-coverage
 
+      - name: Set DJANGO_SETTINGS_MODULE
+        run: |
+          echo "DJANGO_SETTINGS_MODULE=PackTravel_G29.settings" >> $GITHUB_ENV  # Set environment variable to point to your settings
+
       - name: Run tests
         run: |
           pytest --maxfail=1 --disable-warnings -q  # Run tests with maxfail=1 to stop after one failure

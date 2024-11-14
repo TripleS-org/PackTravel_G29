@@ -8,22 +8,27 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.8'  # use the version you need
+          python-version: '3.8'  # Adjust as needed
 
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install coverage  # in case it's not in requirements.txt
+          pip install coverage
+
+      - name: Set environment variables
+        env:
+          DJANGO_SETTINGS_MODULE: "PackTravel_G29.settings"  # Correct path to settings file
+        run: echo "Environment variables set"
 
       - name: Run tests with coverage
         run: |
           coverage run -m pytest
-          coverage xml  # generates a coverage.xml file
+          coverage xml  # Generates a coverage.xml file
 
       - name: Upload coverage to Codacy
         env:

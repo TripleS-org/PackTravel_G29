@@ -1,4 +1,4 @@
-name: Python CI with Codacy Coverage
+name: Codacy Coverage
 
 on:
   push:
@@ -9,46 +9,67 @@ on:
       - main
 
 jobs:
-  build:
+  coverage:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: '3.8'
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest pytest-cov codacy-coverage  # Install pytest, pytest-cov, and codacy-coverage
+          pip install coverage
 
-      - name: Set DJANGO_SETTINGS_MODULE
+      - name: Ensure correct directory
         run: |
-          echo "DJANGO_SETTINGS_MODULE=PackTravel_G29.settings" >> $GITHUB_ENV  # Set environment variable to point to your settings
+          echo "Current directory:"
+          pwd
+          ls -l
+          echo "Directory contents:"
+          ls -l
 
-      - name: Run tests
+      - name: Set environment variables
         run: |
-          pytest --maxfail=1 --disable-warnings -q  # Run tests with maxfail=1 to stop after one failure
+          echo "DJANGO_SETTINGS_MODULE=PackTravel.settings" >> $GITHUB_ENV
+          echo "Environment variable DJANGO_SETTINGS_MODULE set to PackTravel.settings"
 
-      - name: Generate coverage report
+      - name: Run Django checks
         run: |
-          pytest --cov=your_project --cov-report=xml  # Replace 'your_project' with your project folder
-          
+          python manage.py check
+
+      - name: Run tests with coverage
+        run: |
+          coverage run --source='.' manage.py test
+          coverage xml
+
       - name: Upload coverage to Codacy
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
-          codacy-coverage -r coverage.xml  # Upload coverage report to Codacy
+          curl -Ls https://coverage.codacy.com/get.sh | bash -s -- report -r coverage.xml
 
-      - name: Commit Codacy badge to README
+      - name: Set Badge URL
+        id: codacy_badge
         run: |
+          badge_url="https://app.codacy.com/project/badge/Coverage/${{ github.repository }}?token=${{ secrets.CODACY_PROJECT_TOKEN }}"
+          echo "Badge URL: $badge_url"
+          echo "::set-output name=badge_url::$badge_url"
+
+      - name: Update README with Codacy badge
+        run: |
+          echo "Updating README.md with Codacy badge"
+          badge_url=${{ steps.codacy_badge.outputs.badge_url }}
+          sed -i "s|<codacy_badge_placeholder>|![Codacy Badge]($badge_url)|g" README.md
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
-          # Replace <codacy_badge_placeholder> with the actual Codacy badge URL
-          sed -i 's|<codacy_badge_placeholder>|https://app.codacy.com/project/badge/Coverage/<YOUR_PROJECT_ID>?branch=main|' README.md
           git add README.md
-          git commit -m "Update README.md with Codacy badge"
+          git commit -m "Update README with Codacy coverage badge"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

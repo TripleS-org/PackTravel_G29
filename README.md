@@ -21,7 +21,8 @@ PackTravel is a web-application that connects people who want to carpool, share 
 *   Forum for every ride to discuss logistics
 *   Integration with Google Maps to show ride route , distance and duration.
 *   Users can now get an estimated cab fare predicted with machine learning using date and time of the ride as attribute.
-*   Emails are sent to ride owners when a ride capacity is reached.
+*   Users can set preferences in their profile
+*   Created a feedback system for future analysis
 
 
 ## Watch the Demo Video
@@ -48,12 +49,10 @@ Any person who is looking to reduce spending on their commute expenditure can us
 *   The bottleneck in PackTravel is the email sending feature. If we use a message queue such as Kafka to offload the task of sending an email to a different application (Kafka consumer), it will free our application server's resources quickly.
 *   MongoDB is designed to handle large amounts of data and high levels of throughput. It can distribute data across multiple servers and process it in parallel. It has built-in support for sharding and this makes it easy to scale MongoDB horizontally by adding more servers as needed to handle the increased load.
 
-## 🎯 Enhancements
-*   Merge rides - users should be able to join rides in a via point between a source and a destination (feature). 
-*   Ride ratings - users should be able to rate other users after a ride is complete (feature).
-*   2FA - Add functionality to support 2 factor authentication to login (security)
-*   Cab Fare estimation to help make a more informed ride choice.
-*   Owners of ride now notified via email when the ride has reached capacity!
+## 🎯 Proposed Enhancements
+*   Enable viewing of ride history in user account
+*   Enable notifications if request is received accepted
+*   Enable higher account security using 2FA
 
 ## 📨 Help and Troubleshooting
 For any help or assistance regarding the software, please e-mail any of the developers with the query or a detailed description. Additionally, please use issues on GitHub for any software related issues, bugs or questions.

@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write  # Grants write permissions to allow pushing README updates
+
 jobs:
   coverage:
     runs-on: ubuntu-latest

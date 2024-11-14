@@ -1,7 +1,7 @@
 # 🐺 PackTravel
 [![Build](https://github.com/TripleS-org/PackTravel_G29/actions/workflows/build.yml/badge.svg)](https://github.com/TripleS-org/PackTravel_G29/actions/workflows/build.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/9df7800c90694928ba61e4ff7950359a)](https://app.codacy.com/gh/TripleS-org/PackTravel_G29/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-![Codacy Badge](https://app.codacy.com/project/badge/Coverage/TripleS-org/PackTravel_G29?token=7afa7fbd58664ce090109c9bdf2e39d6)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/9df7800c90694928ba61e4ff7950359a)](https://app.codacy.com/gh/TripleS-org/PackTravel_G29/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![Commit Acitivity](https://img.shields.io/github/commit-activity/w/TripleS-org/PackTravel_G29)](https://github.com/TripleS-org/PackTravel_G29/pulse)
 [![Issues](https://img.shields.io/github/issues/TripleS-org/PackTravel_G29?color=red)](https://github.com/TripleS-org/PackTravel_G29/issues)
 [![Contributors](https://img.shields.io/github/contributors/TripleS-org/PackTravel_G29)](https://github.com/TripleS-org/PackTravel_G29/graphs/contributors)

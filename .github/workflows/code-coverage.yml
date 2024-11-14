@@ -13,7 +13,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'  # Adjust as needed
+          python-version: '3.8'
 
       - name: Install dependencies
         run: |
@@ -21,14 +21,17 @@ jobs:
           pip install coverage
 
       - name: Set environment variables
-        env:
-          DJANGO_SETTINGS_MODULE: "PackTravel_G29.settings"  # Correct path to settings file
-        run: echo "Environment variables set"
+        run: |
+          echo "DJANGO_SETTINGS_MODULE=PackTravel_G29.settings" >> $GITHUB_ENV
+          echo "Environment variable DJANGO_SETTINGS_MODULE set to PackTravel_G29.settings"
+
+      - name: Run Django checks
+        run: python manage.py check  # Ensures settings are properly loaded
 
       - name: Run tests with coverage
         run: |
-          coverage run -m pytest
-          coverage xml  # Generates a coverage.xml file
+          coverage run --source='.' manage.py test
+          coverage xml
 
       - name: Upload coverage to Codacy
         env:

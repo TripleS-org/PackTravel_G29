@@ -24,12 +24,5 @@ jobs:
                   sphinx-apidoc -f -o docs/source request
                   sphinx-apidoc -f -o docs/source search
                   sphinx-apidoc -f -o docs/source user
-                  cd docs/
-                  make html
-                  cd ..
-                  git config --global user.name "qureshi-ali"
-                  git config --global user.email "qureshi.ali@outlook.com"
-                  git add .
-                  git commit -m "updating docs" -a || true
-                  git push
+
         # ===============================

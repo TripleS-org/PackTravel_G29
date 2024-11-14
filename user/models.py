@@ -1,4 +1,4 @@
-"""Django model for user login and sign up functionality"""
+"""Django model for user login and sign-up functionality"""
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -12,5 +12,5 @@ class Profile(models.Model):
     is_smoker = models.BooleanField(default=False)
 
     def __str__(self):
+        # Ensure that 'user' is an instance of the User model
         return f"{self.user.username}'s Profile"
-    

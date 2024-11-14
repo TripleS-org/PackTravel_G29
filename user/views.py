@@ -1,18 +1,16 @@
 """Django views for user login and sign up functionality"""
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from utils import get_client
 from .forms import RegisterForm, LoginForm, ProfileForm, FeedbackForm
 import hashlib
-from .models import Profile     
 
 # database connections
 db_client = None
 db_handle = None
 users_collection = None
 rides_collection = None
-feedback_collection= None
-#user_profile = None
+feedback_collection = None
+# user_profile = None
 
 def initialize_database():
     """This method initializes handles to the various database collections"""
@@ -34,7 +32,7 @@ def index(request, username=None):
 
     if "username" in request.session:
         return render(request, "home/home.html", {"username": user})
-    return render(request, "home/home.html", {"username":None})
+    return render(request, "home/home.html", {"username": None})
 
 def register(request):
     """This method processes a user registration request"""
@@ -47,7 +45,11 @@ def register(request):
             user = users_collection.find_one({"username": username})
             # print(user)
             if user:
-                return render(request, "user/register.html", {"form": form, "alert":"Username already exists"})
+                return render(
+                    request,
+                    "user/register.html",
+                    {"form": form, "alert": "Username already exists"},
+                )
             user_obj = {
                 "username": username,
                 "fname": form.cleaned_data["first_name"],
@@ -55,7 +57,7 @@ def register(request):
                 "email": form.cleaned_data["email"],
                 "password": hashlib.sha256(password.encode()).hexdigest(),
                 "phone": form.cleaned_data["phone_number"],
-                "rides": []
+                "rides": [],
             }
             users_collection.insert_one(user_obj)
             request.session["username"] = user_obj["username"]
@@ -70,7 +72,7 @@ def register(request):
         if "username" in request.session:
             return index(request)
         form = RegisterForm()
-    return render(request, "user/register.html", {"form": form, "alert":""})
+    return render(request, "user/register.html", {"form": form, "alert": ""})
 
 def logout(request):
     """This method processes user logout request"""
@@ -92,7 +94,9 @@ def login(request):
                 username = form.cleaned_data["username"]
                 user = users_collection.find_one({"username": username})
 
-                if user and user["password"] == hashlib.sha256(form.cleaned_data["password"].encode()).hexdigest():
+                if user and user["password"] == hashlib.sha256(
+                    form.cleaned_data["password"].encode()
+                ).hexdigest():
                     request.session["username"] = username
                     request.session["fname"] = user["fname"]
                     request.session["lname"] = user["lname"]
@@ -100,30 +104,50 @@ def login(request):
                     request.session["phone"] = user["phone"]
                     return redirect(index, request.session["username"])
                 else:
-                    return render(request, "user/login.html", {"form": form, "alert": "Incorrect username or password!"})
+                    return render(
+                        request,
+                        "user/login.html",
+                        {"form": form, "alert": "Incorrect username or password!"},
+                    )
 
         form = LoginForm()
         return render(request, "user/login.html", {"form": form})
 
-@login_required
 def user_profile(request):
-    try:
-        profile = request.user.profile
-    except Profile.DoesNotExist:
-        profile = Profile(user=request.user)
+    initialize_database()
 
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=profile)
+    username = request.session.get("username")
+
+    if username is None:
+        return redirect(login)
+
+    user = users_collection.find_one({"username": username})
+
+    if request.method == "POST":
+        form = ProfileForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('index')
+            user_data = {
+                "travel_preferences": form.cleaned_data["travel_preferences"],
+                "likes": form.cleaned_data["likes"],
+                "is_smoker": form.cleaned_data["is_smoker"],
+            }
+            users_collection.update_one(
+                {"username": username},
+                {"$set": user_data},
+            )
+            request.session["travel_preferences"] = user_data["travel_preferences"]
+            request.session["likes"] = user_data["likes"]
+            request.session["is_smoker"] = user_data["is_smoker"]
+            return redirect(index)
     else:
-        form = ProfileForm(instance=profile)
+        initial_data = {
+            "travel_preferences": user.get("travel_preferences", ""),
+            "likes": user.get("likes", ""),
+            "is_smoker": user.get("is_smoker", False),
+        }
+        form = ProfileForm(initial=initial_data)
 
-    return render(request, 'user/profile.html', {'form': form})
-
-
-
+    return render(request, "user/profile.html", {"form": form, "user": user})
 
 def feedback(request, ride_id):
     """This method processes the user feedback form"""
@@ -136,13 +160,13 @@ def feedback(request, ride_id):
                 "username": request.session.get("username"),
                 "ride_rating": form.cleaned_data["ride_rating"],
                 "driver_rating": form.cleaned_data["driver_rating"],
-                "feedback": form.cleaned_data["feedback"]
+                "feedback": form.cleaned_data["feedback"],
             }
             # Insert feedback into the new feedback collection
             feedback_collection.insert_one(feedback_data)
             rides_collection.update_one(
                 {"_id": ride_id},
-                {"$set": {"is_finished": True}}
+                {"$set": {"is_finished": True}},
             )
             return redirect(index)
     else:

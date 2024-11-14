@@ -31,26 +31,25 @@ jobs:
           echo "Current directory:"
           pwd
           ls -l
-          # Ensure that we're in the root directory of the project
-          # If manage.py is in a subdirectory (like `my_project/`), adjust the working directory here
-          cd PackTravel_G29
-          echo "Changed to PackTravel_G29 directory:"
+          # Change to the correct directory, which is `PackTravel` (not `PackTravel_G29`)
+          cd PackTravel
+          echo "Changed to PackTravel directory:"
           pwd
           ls -l
 
       - name: Set environment variables
         run: |
-          echo "DJANGO_SETTINGS_MODULE=PackTravel_G29.settings" >> $GITHUB_ENV
-          echo "Environment variable DJANGO_SETTINGS_MODULE set to PackTravel_G29.settings"
+          echo "DJANGO_SETTINGS_MODULE=PackTravel.settings" >> $GITHUB_ENV
+          echo "Environment variable DJANGO_SETTINGS_MODULE set to PackTravel.settings"
 
       - name: Run Django checks
         run: |
-          cd PackTravel_G29  # Change to the project directory if needed
+          cd PackTravel  # Change to the project directory if needed
           python manage.py check
 
       - name: Run tests with coverage
         run: |
-          cd PackTravel_G29  # Ensure we're in the correct directory for Django
+          cd PackTravel  # Ensure we're in the correct directory for Django
           coverage run --source='.' manage.py test
           coverage xml
 

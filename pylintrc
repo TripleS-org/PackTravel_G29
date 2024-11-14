@@ -31,6 +31,8 @@ unsafe-load-any-extension=no
 
 [MESSAGES CONTROL]
 
+disable=invalid-name
+
 # Only show warnings with the listed confidence levels. Leave empty to show
 # all. Valid levels: HIGH, INFERENCE, INFERENCE_FAILURE, UNDEFINED
 confidence=

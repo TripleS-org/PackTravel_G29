@@ -1,8 +1,10 @@
 """Django views for user login and sign up functionality"""
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from utils import get_client
 from .forms import RegisterForm, LoginForm, ProfileForm, FeedbackForm
 import hashlib
+from .models import Profile     
 
 # database connections
 db_client = None
@@ -103,41 +105,22 @@ def login(request):
         form = LoginForm()
         return render(request, "user/login.html", {"form": form})
 
+@login_required
 def user_profile(request):
-    initialize_database()
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile(user=request.user)
 
-    username = request.session.get("username")
-
-    if username is None:
-        return redirect(login)
-
-    user = users_collection.find_one({"username": username})
-
-    if request.method == "POST":
-        form = ProfileForm(request.POST)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
-            user_data = {
-                "travel_preferences": form.cleaned_data["travel_preferences"],
-                "likes": form.cleaned_data["likes"],
-                "is_smoker": form.cleaned_data["is_smoker"],
-            }
-            users_collection.update_one(
-                {"username": username},
-                {"$set": user_data}
-            )
-            request.session["travel_preferences"] = user_data["travel_preferences"]
-            request.session["likes"] = user_data["likes"]
-            request.session["is_smoker"] = user_data["is_smoker"]
-            return redirect(index)
+            form.save()
+            return redirect('index')
     else:
-        initial_data = {
-            "travel_preferences": user.get("travel_preferences", ""),
-            "likes": user.get("likes", ""),
-            "is_smoker": user.get("is_smoker", False)
-        }
-        form = ProfileForm(initial=initial_data)
+        form = ProfileForm(instance=profile)
 
-    return render(request, "user/profile.html", {"form": form, "user": user})
+    return render(request, 'user/profile.html', {'form': form})
 
 
 

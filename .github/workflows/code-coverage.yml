@@ -64,15 +64,4 @@ jobs:
           echo "Badge URL: $badge_url"
           echo "::set-output name=badge_url::$badge_url"
 
-      - name: Update README with Codacy badge
-        run: |
-          echo "Updating README.md with Codacy badge"
-          badge_url=${{ steps.codacy_badge.outputs.badge_url }}
-          sed -i "s|<codacy_badge_placeholder>|![Codacy Badge]($badge_url)|g" README.md
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add README.md
-          git commit -m "Update README with Codacy coverage badge"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

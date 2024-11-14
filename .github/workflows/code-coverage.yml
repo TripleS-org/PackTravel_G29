@@ -1,6 +1,12 @@
 name: Codacy Coverage
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   coverage:
@@ -19,22 +25,40 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install coverage
+
       - name: Set environment variables
         run: |
           echo "DJANGO_SETTINGS_MODULE=PackTravel_G29.settings" >> $GITHUB_ENV
           echo "Environment variable DJANGO_SETTINGS_MODULE set to PackTravel_G29.settings"
-          
+
       - name: Run Django checks
         run: python manage.py check
 
       - name: Run tests with coverage
         run: |
           coverage run --source='.' manage.py test
-          coverage report -m  # View coverage in the console for debugging
-          coverage xml -o coverage.xml  # Ensure `coverage.xml` is in the root directory
-          
+          coverage xml
+
       - name: Upload coverage to Codacy
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
           curl -Ls https://coverage.codacy.com/get.sh | bash -s -- report -r coverage.xml
+
+      - name: Fetch Codacy badge URL
+        id: codacy_badge
+        run: |
+          badge_url=$(curl -s https://api.codacy.com/v2/badges/${{ secrets.CODACY_PROJECT_TOKEN }} | jq -r .result.coverageBadgeUrl)
+          echo "Badge URL: $badge_url"
+          echo "::set-output name=badge_url::$badge_url"
+
+      - name: Update README with Codacy badge
+        run: |
+          echo "Updating README.md with Codacy badge"
+          badge_url=${{ steps.codacy_badge.outputs.badge_url }}
+          sed -i "s|<codacy_badge_placeholder>|![Codacy Badge]($badge_url)|g" README.md
+          git add README.md
+          git commit -m "Update README with Codacy coverage badge"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

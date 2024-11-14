@@ -31,10 +31,8 @@ jobs:
           echo "Current directory:"
           pwd
           ls -l
-          # Change to the correct directory, which is `PackTravel` (not `PackTravel_G29`)
-          cd PackTravel
-          echo "Changed to PackTravel directory:"
-          pwd
+          # We are already in the root directory where manage.py is located, so no need to cd
+          echo "Directory contents:"
           ls -l
 
       - name: Set environment variables
@@ -44,12 +42,10 @@ jobs:
 
       - name: Run Django checks
         run: |
-          cd PackTravel  # Change to the project directory if needed
           python manage.py check
 
       - name: Run tests with coverage
         run: |
-          cd PackTravel  # Ensure we're in the correct directory for Django
           coverage run --source='.' manage.py test
           coverage xml
 

@@ -26,16 +26,31 @@ jobs:
           pip install -r requirements.txt
           pip install coverage
 
+      - name: Ensure correct directory
+        run: |
+          echo "Current directory:"
+          pwd
+          ls -l
+          # Ensure that we're in the root directory of the project
+          # If manage.py is in a subdirectory (like `my_project/`), adjust the working directory here
+          cd PackTravel_G29
+          echo "Changed to PackTravel_G29 directory:"
+          pwd
+          ls -l
+
       - name: Set environment variables
         run: |
           echo "DJANGO_SETTINGS_MODULE=PackTravel_G29.settings" >> $GITHUB_ENV
           echo "Environment variable DJANGO_SETTINGS_MODULE set to PackTravel_G29.settings"
 
       - name: Run Django checks
-        run: python manage.py check
+        run: |
+          cd PackTravel_G29  # Change to the project directory if needed
+          python manage.py check
 
       - name: Run tests with coverage
         run: |
+          cd PackTravel_G29  # Ensure we're in the correct directory for Django
           coverage run --source='.' manage.py test
           coverage xml
 

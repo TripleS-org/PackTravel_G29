@@ -43,7 +43,7 @@ class TestViews(TestCase):
     def test_login_redirect(self):
         """Tests for Client Login URL Validation"""
         response = self.client.post(self.login_url, {"username": "testuser", "password": "12345"})
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, reverse("index"))
 
     def test_login_invalid_credentials(self):

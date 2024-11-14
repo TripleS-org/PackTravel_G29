@@ -71,6 +71,4 @@ class TestUserProfileView(TestCase):
         self.assertTemplateUsed(response, 'user/profile.html')
         self.assertIsInstance(response.context['form'], ProfileForm)
         self.assertFalse(response.context['form'].is_valid())
-
-    
         

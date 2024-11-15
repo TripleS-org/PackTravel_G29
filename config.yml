@@ -1,4 +1,4 @@
 database:
   endpoint: packtravel.1uznz.mongodb.net/?retryWrites=true&w=majority&appName=PackTravel
-  username: <username>
-  password: <password>
+  username: packtravel
+  password: packtravel

@@ -173,3 +173,18 @@ def feedback(request, ride_id):
         form = FeedbackForm()
 
     return render(request, "user/feedback.html", {"form": form})
+
+def ride_history(request):
+    initialize_database()
+
+    # Check if the user is logged in
+    if not request.session.has_key("username"):
+        request.session["alert"] = "Please login to view your ride history"
+        return redirect("index")
+    
+    username = request.session["username"]
+
+    # Fetch completed rides for the user
+    completed_rides = list(rides_collection.find({"confirmed_users": username}))
+
+    return render(request, "user/ride_history.html", {"completed_rides": completed_rides})

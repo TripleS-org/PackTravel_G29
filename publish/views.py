@@ -131,7 +131,8 @@ def create_ride(request):
             "owner": request.session["username"],
             "cost": cost,
             "requested_users": [],
-            "confirmed_users": []
+            "confirmed_users": [],
+            "is_finished": False
         }
 
         request.session["ride"] = ride

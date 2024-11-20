@@ -234,7 +234,7 @@
         <li class="nav-item">
           <a class="nav-link apply-font" href="/publish/">Create ride</a>
         </li>
-        {% if  not request.session.username  %}
+        {% if not request.session.username %}
         <li class="nav-item">
           <a class="nav-link apply-font" href="/login/">Login</a>
         </li>
@@ -242,24 +242,27 @@
           <a class="nav-link apply-font" href="/register/">Sign Up</a>
         </li>
         {% endif %}
-        {% if request.session.username  %}
-                        <li class="nav-item">
-                            <a class="nav-link apply-font" href="/requests">Manage Ride</a>
-                        </li>
-						<li class="nav-item">
-							<a class="nav-link apply-font" href="/logout/">
-								<span class="nav-text">Logout</span>
-							</a>
-						</li>
-            
-                        <li class="nav-item">
-							<a class="nav-link apply-font" href="/profile/">
-								<span class="nav-text">Hi, {{ username }}</span>
-							</a>
-						</li>
-						{% endif %}
+        {% if request.session.username %}
+        <li class="nav-item">
+          <a class="nav-link apply-font" href="/requests">Manage Ride</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link apply-font" href="/ride-history/">Ride History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link apply-font" href="/profile/">
+            <span class="nav-text">Hi, {{ username }}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link apply-font" href="/logout/">
+            <span class="nav-text">Logout</span>
+          </a>
+        </li>
+        {% endif %}
       </ul>
     </div>
+    
   </nav>
 <br>
   
